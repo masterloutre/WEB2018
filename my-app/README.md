@@ -1,12 +1,68 @@
+******************************************************************************************************************
 TO INSTALL REACT WITH AN EXISTING APP :
+******************************************************************************************************************
 npm init
 npm install --save react react-dom
-******************************************
+cd my-app
+npm install --save node-sass-chokidar
+npm install --save npm-run-all
+npm install @nivo/bar
+npm install --save react-redux
+npm start
+******************************************************************************************************************
 TO MAKE A NEW APP :
+******************************************************************************************************************
 npm install -g create-react-app
 create-react-app my-app
 cd my-app
+npm install --save node-sass-chokidar
+npm install --save npm-run-all
+npm install @nivo/bar
+npm install --save react-redux
 npm start
+******************************************************************************************************************
+REACT DOC :
+******************************************************************************************************************
+- https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md
+- https://reactjs.org/docs/hello-world.html
+Router : https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
+Nivo : http://nivo.rocks/#/components
+Redux : https://redux.js.org/basics/usage-with-react
+https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
+Testing with Jest : https://facebook.github.io/jest/docs/en/tutorial-react.html
+
+******************************************************************************************************************
+RULES :
+******************************************************************************************************************
+- english code
+- camelCase
+- folder's names begin with lowercase
+- component file's and class name begin with uppercase
+- 1 component do only one thing = single responsibility principle
+- 1 component should have only one css class (no reusing classes)
+
+1)
+- begins with a static version of the app : components with render methods only, that take the data model as props
+- go bottom-up (smaller component to bigger component) and write tests as you build component
+- uses the state only for interactivity (not needed to render data)
+
+2)
+- make the app interactive (with redux)
+- figure out the absolute minimal representation of the state =>
+    Let’s go through each one and figure out which one is state. Simply ask three questions about each piece of data:
+      - Is it passed in from a parent via props? If so, it probably isn’t state.
+      - Does it remain unchanged over time? If so, it probably isn’t state.
+      - Can you compute it based on any other state or props in your component? If so, it isn’t state.
+- defined which component mutates and owns the state
+    For each piece of state in your application:
+      - Identify every component that renders something based on that state.
+      - Find a common owner component (a single component above all the components that need the state in the hierarchy).
+      - Either the common owner or another component higher up in the hierarchy should own the state.
+      - If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component
+      - this.state = {blahblah} in the constructor of the owner, then the state is passed as props for the children who need it.
+
+
+******************************************************************************************************************
 ******************************************************************************************************************
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

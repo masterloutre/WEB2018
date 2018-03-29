@@ -10,7 +10,8 @@ export default class Home extends Component {
 
   //In the method name : will means before it happens, did means after
   componentWillMount(){
-    fetch('https://randomuser.me/api/') // temporary address
+    //fetch('https://randomuser.me/api/') // temporary address
+    fetch('/')
     .then((results) => {//how we want the data to be returned
       let json = results.json();
       return json;

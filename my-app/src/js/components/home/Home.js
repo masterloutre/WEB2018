@@ -11,16 +11,15 @@ export default class Home extends Component {
   //In the method name : will means before it happens, did means after
   componentWillMount(){
     //fetch('https://randomuser.me/api/') // temporary address
-    fetch('/')
+    fetch('/src/php/')
     .then((results) => {//how we want the data to be returned
-      let json = results.json();
+      let json = results.text();
+      console.log(json);
       return json;
     })
     .then(json => {
       this.setState({
-        title : json.results[0].name.title,
-        first : json.results[0].name.first,
-        last : json.results[0].name.last,
+        data : json
       });
       console.log(this.state);
     })
@@ -29,7 +28,7 @@ export default class Home extends Component {
   render(){
     return (
       <div className="home">
-        {this.state.title}   {this.state.first}   {this.state.last}
+        {this.state.data}
       </div>
     )
   }

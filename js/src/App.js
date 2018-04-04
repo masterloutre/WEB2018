@@ -16,20 +16,27 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Home/> //call the component Home
-        /*<Bar
-          width={1000}
-          height={600}
+        <Bar
+          width={600}
+          height={400}
+          margin={{top:60, right:80, bottom:60, left:80}}
           data={[
-            {name:'batman', value:54},
-            {name:'the joker', value:100}
+           {name:'batman',
+             strenght:100,
+             charisma:50
+           },
+           {name:'the joker',
+             strenght:20,
+             charisma:100
+           }
           ]}
           indexBy="name"
-          keys={["batman", "the joker"]}
+          keys={["strenght", "charisma"]}
           padding={0.2}
           labelTextColor="inherit:darker(1.4)"
           labelSkipWidth={16}
           labelSkipHeight={16}
-        />/*
+        />
       </div>
     );
   }

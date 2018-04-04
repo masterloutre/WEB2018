@@ -1,14 +1,9 @@
 ******************************************************************************************************************
 TO INSTALL REACT WITH AN EXISTING APP :
 ******************************************************************************************************************
-npm init
-npm install --save react react-dom
-cd my-app
-npm install --save node-sass-chokidar
-npm install --save npm-run-all
-npm install @nivo/bar
-npm install --save react-redux
-npm start
+git clone
+cd js
+npm install
 ******************************************************************************************************************
 TO MAKE A NEW APP :
 ******************************************************************************************************************
@@ -19,6 +14,9 @@ npm install --save node-sass-chokidar
 npm install --save npm-run-all
 npm install @nivo/bar
 npm install --save react-redux
+npm install ajv
+npm install redux
+npm install axios
 npm start
 ******************************************************************************************************************
 REACT DOC :

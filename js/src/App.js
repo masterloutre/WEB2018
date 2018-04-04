@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Home from './js/components/home/Home.js'
+import Home from './components/home/Home.js'
 //import { Bar } from '@nivo/bar'
 
 class App extends Component {

@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import "./Home.css"
+import axios from 'axios'
 
 //Always start component names with a capital letter !!!!
 export default class Home extends Component {
@@ -11,10 +12,9 @@ export default class Home extends Component {
   //In the method name : will means before it happens, did means after
   componentWillMount(){
     //fetch('https://randomuser.me/api/') // temporary address
-    fetch("/src/php/public")
+     axios.get("/php/public")
     .then((results) => {//how we want the data to be returned
-      //let json = results.json()
-      console.log( results.json())
+      console.log(results.data)
       //return json
     })
   /*  .then(json => {
@@ -28,7 +28,7 @@ export default class Home extends Component {
   render(){
     return (
       <div className="home">
-        {this.state.data}
+        //{this.state.data}
       </div>
     )
   }

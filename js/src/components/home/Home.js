@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import "./Home.css"
 import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost/ProjetDeni/WEB2018-TeamDeni/php/public';
+axios.defaults.baseURL = 'http://localhost:7888/WEB2018-TeamDeni/php/public';
 
 //Always start component names with a capital letter !!!!
 export default class Home extends Component {

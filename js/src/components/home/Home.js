@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import "./Home.css"
 import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost/ProjetDeni/WEB2018-TeamDeni/php/public';
 
 //Always start component names with a capital letter !!!!
 export default class Home extends Component {
@@ -11,24 +12,20 @@ export default class Home extends Component {
 
   //In the method name : will means before it happens, did means after
   componentWillMount(){
-    //fetch('https://randomuser.me/api/') // temporary address
-     axios.get("/php/public")
-    .then((results) => {//how we want the data to be returned
-      console.log(results.data)
-      //return json
-    })
-  /*  .then(json => {
+     axios.get("/")
+    .then((results) => {//the request is returned in json with axios
+      console.log(results.data) //the data of the request
       this.setState({
-        data : json
+        data : results.data.phrase
       })
-      console.log(this.state);
-    })*/
+      console.log(this.state.data);
+    })
   }
 
   render(){
     return (
       <div className="home">
-        //{this.state.data}
+        {this.state.data}
       </div>
     )
   }

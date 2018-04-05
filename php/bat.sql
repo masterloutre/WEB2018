@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 29 Mars 2018 à 13:15
+-- Généré le :  Jeu 05 Avril 2018 à 12:01
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.2.3
 
@@ -143,7 +143,6 @@ INSERT INTO `pneu` (`id`, `pression`, `rayon`, `largeur`) VALUES
 --
 
 CREATE TABLE `posseder` (
-  `id` int(11) DEFAULT NULL,
   `munition` int(11) DEFAULT NULL,
   `idSession` varchar(255) NOT NULL,
   `id_arme` int(11) NOT NULL

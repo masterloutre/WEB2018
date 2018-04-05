@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 05 Avril 2018 à 12:01
+-- Généré le :  Jeu 05 Avril 2018 à 12:49
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.2.3
 
@@ -23,70 +23,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `arme`
---
-
-CREATE TABLE `arme` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `munitionMax` int(11) DEFAULT NULL,
-  `cadence` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `mechant`
---
-
-CREATE TABLE `mechant` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `prenom` varchar(255) DEFAULT NULL,
-  `pseudo` varchar(255) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `sexe` tinyint(1) DEFAULT NULL,
-  `taille` int(11) DEFAULT NULL,
-  `nbCrime` int(11) DEFAULT NULL,
-  `dangerosite` int(11) DEFAULT NULL,
-  `pos_x` int(11) DEFAULT NULL,
-  `pos_y` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `meteo`
---
-
-CREATE TABLE `meteo` (
-  `t` int(11) NOT NULL,
-  `temperature` int(11) DEFAULT NULL,
-  `humidite` int(11) DEFAULT NULL,
-  `etat` int(11) DEFAULT NULL,
-  `vent` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `mode`
 --
 
 CREATE TABLE `mode` (
   `id` int(11) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `vitesseMax` int(11) DEFAULT NULL,
-  `vitesseMin` int(11) DEFAULT NULL,
-  `bouclier` tinyint(1) DEFAULT NULL,
-  `etatBouclier` int(11) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `maxSpeed` int(11) DEFAULT NULL,
+  `minSpeed` int(11) DEFAULT NULL,
+  `shield` tinyint(1) DEFAULT NULL,
+  `shieldState` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `mode`
 --
 
-INSERT INTO `mode` (`id`, `nom`, `vitesseMax`, `vitesseMin`, `bouclier`, `etatBouclier`) VALUES
+INSERT INTO `mode` (`id`, `name`, `maxSpeed`, `minSpeed`, `shield`, `shieldState`) VALUES
 (1, 'Combat', 800, 0, 1, 50);
 
 -- --------------------------------------------------------
@@ -97,55 +50,35 @@ INSERT INTO `mode` (`id`, `nom`, `vitesseMax`, `vitesseMin`, `bouclier`, `etatBo
 
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
-  `auteur` varchar(255) DEFAULT NULL,
+  `autor` varchar(255) DEFAULT NULL,
   `message` text,
-  `urgence` int(11) DEFAULT NULL
+  `emergency` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pdi`
+-- Structure de la table `own`
 --
 
-CREATE TABLE `pdi` (
+CREATE TABLE `own` (
+  `ammunition` int(11) DEFAULT NULL,
+  `sessionId` varchar(255) NOT NULL,
+  `weaponId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `poi`
+--
+
+CREATE TABLE `poi` (
   `id` int(11) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
-  `pos_x` int(11) DEFAULT NULL,
-  `pos_y` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `pneu`
---
-
-CREATE TABLE `pneu` (
-  `id` int(11) NOT NULL,
-  `pression` int(11) DEFAULT NULL,
-  `rayon` int(11) DEFAULT NULL,
-  `largeur` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `pneu`
---
-
-INSERT INTO `pneu` (`id`, `pression`, `rayon`, `largeur`) VALUES
-(2, 2, 80, 40);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `posseder`
---
-
-CREATE TABLE `posseder` (
-  `munition` int(11) DEFAULT NULL,
-  `idSession` varchar(255) NOT NULL,
-  `id_arme` int(11) NOT NULL
+  `xPos` int(11) DEFAULT NULL,
+  `yPos` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -156,17 +89,37 @@ CREATE TABLE `posseder` (
 
 CREATE TABLE `radio` (
   `id` int(11) NOT NULL,
-  `frequence` float DEFAULT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `fichierSon` varchar(255) DEFAULT NULL
+  `frequency` float DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `songFile` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `radio`
 --
 
-INSERT INTO `radio` (`id`, `frequence`, `nom`, `fichierSon`) VALUES
+INSERT INTO `radio` (`id`, `frequency`, `name`, `songFile`) VALUES
 (1, 82.55, 'CNN', 'ceci_est_un_lien.mp3');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tire`
+--
+
+CREATE TABLE `tire` (
+  `id` int(11) NOT NULL,
+  `pressure` int(11) DEFAULT NULL,
+  `radius` int(11) DEFAULT NULL,
+  `width` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `tire`
+--
+
+INSERT INTO `tire` (`id`, `pressure`, `radius`, `width`) VALUES
+(2, 2, 80, 40);
 
 -- --------------------------------------------------------
 
@@ -175,52 +128,83 @@ INSERT INTO `radio` (`id`, `frequence`, `nom`, `fichierSon`) VALUES
 --
 
 CREATE TABLE `user` (
-  `idSession` varchar(255) NOT NULL,
-  `poids` int(11) DEFAULT NULL,
-  `kilometrage` int(11) DEFAULT NULL,
-  `vitesse` int(11) DEFAULT NULL,
+  `sessionId` varchar(255) NOT NULL,
+  `weight` int(11) DEFAULT NULL,
+  `mileage` int(11) DEFAULT NULL,
+  `speed` int(11) DEFAULT NULL,
   `essence` int(11) DEFAULT NULL,
-  `batterie` int(11) DEFAULT NULL,
+  `battery` int(11) DEFAULT NULL,
   `tpm` int(11) DEFAULT NULL,
-  `niveauHuile` int(11) DEFAULT NULL,
-  `niveauLiquide` int(11) DEFAULT NULL,
-  `etatCarrosserie` int(11) DEFAULT NULL,
-  `pos_x` int(11) DEFAULT NULL,
-  `pos_y` int(11) DEFAULT NULL,
+  `oilLevel` int(11) DEFAULT NULL,
+  `liquidLevel` int(11) DEFAULT NULL,
+  `carbodyState` int(11) DEFAULT NULL,
+  `xPos` int(11) DEFAULT NULL,
+  `yPos` int(11) DEFAULT NULL,
   `bpm` int(11) DEFAULT NULL,
-  `id_mode` int(11) DEFAULT NULL,
-  `id_pneu` int(11) DEFAULT NULL,
-  `id_radio` int(11) DEFAULT NULL
+  `modeId` int(11) DEFAULT NULL,
+  `tireId` int(11) DEFAULT NULL,
+  `radioId` int(11) DEFAULT NULL,
+  `temperature` int(11) DEFAULT NULL,
+  `headlight` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`idSession`, `poids`, `kilometrage`, `vitesse`, `essence`, `batterie`, `tpm`, `niveauHuile`, `niveauLiquide`, `etatCarrosserie`, `pos_x`, `pos_y`, `bpm`, `id_mode`, `id_pneu`, `id_radio`) VALUES
-('beflgn735kjpamcrcn0plc95h4', 1500, 200000, 500, 80, 50, 2500, 80, 20, 99, 0, 0, 120, 1, 2, 1);
+INSERT INTO `user` (`sessionId`, `weight`, `mileage`, `speed`, `essence`, `battery`, `tpm`, `oilLevel`, `liquidLevel`, `carbodyState`, `xPos`, `yPos`, `bpm`, `modeId`, `tireId`, `radioId`, `temperature`, `headlight`) VALUES
+('beflgn735kjpamcrcn0plc95h4', 1500, 200000, 500, 80, 50, 2500, 80, 20, 99, 0, 0, 120, 1, 2, 1, 25, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vilain`
+--
+
+CREATE TABLE `vilain` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `nickname` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `sex` tinyint(1) DEFAULT NULL,
+  `size` int(11) DEFAULT NULL,
+  `crimeNb` int(11) DEFAULT NULL,
+  `dangerousness` int(11) DEFAULT NULL,
+  `xPos` int(11) DEFAULT NULL,
+  `yPos` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `weapon`
+--
+
+CREATE TABLE `weapon` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `maxAmmuniton` int(11) DEFAULT NULL,
+  `rate` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `weather`
+--
+
+CREATE TABLE `weather` (
+  `t` int(11) NOT NULL,
+  `temperature` int(11) DEFAULT NULL,
+  `humidity` int(11) DEFAULT NULL,
+  `state` int(11) DEFAULT NULL,
+  `wind` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Index pour les tables exportées
 --
-
---
--- Index pour la table `arme`
---
-ALTER TABLE `arme`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `mechant`
---
-ALTER TABLE `mechant`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `meteo`
---
-ALTER TABLE `meteo`
-  ADD PRIMARY KEY (`t`);
 
 --
 -- Index pour la table `mode`
@@ -235,23 +219,17 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `pdi`
+-- Index pour la table `own`
 --
-ALTER TABLE `pdi`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `own`
+  ADD PRIMARY KEY (`sessionId`,`weaponId`),
+  ADD KEY `FK_own_weaponId` (`weaponId`);
 
 --
--- Index pour la table `pneu`
+-- Index pour la table `poi`
 --
-ALTER TABLE `pneu`
+ALTER TABLE `poi`
   ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `posseder`
---
-ALTER TABLE `posseder`
-  ADD PRIMARY KEY (`idSession`,`id_arme`),
-  ADD KEY `FK_posseder_id_arme` (`id_arme`);
 
 --
 -- Index pour la table `radio`
@@ -260,32 +238,56 @@ ALTER TABLE `radio`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `tire`
+--
+ALTER TABLE `tire`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`idSession`),
-  ADD KEY `FK_user_id` (`id_mode`),
-  ADD KEY `FK_user_id_pneu` (`id_pneu`),
-  ADD KEY `FK_user_id_radio` (`id_radio`);
+  ADD PRIMARY KEY (`sessionId`),
+  ADD KEY `FK_user_id` (`modeId`),
+  ADD KEY `FK_user_tireId` (`tireId`),
+  ADD KEY `FK_user_radioId` (`radioId`);
+
+--
+-- Index pour la table `vilain`
+--
+ALTER TABLE `vilain`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `weapon`
+--
+ALTER TABLE `weapon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `weather`
+--
+ALTER TABLE `weather`
+  ADD PRIMARY KEY (`t`);
 
 --
 -- Contraintes pour les tables exportées
 --
 
 --
--- Contraintes pour la table `posseder`
+-- Contraintes pour la table `own`
 --
-ALTER TABLE `posseder`
-  ADD CONSTRAINT `FK_posseder_idSession` FOREIGN KEY (`idSession`) REFERENCES `user` (`idSession`),
-  ADD CONSTRAINT `FK_posseder_id_arme` FOREIGN KEY (`id_arme`) REFERENCES `arme` (`id`);
+ALTER TABLE `own`
+  ADD CONSTRAINT `FK_own_sessionId` FOREIGN KEY (`sessionId`) REFERENCES `user` (`sessionId`),
+  ADD CONSTRAINT `FK_own_weaponId` FOREIGN KEY (`weaponId`) REFERENCES `weapon` (`id`);
 
 --
 -- Contraintes pour la table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `FK_user_id` FOREIGN KEY (`id_mode`) REFERENCES `mode` (`id`),
-  ADD CONSTRAINT `FK_user_id_pneu` FOREIGN KEY (`id_pneu`) REFERENCES `pneu` (`id`),
-  ADD CONSTRAINT `FK_user_id_radio` FOREIGN KEY (`id_radio`) REFERENCES `radio` (`id`);
+  ADD CONSTRAINT `FK_user_id` FOREIGN KEY (`modeId`) REFERENCES `mode` (`id`),
+  ADD CONSTRAINT `FK_user_radioId` FOREIGN KEY (`radioId`) REFERENCES `radio` (`id`),
+  ADD CONSTRAINT `FK_user_tireId` FOREIGN KEY (`tireId`) REFERENCES `tire` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

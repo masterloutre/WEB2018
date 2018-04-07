@@ -81,6 +81,7 @@ class UserController
      */ 
     public function __get($name)
     {
+        echo "ok";
         if(isset($this->$name))
         {
             return $this->$name;

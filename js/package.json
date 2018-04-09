@@ -6,6 +6,7 @@
   "dependencies": {
     "@nivo/bar": "0.33.0",
     "axios": "^0.18.0",
+    "date-time": "^2.1.0",
     "node-sass-chokidar": "^1.2.2",
     "npm-run-all": "^4.1.2",
     "react": "^16.2.0",

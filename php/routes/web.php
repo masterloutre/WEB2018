@@ -10,13 +10,87 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+$router->get('/','UserController@createFromId');
 
-$router->get('/hello/{name}', function ($name){
-    return "Hello $name !";
+/******* 
+	Rooting for /car/... 
+*******/
+
+$router->group(['prefix' => 'car'], function () use ($router) {
+    $router->get('speed','UserController@speed');
+    $router->put('speed', function (){
+    	echo "speed - PUT";
+    });
+
+    $router->get('gas', function (){
+    	echo "gas - GET";
+    });	
+
+    $router->get('km', function (){
+    	echo "km - GET";
+    });
+
+    $router->get('airconditioner', function (){
+    	echo "airconditioner - GET";
+    });
+    $router->put('airconditioner', function (){
+    	echo "airconditioner - PUT";
+    });
+
+    $router->get('tires', function (){
+    	echo "tires - GET";
+    });
+
+    $router->get('headlights', function (){
+    	echo "headlights - GET";
+    });
+    $router->put('headlights', function (){
+    	echo "headlights - PUT";
+    });
 });
-$router->get('/', function(){
-	require("../app/Http/Controllers/requires.php");
-	$user = User::createFromId("beflgn735kjpamcrcn0plc95h4");
-	$str = array("phrase" => "Bonjour Batman, votre voiture a un poids de ".$user->poids."kg et va à ".$user->vitesse." km/h");
-	return json_encode($str);
+
+/******* 
+	Rooting for /weapons/... 
+*******/
+$router->group(['prefix' => 'weapons'], function () use ($router) {
+    $router->get('{id}','WeaponController@createFromId');
+    $router->put('{id}', function (){
+    });
+});
+
+/******* 
+	Rooting for /law/... 
+*******/
+$router->group(['prefix' => 'law'], function () use ($router) {
+    $router->get('scanner', function (){
+    });
+    $router->put('scanner', function (){
+    });
+
+    $router->get('criminals/{id}','VilainController@createFromId');
+    $router->patch('criminals/{id}', function (){
+    });
+    /*$router->delete('scanner', function (){ 
+    });*/
+    $router->post('criminals/{id}', function (){
+    });
+});
+
+/******* 
+	Rooting for /damage 
+*******/
+
+/******* 
+	Rooting for /driver 
+*******/
+$router->get('driver', function (){});
+
+/******* 
+	Rooting for /music/... 
+*******/
+$router->group(['prefix' => 'music'], function () use ($router) {
+    $router->get('radio/{id}', function (){
+    });
+    $router->put('aux/{id}', function (){
+    });
 });

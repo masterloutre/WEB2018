@@ -79,12 +79,27 @@ class UserController
      * Get a parameter of an instance of User
      * @param int $name, a parameter of User
      */ 
-    public function __get($name)
+    public function get($name)
     {
-        echo "ok";
-        if(isset($this->$name))
-        {
-            return $this->$name;
+        $user = UserController::createFromId();
+        /*echo $name;
+        var_dump($user["0"]);*/
+        switch ($name) {
+            case 'speed':
+                return $user["0"]->speed;
+            case 'gas':
+                return $user["0"]->essence;
+            case 'km':
+                return $user["0"]->mileage;
+            case 'airconditioner':
+                return $user["0"]->temperature;
+            case 'tires':
+                return UserController::getTireWithId($user["0"]->tireId);
+            case 'headlights':
+                return $user["0"]->headlight;
+            default:
+                # code...
+                break;
         }
     }
 
@@ -104,5 +119,7 @@ class UserController
     }
 
     /*******************GETTERS COMPLEXES*******************/
-
+    public function getTireWithId($id){
+        echo "In getTireWithId";
+    }
 }

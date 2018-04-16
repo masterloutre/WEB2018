@@ -25,9 +25,9 @@ class TireController {
 	 * @throws Exception if this id does not exist in the table
 	 */
 	public static function createFromId($id){
-		$user = app('db')->select('SELECT * FROM tire WHERE id = ?', [$id]);
+		$tire = app('db')->select('SELECT * FROM tire WHERE id = ?', [$id]);
 		
-		return $user;
+		return $tire;
 	}
 
 	/********************CREATE*****************************/

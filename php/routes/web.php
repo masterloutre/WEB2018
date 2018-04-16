@@ -10,13 +10,14 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$router->get('/','UserController@createFromId');
+
 
 /******* 
 	Rooting for /car/... 
 *******/
 
 $router->group(['prefix' => 'car'], function () use ($router) {
+    $router->get('/','UserController@createFromId');
     $router->get('{name}','UserController@get');
     $router->put('{name}','UserController@set');
 });

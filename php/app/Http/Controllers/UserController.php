@@ -86,17 +86,22 @@ class UserController
         var_dump($user["0"]);*/
         switch ($name) {
             case 'speed':
-                return $user["0"]->speed;
+                $speed = array('speed' => $user["0"]->speed);
+                return json_encode($speed);
             case 'gas':
-                return $user["0"]->essence;
+                $gas = array('essence' => $user["0"]->essence);
+                return json_encode($gas);
             case 'km':
-                return $user["0"]->mileage;
+                $km = array('mileage' => $user["0"]->mileage);
+                return json_encode($km);
             case 'airconditioner':
-                return $user["0"]->temperature;
+                $aC = array('temperature' => $user["0"]->temperature);
+                return json_encode($aC);
             case 'tires':
                 return UserController::getTireWithId($user["0"]->tireId);
             case 'headlights':
-                return $user["0"]->headlight;
+                $headlight = array('headlight' =>$user["0"]->headlight);
+                return json_encode($headlight);
             default:
                 # code...
                 break;
@@ -110,16 +115,31 @@ class UserController
      * Set a parameter of an instance of User
      * @param int $name, a parameter of User
      */
-    public function __set($name,$val)
+    public function set(Request $request,$name)
     {
-        if(isset($this->$name))
-        {
-            $this->$name = $val;
+        session_start();
+        $sessionId = session_id();
+        $val = $request->json()->all();
+        switch ($name) {
+            case 'speed':
+                break;
+            case 'airconditioner':
+                $name = "temperature";
+                break;
+            case 'headlights':
+                $name = "headlight";
+                break;
+            default:
+                return 0;
+                break;
         }
+        $query = "UPDATE user SET $name = ? WHERE sessionId = ?";
+        $stmt = app('db')->update($query,[$val[$name],$sessionId]);
     }
 
     /*******************GETTERS COMPLEXES*******************/
     public function getTireWithId($id){
-        echo "In getTireWithId";
+        $tire = TireController::createFromId($id);
+        return $tire;
     }
 }

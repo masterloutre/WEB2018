@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 05 Avril 2018 à 12:49
+-- Généré le :  Mar 10 Avril 2018 à 16:23
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.2.3
 
@@ -153,7 +153,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`sessionId`, `weight`, `mileage`, `speed`, `essence`, `battery`, `tpm`, `oilLevel`, `liquidLevel`, `carbodyState`, `xPos`, `yPos`, `bpm`, `modeId`, `tireId`, `radioId`, `temperature`, `headlight`) VALUES
-('beflgn735kjpamcrcn0plc95h4', 1500, 200000, 500, 80, 50, 2500, 80, 20, 99, 0, 0, 120, 1, 2, 1, 25, 0);
+('723ck0fd8mjcfp3khkvd0s2imt', 1548, 125458, 50, 88, 74, 1537, 64, 28, 98, 0, 0, 48, 1, 2, 1, 18, 0),
+('beflgn735kjpamcrcn0plc95h4', 1500, 200000, 500, 80, 50, 2500, 80, 20, 99, 0, 0, 120, 1, 2, 1, 25, 0),
+('gupfr3n08jajou93bb3hktkoli', 1548, 125458, 50, 88, 74, 1537, 64, 28, 98, 0, 0, 48, 1, 2, 1, 18, 0),
+('ls8ej5s88fbo5n6uv6gm4p4dhq', 1548, 125458, 50, 88, 74, 1537, 64, 28, 98, 0, 0, 48, 1, 2, 1, 18, 0),
+('r491ua925kde04jma8p898djhb', 1548, 125458, 50, 88, 74, 1537, 64, 28, 98, 0, 0, 48, 1, 2, 1, 18, 0);
 
 -- --------------------------------------------------------
 
@@ -175,6 +179,13 @@ CREATE TABLE `vilain` (
   `yPos` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `vilain`
+--
+
+INSERT INTO `vilain` (`id`, `name`, `firstname`, `nickname`, `age`, `sex`, `size`, `crimeNb`, `dangerousness`, `xPos`, `yPos`) VALUES
+(0, 'Joker', 'Firstname', 'Nickname', 25, 0, 15, 1500, 5, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -187,6 +198,13 @@ CREATE TABLE `weapon` (
   `maxAmmuniton` int(11) DEFAULT NULL,
   `rate` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `weapon`
+--
+
+INSERT INTO `weapon` (`id`, `name`, `maxAmmuniton`, `rate`) VALUES
+(0, 'Machingun', 1500, 100);
 
 -- --------------------------------------------------------
 

@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3000",
   "dependencies": {
     "@nivo/bar": "0.33.0",
+    "@nivo/pie": "0.33.0",
     "axios": "^0.18.0",
     "date-time": "^2.1.0",
     "node-sass-chokidar": "^1.2.2",

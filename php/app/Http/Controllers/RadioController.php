@@ -25,9 +25,8 @@ class RadioController {
 	 * @throws Exception if this id does not exist in the table
 	 */
 	public static function createFromId($id){
-		$user = app('db')->select('SELECT * FROM radio WHERE id = ?', [$id]);
-		
-		return $user;
+		$radio = app('db')->select('SELECT * FROM radio WHERE id = ?', [$id]);
+		return $radio;
 	}
 
 	/********************CREATE*****************************/

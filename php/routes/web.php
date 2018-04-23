@@ -27,27 +27,22 @@ $router->group(['prefix' => 'car'], function () use ($router) {
 *******/
 $router->group(['prefix' => 'weapons'], function () use ($router) {
     $router->get('{id}','OwnController@getAmmunition');
-    $router->put('{id}', function (){
-    });
+    $router->put('{id}','OwnController@setAmmunition');
 });
 
 /******* 
 	Rooting for /law/... 
 *******/
 $router->group(['prefix' => 'law'], function () use ($router) {
-    $router->get('scanner', function (){
-    });
-    $router->put('scanner', function (){
-    });
+    /*$router->get('scanner',);
+    $router->put('scanner',);*/
 
     $router->get('criminals/{id}','VilainController@createFromId');
-    $router->patch('criminals/{id}', function (){
-    });
-    /*$router->delete('scanner', function (){ 
-    });*/
-    $router->post('criminals/{id}', function (){
+    $router->patch('criminals/{id}','VilainController@patchVilain');
+    $router->delete('criminals/{id}','VilainController@delete');
+    /*$router->post('criminals/{id}', function (){
 
-    });
+    });*/
 });
 
 /******* 

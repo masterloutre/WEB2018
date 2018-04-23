@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 /**
  * Class Vilain
  */
@@ -35,8 +36,11 @@ class VilainController {
 	 */
 	public static function createFromId($id){
 		$user = app('db')->select('SELECT * FROM vilain WHERE id = ?', [$id]);
-		
-		return $user;
+		if(count($user)>0){
+			return $user;
+		}
+		$response = array('error' => "Id not found");
+        return json_encode($response);
 	}
 
 	/********************CREATE*****************************/
@@ -55,9 +59,11 @@ class VilainController {
 	/**
 	 * Delete an instance of Vilain
 	 */
-	public function delete()
+	public function delete($id)
 	{
-		app('db')->delete('DELETE FROM vilain WHERE id = ?',[$this->id]);
+		$stmt = app('db')->delete('DELETE FROM vilain WHERE id = ?',[$id]);
+       	$response = array("success" => "Delete complete");
+       	return json_encode($response);
 	}
 
 	/********************GETTERS SIMPLES********************/
@@ -90,4 +96,29 @@ class VilainController {
 	}
 
 	/*******************GETTERS COMPLEXES*******************/
+
+
+	public function patchVilain(Request $request, $id){
+        $vals = $request->json()->all();
+        $keys = array_keys($vals);
+        var_dump($keys);
+        $query = "UPDATE vilain SET";
+        for($i=0;$i<count($vals);$i++){
+        	if($i== count($vals)-1){
+        		$query .= " $keys[$i] = ?";
+        	}
+        	else{
+        		$query .= " $keys[$i] = ? ,";
+        	}
+        }
+        $query .= " WHERE id = ?";
+        $bindValue = [];
+        for ($j=0; $j < $i; $j++) {
+        	array_push($bindValue, $vals[$keys[$j]]);
+        }
+        array_push($bindValue, $id);
+        $stmt = app('db')->update($query,$bindValue);
+       	$response = array("success" => "Well done");
+       	return json_encode($response);
+	}
 }

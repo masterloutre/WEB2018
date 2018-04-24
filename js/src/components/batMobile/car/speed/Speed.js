@@ -7,35 +7,48 @@ export default class Speed extends Component {
   constructor() {
     super();
     this.state = {
-      speed: 0,
+      speed: 150,
       nbMaxDivision: 10,
-      data: {}
+      speedMax: 350,
+      data: []
     };
+  }
+
+  componentDidMount(){
+    this.buildData();
+  }
+
+  buildData(){
+    var seuil = Math.round(this.state.speed * this.state.nbMaxDivision / this.state.speedMax);
+    console.log("seuil  " + seuil);
+    const filledData = Array(0);
+    for (var i = 0; i < seuil; i++) {
+      filledData.push({
+        "id": "inferior"+i,
+        "value" : 200,
+        "color": "hsl(197, 70%, 50%)"
+      });
+    }
+    for (var i = seuil; i <  this.state.nbMaxDivision; i++) {
+      filledData.push({
+        "id": "superior"+i,
+        "value" : 300,
+        "color": "hsl(291, 70%, 50%)"
+      });
+    }
+    this.setState({...this.state, data: filledData}, () => {
+      console.log("data : " + JSON.stringify(this.state.data));
+    });
   }
 
 
   render(){
-    console.log(this.props.speed);
     return (
       <div className="speed">
          <Pie
          width={400}
          height={400}
-        data={[{
-          "id": "inferior",
-          "value" : 200,
-          "color": "hsl(197, 70%, 50%)"
-        },
-        {
-          "id": "inferior2",
-          "value" : 30,
-          "color": "hsl(197, 70%, 50%)"
-        },
-        {
-          "id": "superior",
-          "value" : 300,
-          "color": "hsl(291, 70%, 50%)"
-        }]}
+        data={this.state.data}
         margin={{
             "top": 40,
             "right": 80,
@@ -51,9 +64,7 @@ export default class Speed extends Component {
         enableRadialLabels={false}
         enableSlicesLabels={false}
         isInteractive={false}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
+        animate={false}
     />
       </div>
     )}

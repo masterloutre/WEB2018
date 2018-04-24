@@ -49,9 +49,11 @@ class VilainController {
 	 * Factory to create an instance of Vilain from parameters
 	 * @param int $id from Vilain (bdd)
 	 */
-	public static function add($name,$firstname,$nickname,$age,$sex,$size,$crimeNb,$dangerousness,$xPos,$yPos)
+	public function add(Request $request)
 	{
-		app('db')->insert('INSERT INTO vilain(name,firstname,nickname,age,sex,size,crimeNb,dangerousness,xPos,yPos) VALUES (?,?,?,?,?,?,?,?,?,?)',[$name,$firstname,$nickname,$age,$sex,$size,$crimeNb,$dangerousness,$xPos,$yPos]);
+        $vals = $request->json()->all();
+        var_dump($vals);
+		/*app('db')->insert('INSERT INTO vilain(name,firstname,nickname,age,sex,size,crimeNb,dangerousness,xPos,yPos) VALUES (?,?,?,?,?,?,?,?,?,?)',[$name,$firstname,$nickname,$age,$sex,$size,$crimeNb,$dangerousness,$xPos,$yPos]);*/
 	}
 
 	/********************DELETE*****************************/

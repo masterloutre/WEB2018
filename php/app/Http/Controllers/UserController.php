@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 class UserController
 {
@@ -106,6 +107,16 @@ class UserController
                 # code...
                 break;
         }
+    }
+
+    public function getBpm(){
+        $user = UserController::createFromId();
+        return $user["0"]->bpm;
+    }
+
+    public function getCarbodyState(){
+        $user = UserController::createFromId();
+        return $user["0"]->carbodyState;
     }
 
     /*******************SETTERS SIMPLE**********************/

@@ -40,26 +40,25 @@ $router->group(['prefix' => 'law'], function () use ($router) {
     $router->get('criminals/{id}','VilainController@createFromId');
     $router->patch('criminals/{id}','VilainController@patchVilain');
     $router->delete('criminals/{id}','VilainController@delete');
-    /*$router->post('criminals/{id}', function (){
-
-    });*/
+    /*$router->post('criminals/{id}','VilainController@add');*/
 });
 
 /******* 
 	Rooting for /damage 
 *******/
 
+$router->get('damage','UserController@getCarbodyState');
+
 /******* 
 	Rooting for /driver 
 *******/
-$router->get('driver', function (){});
+$router->get('driver', 'UserController@getBpm');
 
 /******* 
 	Rooting for /music/... 
 *******/
 $router->group(['prefix' => 'music'], function () use ($router) {
-    $router->get('radio/{id}', function (){
-    });
+    $router->get('radio/{id}','RadioController@createFromId');
     $router->put('aux/{id}', function (){
     });
 });

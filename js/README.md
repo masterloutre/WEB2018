@@ -14,6 +14,7 @@ cd my-app
 npm install --save node-sass-chokidar
 npm install --save npm-run-all
 npm install @nivo/bar
+npm install @nivo/line
 npm install --save react-redux
 npm install ajv
 npm install redux

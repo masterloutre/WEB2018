@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import "./StreamGraph.css"
+import "./DynLineGraph.css"
 import { ResponsiveLine } from '@nivo/line'
 
 
@@ -26,7 +26,7 @@ const dataSet = () => ([
   }
 ])
 
-export class StreamGraph extends React.Component {
+export class DynLineGraph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +70,7 @@ export class StreamGraph extends React.Component {
 
   render () {
     return (
-      <div className="stream-graph">
+      <div className="dyn-line-graph">
         <ResponsiveLine
           keys={["speed"]}
           data= {this.state.dataSet}

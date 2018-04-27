@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import "./Car.css"
 import axios from 'axios'
 import Speed from "./speed/Speed.js"
+import {DynLineGraph} from "../../dynLineGraph/DynLineGraph";
 
 export default class Car extends Component {
 
@@ -53,6 +54,7 @@ export default class Car extends Component {
     return (
       <div className="car">
          <Speed speed={this.state.speed}/>
+          <DynLineGraph data={this.state.speed} unit={"km/h"}/>
       </div>
     )
   }

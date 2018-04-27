@@ -24,7 +24,7 @@ export default class BatMobile extends Component {
   render(){
     console.log(this.state.mode);
     return (
-      <div className="batMobile">
+      <div className="BatMobile">
         <CurrentDate/>
         <Car/>
       </div>

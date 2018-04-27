@@ -1,2 +1,2 @@
-const baseURL= 'http://localhost/ProjetDeni/WEB2018-TeamDeni/php/public/';
+const baseURL= 'http://localhost:8888/';
 export default baseURL;

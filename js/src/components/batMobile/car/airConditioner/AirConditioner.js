@@ -32,7 +32,7 @@ export default class AirConditioner extends Component {
                 temperature: prevState.temperature + 1
             }
         ))
-        axios.put("/car/airconditioner", { "temperature" : 0})
+        axios.put("/car/airconditioner", { "temperature":12})
             .then((response) => (console.log(response)))
             .catch((error)=> (console.log(error)))
         axios.get("/car/airconditioner")

@@ -3,6 +3,7 @@ import "./Car.css"
 import axios from 'axios'
 import Speed from "./speed/Speed.js"
 import {DynLineGraph} from "../../dynLineGraph/DynLineGraph";
+import AirConditioner from "./airConditioner/AirConditioner";
 
 export default class Car extends Component {
 
@@ -53,8 +54,9 @@ export default class Car extends Component {
   render(){
     return (
       <div className="car">
+          <AirConditioner/>
          <Speed speed={this.state.speed}/>
-          <DynLineGraph data={this.state.speed} unit={"km/h"}/>
+          {/*<DynLineGraph data={this.state.speed} unit={"km/h"}/>*/}
       </div>
     )
   }

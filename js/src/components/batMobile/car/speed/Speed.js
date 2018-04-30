@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import "./Speed.css"
+import styles from "./Speed.css"
 import { Pie } from '@nivo/pie'
 
 export default class Speed extends Component {
@@ -7,33 +7,43 @@ export default class Speed extends Component {
   constructor() {
     super();
     this.state = {
-      speed: 150,
+      speed: 0,
       nbMaxDivision: 10,
+      nbMaxDivisionFilled: 9,
       speedMax: 350,
       data: []
     };
   }
 
   componentDidMount(){
+    //this.setState(speed : this.props.speed);
     this.buildData();
   }
 
   buildData(){
-    var seuil = Math.round(this.state.speed * this.state.nbMaxDivision / this.state.speedMax);
+    var seuil = Math.round(this.state.speed * this.state.nbMaxDivisionFilled / this.state.speedMax);
+    var i;
     console.log("seuil  " + seuil);
     const filledData = Array(0);
-    for (var i = 0; i < seuil; i++) {
+    for (i = 0; i < seuil; i++) {
       filledData.push({
         "id": "inferior"+i,
         "value" : 200,
-        "color": "hsl(197, 70%, 50%)"
+        "color": "hsl(195, 50%, 50%)"
       });
     }
-    for (var i = seuil; i <  this.state.nbMaxDivision; i++) {
+    for (i = seuil; i <  this.state.nbMaxDivisionFilled; i++) {
       filledData.push({
         "id": "superior"+i,
-        "value" : 300,
-        "color": "hsl(291, 70%, 50%)"
+        "value" : 200,
+        "color": "hsl(190, 20%, 20%)"
+      });
+    }
+    for (i = this.state.nbMaxDivisionFilled; i <  this.state.nbMaxDivision; i++) {
+      filledData.push({
+        "id": "superior"+i,
+        "value" : 200,
+        "color": styles.speedBackgroundColor
       });
     }
     this.setState({...this.state, data: filledData}, () => {
@@ -45,6 +55,7 @@ export default class Speed extends Component {
   render(){
     return (
       <div className="speed">
+        <h2>{this.state.speed} KM/H</h2>
          <Pie
          width={400}
          height={400}
@@ -59,7 +70,7 @@ export default class Speed extends Component {
         padAngle={0.7}
         cornerRadius={3}
         colors="d320c"
-        colorBy="color"
+        colorBy={function(e){return e.color}}
         borderColor="inherit:darker(0.6)"
         enableRadialLabels={false}
         enableSlicesLabels={false}

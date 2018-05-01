@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import "./AirConditioner.css"
 import axios from 'axios'
+import qs from 'qs'
 
 export default class AirConditioner extends Component {
 
@@ -32,12 +33,19 @@ export default class AirConditioner extends Component {
                 temperature: prevState.temperature + 1
             }
         ))
-        axios.put("/car/airconditioner", { "temperature":12})
+        axios.put("/car/airconditioner", {
+            "temperature":67
+        },
+            /*{headers : { 'Content-Type' : "application/x-www-form-urlencoded"}}*/
+        )
             .then((response) => (console.log(response)))
             .catch((error)=> (console.log(error)))
+
+
         axios.get("/car/airconditioner")
             .then(response => console.log(response.data))
             .catch(error => console.log(error))
+
 
     }
 

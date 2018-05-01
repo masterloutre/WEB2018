@@ -1,0 +1,9 @@
+@import "../../../../colors.scss";
+:export { speedBackgroundColor: $speedBackgroundColor; }
+.speed {
+  background-color: $speedBackgroundColor;
+}
+
+.speed svg {
+    transform: rotate(200deg);
+}

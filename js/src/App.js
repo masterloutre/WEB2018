@@ -9,11 +9,7 @@ axios.defaults.baseURL = baseURL;
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to the BatMobile</h1>
-        </header>
+      <div className="app container-fluid h-100">
         <BatMobile/>
       </div>
     );

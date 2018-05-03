@@ -1,9 +1,9 @@
 import React, {Component} from "react"
-import "./HeadLights.css"
+import "./Date.css"
 import axios from 'axios'
 
 
-export default class HeadLights extends Component {
+export default class Date extends Component {
 
     constructor() {
         super();
@@ -12,7 +12,7 @@ export default class HeadLights extends Component {
 
     render() {
         return (
-            <div className="head-lights">
+            <div className="date">
 
             </div>
         )

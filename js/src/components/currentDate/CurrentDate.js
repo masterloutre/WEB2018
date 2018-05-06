@@ -4,7 +4,7 @@ const dateTime = require('date-time');
 export default class CurrentDate extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {date: require('date-time')};
+    //this.state = {carDate: require('carDate-time')};
   }
 
   componentDidMount() {
@@ -26,9 +26,11 @@ export default class CurrentDate extends React.Component {
   }
 
   render() {
-    //console.log(this.state.date);
+    //console.log(this.state.carDate);
     return (
-        <h2>It is {this.state.date}.</h2>
+        <div>
+            <h2>It is {this.state.date}.</h2>
+        </div>
     );
   }
 }

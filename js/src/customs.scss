@@ -1,3 +1,10 @@
+
+:export {
+  borderGlowColor : $borderGlowColor;
+  widgetBackgroundColor : $widgetBackgroundColor;
+}
+
+
 %full-height {
   height : 100%;
 }
@@ -11,4 +18,21 @@
   @extend %full-space;
   margin : 0;
   padding: 0;
+}
+
+%widget-border-glow {
+  //border : 1px solid $borderGlowColor;
+  box-shadow: 0px 0px 15px $borderGlowColor;
+  background-color: $widgetBackgroundColor;
+}
+
+%circle {
+  border-radius: 50%;
+  @extend %ratio1-1
+}
+
+%ratio1-1 {
+  height : 0%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  position: relative;
 }

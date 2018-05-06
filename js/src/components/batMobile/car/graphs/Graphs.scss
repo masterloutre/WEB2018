@@ -1,8 +1,7 @@
 @import "../../../../colors.scss";
 @import "../../../../customs.scss";
 
-.revolution-per-minute {
-  width : 100%;
+.graphs{
   @extend %widget-border-glow;
-  @extend %circle;
+  @extend %full-height
 }

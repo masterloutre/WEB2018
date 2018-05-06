@@ -1,9 +1,28 @@
 @import "../../../../colors.scss";
-:export { speedBackgroundColor: $speedBackgroundColor; }
+@import "../../../../customs.scss";
+
 .speed {
-  background-color: $speedBackgroundColor;
+  width : 100%;
+  @extend %widget-border-glow;
+  @extend %circle;
+
+  div{
+    position: absolute;
+    top : 0;
+    @extend %full-height;
+  }
 }
 
 .speed svg {
-    transform: rotate(200deg);
+  //position: absolute;
+  //top: 0%;
+  //left: 0%;
+  transform: rotate(200deg);
 }
+ h2 {
+   position : relative;
+   vertical-align: middle;
+   text-align: center;
+   color: $textColor;
+   height:auto;
+ }

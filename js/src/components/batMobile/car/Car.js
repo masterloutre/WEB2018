@@ -2,6 +2,10 @@ import React, {Component} from "react"
 import "./Car.css"
 import axios from 'axios'
 import Speed from "./speed/Speed.js"
+import CurrentDate from "../../currentDate/CurrentDate";
+import Graphs from "./graphs/Graphs";
+import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
+import CarDate from "./carDate/CarDate";
 
 export default class Car extends Component {
 
@@ -11,7 +15,7 @@ export default class Car extends Component {
       weight: 0,
       speed: 0,
       mileage: 0,
-      essence: 0,
+      gas: 0,
       battery: 0,
       tpm: 0,
       oilLevel: 0,
@@ -33,7 +37,7 @@ export default class Car extends Component {
         weight: results.data[0].weight,
         speed: results.data[0].speed,
         mileage: results.data[0].mileage,
-        essence: results.data[0].essence,
+        gas: results.data[0].essence,
         battery: results.data[0].battery,
         tpm: results.data[0].tpm,
         oilLevel: results.data[0].oilLevel,
@@ -51,8 +55,20 @@ export default class Car extends Component {
 
   render(){
     return (
-      <div className="car">
-         <Speed speed={this.state.speed}/>
+      <div className="car container-fluid w-100">
+          <div className="row" id="top-pannels">
+              <div className="col p-5"><CarDate/></div>
+              <div className="col p-5"><Graphs speed={this.state.speed} gas={this.state.gas}/></div>
+          </div>
+          <div className="row" id="circles">
+              <div className="col-md-6 col-12 p-5"><Speed speed={this.state.speed}/></div>
+              <div className="col-md-6 col-12 p-5"><RevolutionPerMinute/></div>
+          </div>
+          <div className="row justify-content-center">
+          <div className="h-25 w-25 p-5" id="center-pannel">
+              <div></div>
+          </div>
+          </div>
       </div>
     )
   }

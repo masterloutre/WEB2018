@@ -1,3 +1,29 @@
+@import "../../../colors.scss";
+@import "../../../customs.scss";
+
+
 .car {
 
 }
+
+#top-pannels {
+  height: 33%;
+}
+
+#circles {
+  height: 66%;
+}
+
+#center-pannel {
+  @extend %full-height;
+  position : absolute;
+  top: 10%;
+
+  :first-child{
+    width : 100%;
+    @extend %widget-border-glow;
+    @extend %circle;
+  }
+}
+
+

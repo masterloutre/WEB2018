@@ -54,29 +54,33 @@ export default class Speed extends Component {
 
   render(){
     return (
-      <div className="speed">
-        <h2>{this.state.speed} KM/H</h2>
-         <Pie
-         width={400}
-         height={400}
-        data={this.state.data}
-        margin={{
-            "top": 40,
-            "right": 80,
-            "bottom": 80,
-            "left": 80
-        }}
-        innerRadius={0.5}
-        padAngle={0.7}
-        cornerRadius={3}
-        colors="d320c"
-        colorBy={function(e){return e.color}}
-        borderColor="inherit:darker(0.6)"
-        enableRadialLabels={false}
-        enableSlicesLabels={false}
-        isInteractive={false}
-        animate={false}
-    />
+      <div className="speed container-fluid">
+        <div className="row w-100 justify-content-center align-items-center">
+            <h2>{this.state.speed} KM/H</h2>
+        </div>
+        <div className="row w-100 justify-content-center align-items-center">
+            <Pie
+                 width={400}
+                 height={400}
+                data={this.state.data}
+                margin={{
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                }}
+                innerRadius={0.5}
+                padAngle={0.7}
+                cornerRadius={3}
+                colors="d320c"
+                colorBy={function(e){return e.color}}
+                borderColor="inherit:darker(0.6)"
+                enableRadialLabels={false}
+                enableSlicesLabels={false}
+                isInteractive={false}
+                animate={false}
+            />
+        </div>
       </div>
     )}
 }

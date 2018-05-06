@@ -71,7 +71,7 @@ export class DynLineGraph extends React.Component {
   render () {
     return (
       <div className="dyn-line-graph">
-        <ResponsiveLine
+        <ResponsiveLine className = "d-flex"
           keys={["data0"]}
           data= {this.state.dataSet}
           curve="monotoneX"

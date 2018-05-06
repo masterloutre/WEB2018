@@ -1,0 +1,23 @@
+@import "../../../../colors.scss";
+@import "../../../../customs.scss";
+
+
+.center-pannel {
+    width : 100%;
+    @extend %widget-border-glow;
+    @extend %circle;
+    background-color: black;
+}
+
+.center-button {
+  height: 5px / 12px * 100%;
+}
+
+.absolute-top {
+  position: absolute;
+  top: 0%;
+}
+
+.absolute {
+  position: absolute;
+}

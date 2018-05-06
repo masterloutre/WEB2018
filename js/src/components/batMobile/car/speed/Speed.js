@@ -8,8 +8,8 @@ export default class Speed extends Component {
     super();
     this.state = {
       speed: 0,
-      nbMaxDivision: 10,
-      nbMaxDivisionFilled: 9,
+      nbMaxDivision: 20,
+      nbMaxDivisionFilled: 18,
       speedMax: 350,
       data: []
     };
@@ -60,16 +60,10 @@ export default class Speed extends Component {
         </div>
         <div className="row w-100 justify-content-center align-items-center">
             <Pie
-                 width={400}
-                 height={400}
+                 width={350}
+                 height={350}
                 data={this.state.data}
-                margin={{
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                }}
-                innerRadius={0.5}
+                innerRadius={0.7}
                 padAngle={0.7}
                 cornerRadius={3}
                 colors="d320c"

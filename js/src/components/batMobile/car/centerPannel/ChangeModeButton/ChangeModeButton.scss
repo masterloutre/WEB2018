@@ -1,0 +1,28 @@
+@import "../../../../../colors.scss";
+@import "../../../../../customs.scss";
+
+
+//$borderGlowColor : rgba(156, 19, 9, 0.88);
+
+.change-mode-button {
+  position: absolute;
+  width: 100%;
+  @extend %circle;
+  @extend %widget-border-glow;
+  background-color: black;
+  color: $alertRed;
+  //padding: 0px;
+
+  h3 {
+    //position : absolute;
+    margin-top: -100%;
+    vertical-align: middle;
+    text-align: center;
+    color: $alertRed;
+    height:auto;
+    font-size : 2vw;
+  }
+
+}
+
+//$borderGlowColor : rgba(125, 174, 205, 0.46);

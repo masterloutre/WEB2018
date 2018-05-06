@@ -6,6 +6,7 @@ import CurrentDate from "../../currentDate/CurrentDate";
 import Graphs from "./graphs/Graphs";
 import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
+import CenterPannel from "./centerPannel/CenterPannel";
 
 export default class Car extends Component {
 
@@ -55,18 +56,18 @@ export default class Car extends Component {
 
   render(){
     return (
-      <div className="car container-fluid w-100">
+      <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">
               <div className="col p-5"><CarDate/></div>
               <div className="col p-5"><Graphs speed={this.state.speed} gas={this.state.gas}/></div>
           </div>
-          <div className="row" id="circles">
-              <div className="col-md-6 col-12 p-5"><Speed speed={this.state.speed}/></div>
-              <div className="col-md-6 col-12 p-5"><RevolutionPerMinute/></div>
+          <div className="row align-items-end p-2" id="circles">
+              <div className="col-md-5 col-12 mr-auto"><Speed speed={this.state.speed}/></div>
+              <div className="col-md-5 col-12 ml-auto"><RevolutionPerMinute/></div>
           </div>
           <div className="row justify-content-center">
-          <div className="h-25 w-25 p-5" id="center-pannel">
-              <div></div>
+          <div className="h-50 w-50" id="center-pannel">
+              <CenterPannel/>
           </div>
           </div>
       </div>

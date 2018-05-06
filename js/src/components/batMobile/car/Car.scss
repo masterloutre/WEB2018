@@ -12,18 +12,16 @@
 
 #circles {
   height: 66%;
+
 }
 
 #center-pannel {
   @extend %full-height;
   position : absolute;
-  top: 10%;
+  top:2%;
+  padding: 12%;
+  padding-top: 0%;
 
-  :first-child{
-    width : 100%;
-    @extend %widget-border-glow;
-    @extend %circle;
-  }
 }
 
 

@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import "./CenterPannel.css"
 import axios from 'axios'
-import ChangeModeButton from "./ChangeModeButton/ChangeModeButton";
+import ChangeModeButton from "./changeModeButton/ChangeModeButton";
 
 
 export default class CenterPannel extends Component {

@@ -62,8 +62,8 @@ export default class Car extends Component {
               <div className="col p-5"><Graphs speed={this.state.speed} gas={this.state.gas}/></div>
           </div>
           <div className="row align-items-end p-2" id="circles">
-              <div className="col-md-5 col-12 mr-auto"><Speed speed={this.state.speed}/></div>
-              <div className="col-md-5 col-12 ml-auto"><RevolutionPerMinute/></div>
+              <div className="col-md-5 col-lg-4 col-12 mr-auto"><Speed speed={this.state.speed}/></div>
+              <div className="col-md-5 col-lg-4 col-12 ml-auto"><RevolutionPerMinute/></div>
           </div>
           <div className="row justify-content-center">
           <div className="h-50 w-50" id="center-pannel">

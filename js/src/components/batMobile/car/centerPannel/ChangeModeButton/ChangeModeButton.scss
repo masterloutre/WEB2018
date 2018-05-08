@@ -5,6 +5,7 @@
 
 .change-mode-button {
   position: absolute;
+  z-index: 10;
   width: 100%;
   @extend %circle;
   @extend %widget-border-glow;

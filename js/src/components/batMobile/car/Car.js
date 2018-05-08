@@ -7,6 +7,7 @@ import Graphs from "./graphs/Graphs";
 import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
 import CenterPannel from "./centerPannel/CenterPannel";
+import AirConditioner from "./airConditioner/AirConditioner";
 
 export default class Car extends Component {
 
@@ -58,7 +59,10 @@ export default class Car extends Component {
     return (
       <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">
-              <div className="col p-5"><CarDate/></div>
+              <div className="col p-5">
+                  <CarDate/>
+                  <AirConditioner temperature={this.state.temperature}/>
+              </div>
               <div className="col p-5"><Graphs speed={this.state.speed} gas={this.state.gas}/></div>
           </div>
           <div className="row align-items-end p-2" id="circles">

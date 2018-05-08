@@ -14,6 +14,18 @@ export default class CenterPannel extends Component {
     render() {
         return (
             <div className="center-pannel container-fluid">
+                {/*
+                <svg className=" row w-100 h-100 separator absolute-top" viewBox="0 0 100 100">
+                    <line x1="0" y1="0" x2="100" y2="100"
+                        stroke='rgba(125, 174, 205, 0.46)'
+                        strokeWidth="1"
+                    />
+                    <line x1="0" y1="100" x2="100" y2="0"
+                          stroke='rgba(125, 174, 205, 0.46)'
+                          strokeWidth="1"
+                    />
+                </svg>
+                */}
                 <div className="row w-100 h-100 justify-content-center align-items-center absolute-top">
                     <div className="center-button col-5 absolute"><ChangeModeButton/></div>
 
@@ -24,6 +36,15 @@ export default class CenterPannel extends Component {
                 <div className="row w-100 h-50 justify-content-center align-items-center">
                 </div>
                 */}
+                    <ul className="row absolute-top w-100 h-100">
+                    <li><span>Gas</span></li>
+                    <li><span>"Essuie glace"</span></li>
+                    <li><span>Right Signal</span></li>
+                    <li><span>Air Conditioner</span></li>
+                    <li><span>Left Signal</span></li>
+                    <li><span>Lights</span></li>
+                    </ul>
+
             </div>
         )
     }

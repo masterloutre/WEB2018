@@ -1,0 +1,29 @@
+@import "../../../../../customs.scss";
+
+.gas{
+  position: absolute;
+  height:100%;
+  width:100%;
+  svg {
+    transform: skew(30deg) rotate(-30deg) translate(-5%, -150%) scale(1.5);
+    z-index: 5;
+  }
+  div{
+    transform: skew(30deg) rotate(-30deg) translate(-6.5%, -20%) scale(1.5);
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    //margin: 15%;
+    width: 100%;
+    height : 100%;
+    //background: linear-gradient(to bottom right, transparent , $batmanYellow );
+    /*
+    background:
+            linear-gradient(to top left, black 20%, transparent 20%),
+      radial-gradient(circle at bottom, transparent 22%, $batmanYellow 22%, transparent 40%)
+
+
+  ;
+  */
+  }
+}

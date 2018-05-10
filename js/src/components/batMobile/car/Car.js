@@ -73,7 +73,7 @@ export default class Car extends Component {
           </div>
           <div className="row justify-content-center">
           <div className="h-50 w-50" id="center-pannel">
-              <CenterPannel/>
+              <CenterPannel gas={this.state.gas} temperature={this.state.temperature}/>
           </div>
           </div>
       </div>

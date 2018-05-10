@@ -32,7 +32,7 @@ export default class Car extends Component {
     };
   }
 
-  componentWillMount(){
+  componentDidMount(){
      axios.get("/car")
     .then((results) => {
       this.setState({
@@ -51,6 +51,8 @@ export default class Car extends Component {
         radioId: results.data[0].radioId,
         temperature: results.data[0].temperature,
         headlight: results.data[0].headlight
+      }, () => {
+      //  console.log(this.state);
       })
     });
   }

@@ -7,7 +7,6 @@ export default class Speed extends Component {
   constructor() {
     super();
     this.state = {
-      speed: 0,
       nbMaxDivision: 20,
       nbMaxDivisionFilled: 18,
       speedMax: 350,
@@ -15,13 +14,15 @@ export default class Speed extends Component {
     };
   }
 
-  componentDidMount(){
-    //this.setState(speed : this.props.speed);
-    this.buildData();
+
+  componentDidUpdate(prevProps){
+    if(this.props.speed !== prevProps.speed){
+      this.buildData();
+    }
   }
 
   buildData(){
-    var seuil = Math.round(this.state.speed * this.state.nbMaxDivisionFilled / this.state.speedMax);
+    var seuil = Math.round(this.props.speed * this.state.nbMaxDivisionFilled / this.state.speedMax);
     var i;
     console.log("seuil  " + seuil);
     const filledData = Array(0);
@@ -43,7 +44,7 @@ export default class Speed extends Component {
       filledData.push({
         "id": "superior"+i,
         "value" : 200,
-        "color": styles.speedBackgroundColor
+        "color": "hsla(195, 50%, 50%, 0.0)"
       });
     }
     this.setState({...this.state, data: filledData}, () => {
@@ -56,7 +57,7 @@ export default class Speed extends Component {
     return (
       <div className="speed container-fluid">
         <div className="row w-100 justify-content-center align-items-center">
-            <h2>{this.state.speed} KM/H</h2>
+            <h2>{this.props.speed} KM/H</h2>
         </div>
         <div className="row w-100 justify-content-center align-items-center">
             <Pie

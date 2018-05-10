@@ -1,14 +1,13 @@
 @import "../../../../../customs.scss";
 
 
-//$borderGlowColor : rgba(156, 19, 9, 0.88);
 
 .change-mode-button {
   position: absolute;
   z-index: 10;
   width: 100%;
   @extend %circle;
-  @extend %widget-border-glow;
+  box-shadow: 0px 0px 15px $batmanYellow;
   background-color: black;
   color: $alertRed;
   //padding: 0px;
@@ -18,11 +17,10 @@
     margin-top: -100%;
     vertical-align: middle;
     text-align: center;
-    color: $alertRed;
+    color: $batmanYellow;
+    opacity: 0.7;
     height:auto;
     font-size : 2vw;
   }
 
 }
-
-//$borderGlowColor : rgba(125, 174, 205, 0.46);

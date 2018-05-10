@@ -24,6 +24,7 @@
     //padding: 3px;
     @extend %widget-border-glow;
   }
+
   span {
     font-size: 8pt;
     position: absolute;
@@ -34,24 +35,42 @@
     color: white;
   }
 
+  svg {
+    width: 20%;
+    height: 20%;
+    font-size: 8pt;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    text-align: center;
+    //transform: skew(-30deg) rotate(-60deg) scale(1);
+  }
+
+  //gas
   li:nth-child(1) {
     transform:  rotate(30deg) skew(-30deg);
     span {
       transform: skew(30deg) rotate(-30deg) scale(1);
     }
   }
+
+  //windshield
   li:nth-child(2) {
     transform: rotate(150deg) skew(60deg);
-    span {
-      transform: skew(-60deg) rotate(-150deg) scale(1);
+    svg {
+      transform: skew(-60deg) rotate(-150deg) scale(1) translate(40%, -40%);
     }
   }
+
+  //signal right
   li:nth-child(3) {
     transform: rotate(180deg) skew(60deg);
-    span {
-      transform: skew(-60deg) rotate(-180deg) scale(1);
+    svg {
+      transform: skew(-60deg) rotate(-180deg) scale(1.8) translate(10%, 0%);;
     }
   }
+
+  //air conditionner
   li:nth-child(4) {
     transform: rotate(210deg) skew(-30deg);
     span {
@@ -59,17 +78,19 @@
     }
   }
 
+  //signal left
   li:nth-child(5) {
     transform: rotate(330deg) skew(60deg);
-    span {
-      transform: skew(-60deg) rotate(-330deg) scale(1);
+    svg {
+      transform: skew(-60deg) rotate(-330deg) scale(1.8) translate(0%, 20%);
     }
   }
 
+  //headlights
   li:nth-child(6) {
     transform: rotate(360deg) skew(60deg);
-    span {
-      transform: skew(-60deg) rotate(-360deg) scale(1);
+    svg {
+      transform: skew(-60deg) rotate(-360deg) scale(0.8) translate(-50%, 0%);
     }
   }
 }

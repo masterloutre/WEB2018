@@ -39,3 +39,7 @@ $batmanYellow : rgba(238,203,18,0.88);
   padding-top: 100%; /* 1:1 Aspect Ratio */
   position: relative;
 }
+
+%text-glow{
+  text-shadow: 0px 0px 3px $borderGlowColor;
+}

@@ -7,7 +7,6 @@ import Graphs from "./graphs/Graphs";
 import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
 import CenterPannel from "./centerPannel/CenterPannel";
-import AirConditioner from "./airConditioner/AirConditioner";
 import {ChangeSpeedButton} from './changeSpeedButton/ChangeSpeedButton.js';
 
 export default class Car extends Component {
@@ -81,7 +80,6 @@ export default class Car extends Component {
           <div className="row" id="top-pannels">
               <div className="col p-5">
                   <CarDate/>
-                  <AirConditioner temperature={this.state.temperature}/>
               </div>
               <div className="col p-5"><Graphs speed={this.state.speed} gas={this.state.gas}/></div>
           </div>

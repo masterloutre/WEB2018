@@ -1,0 +1,31 @@
+@import "../../../../../customs.scss";
+
+.air-conditioner{
+  position: absolute;
+  height:100%;
+  width:100%;
+  span {
+    transform: skew(30deg) rotate(-210deg) translate(0%, 150%) scale(1);
+    z-index: 5;
+    font-size: 16pt;
+    color: $fadedWhite;
+  }
+  #gradient{
+    transform: skew(30deg) rotate(-30deg) translate(-6.5%, -20%) scale(1.5);
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    //margin: 15%;
+    width: 100%;
+    height : 100%;
+    //background: linear-gradient(to bottom right, transparent , $batmanYellow );
+    /*
+    background:
+            linear-gradient(to top left, black 20%, transparent 20%),
+      radial-gradient(circle at bottom, transparent 22%, $batmanYellow 22%, transparent 40%)
+
+
+  ;
+  */
+  }
+}

@@ -8,6 +8,7 @@ import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
 import CenterPannel from "./centerPannel/CenterPannel";
 import AirConditioner from "./airConditioner/AirConditioner";
+import {ChangeSpeedButton} from './changeSpeedButton/ChangeSpeedButton.js';
 
 export default class Car extends Component {
 
@@ -16,6 +17,7 @@ export default class Car extends Component {
     this.state = {
       weight: 0,
       speed: 0,
+      speedMax: 350,
       mileage: 0,
       gas: 0,
       battery: 0,
@@ -57,6 +59,22 @@ export default class Car extends Component {
     });
   }
 
+  changeSpeedClick(op) {
+    if(op === "+" && this.state.speed+10 <= this.state.speedMax)
+      this.setState({speed: this.state.speed+=10});
+    else if (op === "-" && this.state.speed-10 >= 0)
+      this.setState({speed: this.state.speed-=10});
+  }
+
+  renderSpeedButton(op) {
+    return (
+      <ChangeSpeedButton
+        value={op}
+        onClick={() => this.changeSpeedClick(op)}
+      />
+    );
+  }
+
   render(){
     return (
       <div className="car container-fluid w-100 h-100">
@@ -68,7 +86,11 @@ export default class Car extends Component {
               <div className="col p-5"><Graphs speed={this.state.speed} gas={this.state.gas}/></div>
           </div>
           <div className="row align-items-end p-2" id="circles">
-              <div className="col-md-5 col-lg-4 col-12 mr-auto"><Speed speed={this.state.speed}/></div>
+              <div className="col-md-5 col-lg-4 col-12 mr-auto">
+                  <Speed speed={this.state.speed} speedMax={this.state.speedMax}/>
+                  {this.renderSpeedButton("+")}
+                  {this.renderSpeedButton("-")}
+              </div>
               <div className="col-md-5 col-lg-4 col-12 ml-auto"><RevolutionPerMinute/></div>
           </div>
           <div className="row justify-content-center">

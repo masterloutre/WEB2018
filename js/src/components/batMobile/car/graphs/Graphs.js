@@ -7,14 +7,16 @@ import {DynLineGraph} from "../../../dynLineGraph/DynLineGraph";
 export default class Graphs extends Component {
 
     constructor(props) {
-        super();
+        super(props);
         this.state = {};
     }
 
     render() {
         return (
-            <div className="graphs">
-                
+            <div className="graphs row justify-content-center">
+                <div className="col-5 p-2">
+                    <DynLineGraph  data={this.props.speed} unit={"km/h"}/>
+                </div>
             </div>
         )
     }

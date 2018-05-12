@@ -16,21 +16,19 @@ const theme = {
 
 };
 
-const dataSet = () => ([
-  {
-    "id" : "data0",
-    "data" : Array(20).fill(1).map((value, index) => ({
-      x : index,
-      y : 0
-    }))
-  }
-])
+const dataSet = () => (Array(200).fill(1).map((item) => (
+        {
+            x: "0",
+            y: 0
+        }
+    ))
+)
 
-export class DynLineGraph extends React.Component {
+export class DynLineGraph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataSet : dataSet(),
+      data : dataSet(),
     }
   }
 
@@ -41,55 +39,75 @@ export class DynLineGraph extends React.Component {
     )
   }
 
-  componentWillUnmont() {
+  componentWillUnmount() {
     clearInterval(this.timerID)
   }
 
   tick(){
     this.setState(this.refreshData)
+      //this.setState(this.addData)
   }
 
-  refreshData (prevState, props) {
-    const date = new Date()
-    const newData = prevState.dataSet[0].data
-    newData.shift()
-    newData.push({
-      x : date.toLocaleTimeString(),
-      y : props.data
-    })
-    return {
-      ...prevState,
-      dataSet : [
-        {
-          ...dataSet[0],
+  refreshData (prevState, props) //efface au fur et à mesure
+  {
+      const date = new Date()
+      const newData = prevState.data
+      newData.shift()
+      newData.push({
+          x : date.toLocaleTimeString(),
+          y : props.data
+      })
+      return {
           data : newData
-        }
-      ],
-    }
+      }
+  }
+
+  addData(prevState, props) //garde tout l'historique
+  {
+      const date = new Date()
+      const newData = prevState.data
+      newData.push({
+          x : date.toLocaleTimeString(),
+          y : props.data
+      })
+      return {
+          data : newData
+      }
   }
 
   render () {
     return (
       <div className="dyn-line-graph">
         <ResponsiveLine className = "d-flex"
-          keys={["data0"]}
-          data= {this.state.dataSet}
+          keys={["key1"]}
+          data= {[
+              {
+                  id : "key1",
+                  data : this.state.data
+              }
+          ]}
           curve="monotoneX"
           minY={0}
           mmaxY={250}
-          width={600}
           colors="hsl(41, 100%, 50%)"
           lineWidth={1}
           enableDots={false}
-          height={400}
           enableGridX={false}
           enableGridY={false}
-          margin={{top:60, right:80, bottom:60, left:80}}
+          margin={{top:10, right:10, bottom:10, left:10}}
           offsetType="expand"
           padding={0.2}
           theme={theme}
           animate={false}
-          axisBottom = {false}
+          axisBottom = {
+              {
+                  "orient": "bottom",
+                  "tickSize": 0,
+                  "tickPadding": 5,
+                  "tickRotation": 0,
+                  "format": () => null,
+              }
+          }
           axisLeft={{
               "orient": "left",
               "tickSize": 5,

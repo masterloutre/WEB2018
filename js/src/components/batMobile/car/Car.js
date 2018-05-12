@@ -8,6 +8,7 @@ import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
 import CenterPannel from "./centerPannel/CenterPannel";
 import {ChangeSpeedButton} from './changeSpeedButton/ChangeSpeedButton.js';
+import ChangeTemperatureButtons from "./changeTemperatureButton/ChangeTemperatureButtons";
 
 export default class Car extends Component {
 
@@ -58,6 +59,13 @@ export default class Car extends Component {
     });
   }
 
+  changeTemperatureClick = (op) => {
+      if(op === "+" && this.state.temperature+1 <= 50) // 50 : temperature max
+          this.setState((prevState, props) => ({temperature: prevState.temperature+1}));
+      else if (op === "-" && this.state.temperature-1 >= 0)
+          this.setState((prevState, props) => ({temperature: prevState.temperature-1}));
+  }
+
   changeSpeedClick(op) {
     if(op === "+" && this.state.speed+10 <= this.state.speedMax)
       this.setState({speed: this.state.speed+=10});
@@ -81,7 +89,9 @@ export default class Car extends Component {
               <div className="col p-5">
                   <CarDate/>
               </div>
-              <div className="col p-5"><Graphs speed={this.state.speed} gas={this.state.gas}/></div>
+              <div className="col p-5">
+                  <Graphs speed={this.state.speed} gas={this.state.gas}/>
+              </div>
           </div>
           <div className="row align-items-end p-2" id="circles">
               <div className="col-md-5 col-lg-4 col-12 mr-auto">
@@ -92,12 +102,9 @@ export default class Car extends Component {
               <div className="col-md-5 col-lg-4 col-12 ml-auto"><RevolutionPerMinute/></div>
           </div>
           <div className="row justify-content-center">
-          <div className="h-50 w-50" id="center-pannel">
+          <div className="h-50 w-50 container" id="center-pannel">
               <CenterPannel gas={this.state.gas} temperature={this.state.temperature}/>
-              <div className="row w-100 absolute">
-                  <button id="increase-temperature">+</button>
-                  <button id="decrease-temperature">-</button>
-              </div>
+              <ChangeTemperatureButtons changeTemperature={this.changeTemperatureClick}/>
           </div>
           </div>
       </div>

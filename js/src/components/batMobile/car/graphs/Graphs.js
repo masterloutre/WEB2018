@@ -14,6 +14,7 @@ export default class Graphs extends Component {
     render() {
         return (
             <div className="graphs">
+                
             </div>
         )
     }

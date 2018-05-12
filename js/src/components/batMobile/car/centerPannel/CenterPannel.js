@@ -18,7 +18,7 @@ export default class CenterPannel extends Component {
                 <div className="row w-100 h-100 justify-content-center align-items-center absolute-top">
                     <div className="center-button col-5 absolute"><ChangeModeButton/></div>
                 </div>
-                    <ul className="row absolute-top w-100 h-100">
+                <ul className="row absolute-top w-100 h-100">
                     <li id="gas-pannel">
                         <Gas gas={this.props.gas}/>
                     </li>
@@ -41,7 +41,8 @@ export default class CenterPannel extends Component {
                     <li id="headlights">
                         <svg id="7e1afb1b-c4e1-4731-8c19-31f08b9e0f0b" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.89 33.26"><title>headlights</title><path fill='rgba(125, 174, 205, 0.46)' d="M16.53,0a18.09,18.09,0,0,0-2.44.16C7.43,1.06,0,7.76,0,16.77S6.27,30.92,13.09,32.62c5.23,1.3,10.39.64,13-2.31a5.35,5.35,0,0,0,1.25-3.07,3.29,3.29,0,0,0,0-.4L27.28,6A4.23,4.23,0,0,0,26,3.13a8.81,8.81,0,0,0-3-2,15.62,15.62,0,0,0-4.12-1A19.42,19.42,0,0,0,16.53,0h0Zm0,2a15.76,15.76,0,0,1,2.09.09A13.71,13.71,0,0,1,22.22,3a7.05,7.05,0,0,1,2.34,1.5A2.23,2.23,0,0,1,25.28,6L25.4,26.78c-0.14,2-1.4,3.21-3.56,3.94a15.39,15.39,0,0,1-8.25,0C7.48,29.16,2.08,23.63,2,16.88S8.43,3,14.34,2.16A18.23,18.23,0,0,1,16.53,2h0ZM33.15,5.88A1,1,0,0,0,32.26,7a1,1,0,0,0,1.11.89l14.5,4.74a1,1,0,1,0,0-2L33.37,5.88H33.15Zm0,9.75a1,1,0,0,0,.22,2l14.5,4.74a1,1,0,1,0,0-2l-14.5-4.74H33.15Zm0,9.75a1,1,0,0,0,.22,2l14.5,4.74a1,1,0,1,0,0-2l-14.5-4.74H33.15Z"/></svg>
                     </li>
-                    </ul>
+                </ul>
+
 
             </div>
         )

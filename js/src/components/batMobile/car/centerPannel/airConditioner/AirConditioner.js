@@ -11,31 +11,29 @@ export default class AirConditioner extends Component {
     }
 
     setGradient = () => {
-        const minAngle = 30;
-        const maxAngle = 150;
+        const minAngle = 150;
+        const maxAngle = 30;// inverser pour inverser le sens de la jauge
         const minPercent = 20;
         const maxPercent = 80;
         const data = this.props.temperature;
-        const angle = (data * (maxAngle - minAngle) /100) + minAngle;
-        const percent = (data * (maxPercent - minPercent)/ 100) +minPercent;
-        console.log((data * (maxAngle - minAngle) /100) + minAngle)
+        const angle = (data * (maxAngle - minAngle) /50) + minAngle;
+        const percent = (data * (maxPercent - minPercent)/ 50) +minPercent;
+        console.log((data * (maxAngle - minAngle) /50) + minAngle)
         console.log((data * (maxPercent - minPercent)/ 100) +minPercent)
 
         return {
             background :
-            "radial-gradient(circle at bottom, rgba(125, 174, 205, 0.46) , transparent 40%)," +
-            /*"linear-gradient("+ angle + "deg, transparent "+ (percent-1) +"%, black "+ percent +"%)," +*/
-            "radial-gradient(circle at bottom, rgba(238,203,18,0.88) 25%, rgba(125, 174, 205, 0.46) 55%)"
+            "radial-gradient(circle at top, rgba(125, 174, 205, 0.5) , transparent 40%)," +
+            "linear-gradient("+ angle + "deg, transparent "+ (percent-1) +"%, black "+ percent +"%)," +
+            "radial-gradient(circle at top, transparent 30%, rgba(125, 174, 205, 0.6) 55%)"
         }
     }
-
 
     render(){
         return (
             <div className="air-conditioner">
                 <span>{this.props.temperature}°C</span>
                 <div id="gradient" style={this.setGradient()}></div>
-                <button onClick={this.increaseTemp}> Increase Temperature </button>
             </div>
         )
     }

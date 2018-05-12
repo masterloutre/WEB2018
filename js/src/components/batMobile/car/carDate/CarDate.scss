@@ -2,5 +2,14 @@
 
 .car-date{
   @extend %widget-border-glow;
-  @extend %full-height
+  @extend %full-height;
+  
+  *{
+  	display:inline;
+	color:white;
+	@extend %text-glow;
+	padding:5px 20px;
+	font-size:12pt;
+	vertical-align: middle;
+  }
 }

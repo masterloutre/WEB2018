@@ -28,7 +28,7 @@ $router->group(['prefix' => 'car'], function () use ($router) {
 $router->group(['prefix' => 'weapons'], function () use ($router) {
     $router->get('/','WeaponController@getAllWeapons');
     $router->get('{weaponId}/user/{userId}','OwnController@getAmmunition');
-    $router->put('{id}','OwnController@setAmmunition');
+    $router->put('{weaponId}/user/{userId}','OwnController@setAmmunition');
 });
 
 /******* 

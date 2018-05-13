@@ -68,9 +68,15 @@ export default class Car extends Component {
 
   changeSpeedClick(op) {
     if(op === "+" && this.state.speed+10 <= this.state.speedMax)
-      this.setState({speed: this.state.speed+=10});
+      this.setState((prevState, props) => ({speed: prevState.speed+10}));
     else if (op === "-" && this.state.speed-10 >= 0)
-      this.setState({speed: this.state.speed-=10});
+      this.setState((prevState, props) => ({speed: prevState.speed-10}));
+
+    axios.post('/car/speed', { speed: this.state.speed })
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
   }
 
   renderSpeedButton(op) {
@@ -99,7 +105,7 @@ export default class Car extends Component {
                   {this.renderSpeedButton("+")}
                   {this.renderSpeedButton("-")}
               </div>
-              <div className="col-md-5 col-lg-4 col-12 ml-auto"><RevolutionPerMinute/></div>
+              <div className="col-md-5 col-lg-4 col-12 ml-auto"><RevolutionPerMinute speed={this.state.speed}/></div>
           </div>
           <div className="row justify-content-center">
           <div className="h-50 w-50 container" id="center-pannel">

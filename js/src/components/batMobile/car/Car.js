@@ -79,7 +79,7 @@ export default class Car extends Component {
     })
   }
 
-  renderSpeedButton(op) {
+  renderSpeedButton = (op) => {
     return (
       <ChangeSpeedButton
         value={op}
@@ -101,9 +101,7 @@ export default class Car extends Component {
           </div>
           <div className="row align-items-end p-2" id="circles">
               <div className="col-md-5 col-lg-4 col-12 mr-auto">
-                  <Speed speed={this.state.speed} speedMax={this.state.speedMax}/>
-                  {this.renderSpeedButton("+")}
-                  {this.renderSpeedButton("-")}
+                  <Speed speed={this.state.speed} speedMax={this.state.speedMax} renderSpeedButton ={this.renderSpeedButton}/>
               </div>
               <div className="col-md-5 col-lg-4 col-12 ml-auto"><RevolutionPerMinute speed={this.state.speed}/></div>
           </div>

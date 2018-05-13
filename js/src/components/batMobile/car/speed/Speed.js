@@ -80,6 +80,8 @@ export default class Speed extends Component {
                 animate={false}
             />
         </div>
+        {this.props.renderSpeedButton("+")}
+        {this.props.renderSpeedButton("-")}
       </div>
     )}
 }

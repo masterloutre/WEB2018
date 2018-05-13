@@ -47,7 +47,7 @@ export default class CenterPannel extends Component {
                     </li>
                     <li id="signal-right" onClick={() => this.triggerFlash("signal-right")}>
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 112.5" >
-                            <polygon fill='rgba(125, 174, 205, 0.46)' points="80.396,45.001 64.076,28.709 64.076,38.701 49.359,38.701 45.76,51.302 64.076,51.302 64.076,61.292  "/>
+                            <polygon fill='rgba(125, 174, 205, 0.46)' filter={'url(#glow)'} points="80.396,45.001 64.076,28.709 64.076,38.701 49.359,38.701 45.76,51.302 64.076,51.302 64.076,61.292  "/>
                         </svg>
                     </li>
                     <li id="air-conditioner-panel">
@@ -55,7 +55,7 @@ export default class CenterPannel extends Component {
                     </li>
                     <li id="signal-left" onClick={() => this.triggerFlash("signal-left")}>
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 112.5" >
-                            <polygon fill='rgba(125, 174, 205, 0.46)' points="44.241,38.7 25.924,38.7 25.924,28.709 9.603,45 25.924,61.292 25.924,51.3 40.641,51.3  "/>
+                            <polygon fill='rgba(125, 174, 205, 0.46)' filter={'url(#glow)'} points="44.241,38.7 25.924,38.7 25.924,28.709 9.603,45 25.924,61.292 25.924,51.3 40.641,51.3  "/>
                         </svg>
                     </li>
                     <li id="headlights" onClick={() => this.triggerFlash("headlights")}>

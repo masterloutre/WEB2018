@@ -25,6 +25,12 @@ export default class BatMobile extends Component {
     console.log(this.state.mode);
     return (
       <div className="bat-mobile container-fluid h-100">
+
+        <div id="outer-border" className="">
+            <div id="inner-border" className="">
+
+            </div>
+        </div>
           <Car/>
       </div>
     )

@@ -3,7 +3,7 @@ import styles from "./ChangeSpeedButton.css"
 
 export function ChangeSpeedButton(props) {
     return (
-        <button className="change-speed-buttons container-fluid" onClick={props.onClick}>
+        <button className="change-speed-button container-fluid" onClick={props.onClick}>
         {props.value}
         </button>
      );

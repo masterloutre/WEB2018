@@ -99,11 +99,13 @@ export default class Car extends Component {
                   <Graphs speed={this.state.speed} gas={this.state.gas}/>
               </div>
           </div>
-          <div className="row align-items-end p-2" id="circles">
-              <div className="col-md-5 col-lg-4 col-12 mr-auto">
+          <div className="row align-items-end p-5 justify-content-center" id="circles">
+              <div className="col-md-5 col-lg-5 col-12 ">
                   <Speed speed={this.state.speed} speedMax={this.state.speedMax} renderSpeedButton ={this.renderSpeedButton}/>
               </div>
-              <div className="col-md-5 col-lg-4 col-12 ml-auto"><RevolutionPerMinute speed={this.state.speed}/></div>
+              <div className="col-md-5 col-lg-5 col-12 offset-2">
+                  <RevolutionPerMinute speed={this.state.speed}/>
+              </div>
           </div>
           <div className="row justify-content-center">
           <div className="h-50 w-50 container" id="center-pannel">

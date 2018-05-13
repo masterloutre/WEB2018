@@ -2,18 +2,57 @@ import React, {Component} from "react"
 import "./DynLineGraph.css"
 import { ResponsiveLine } from '@nivo/line'
 
-
+const mainColor= 'rgba(0, 108, 209, 0.3)'
 const theme = {
-  axis: {
-    textColor: "hsl(41, 100%, 40%)",
-    fontSize: '14px',
-    tickColor: "hsl(41, 100%, 40%)",
-  },
-  grid: {
-    stroke: '#888',
-    strokeWidth: 1
-  },
-
+    axis: {
+        filter: 'url(#glow)',
+        textColor: mainColor,
+        fontSize: '11px',
+        tickColor: mainColor,
+        legendColor: mainColor,
+        legendFontSize: '11px',
+    },
+    grid: {
+        stroke: '#ddd',
+        strokeWidth: 1,
+        strokeDasharray: '',
+    },
+    markers: {
+        filter: 'url(#glow)',
+        lineColor: mainColor,
+        lineStrokeWidth: 1,
+        textColor: mainColor,
+        fontSize: '11px',
+    },
+    dots: {
+        textColor: mainColor,
+        fontSize: '11px',
+    },
+    tooltip: {
+        container: {
+            background: 'white',
+            color: 'inherit',
+            fontSize: 'inherit',
+            borderRadius: '2px',
+            boxShadow: '0 1px 2px rgba(0, 0, 0, 0.25)',
+            padding: '5px 9px',
+        },
+        basic: {
+            whiteSpace: 'pre',
+            display: 'flex',
+            alignItems: 'center',
+        },
+        table: {},
+        tableCell: {
+            padding: '3px 5px',
+        },
+    },
+    labels: {
+        textColor: mainColor,
+    },
+    sankey: {
+        label: {},
+    },
 };
 
 const dataSet = () => (Array(200).fill(1).map((item) => (
@@ -78,6 +117,7 @@ export class DynLineGraph extends Component {
   render () {
     return (
       <div className="dyn-line-graph">
+
         <ResponsiveLine className = "d-flex"
           keys={["key1"]}
           data= {[
@@ -89,7 +129,7 @@ export class DynLineGraph extends Component {
           curve="monotoneX"
           minY={0}
           mmaxY={250}
-          colors="hsl(41, 100%, 50%)"
+          colors= {mainColor}
           lineWidth={1}
           enableDots={false}
           enableGridX={false}

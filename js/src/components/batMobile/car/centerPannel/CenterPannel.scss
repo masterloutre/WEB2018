@@ -7,6 +7,7 @@
     @extend %circle;
     background-color: black;
     overflow: hidden;
+  z-index: 5;
 
   ul {
     padding: 0;
@@ -78,10 +79,9 @@
 
   #air-conditioner-panel{
     transform: rotate(210deg) skew(-30deg);
-    span {
-      transform: skew(30deg) rotate(-210deg) scale(1);
-    }
+
     //#air-conditioner-panel:first-child {
+    /*
     div{
       position: absolute;
       right: 0%;
@@ -91,6 +91,7 @@
       height : 100%;
       background: linear-gradient(to bottom right, transparent , $borderGlowColor );
     }
+    */
   }
 
   #signal-left{

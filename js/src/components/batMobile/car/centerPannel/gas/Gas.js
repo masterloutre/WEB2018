@@ -27,7 +27,7 @@ export default class Gas extends Component {
         return {
             background :
                 "radial-gradient(circle at bottom, rgba(238,203,18,0.5) , transparent 40%)," +
-                "linear-gradient("+ angle + "deg, transparent "+ percent +"%, black "+ percent +"%)," +
+                "linear-gradient("+ angle + "deg, transparent "+ (percent-1) +"%, black "+ percent +"%)," +
                 "radial-gradient(circle at bottom, rgba(125, 174, 205, 0.46) 25%, rgba(238,203,18,0.88) 55%)"
         }
     }

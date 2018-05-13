@@ -6,6 +6,7 @@ $borderGlowColor : rgba(0, 108, 209, 0.3);
 $textColor : rgba(125, 174, 205, 1);
 $alertRed : rgba(156, 19, 9, 0.88);
 $batmanYellow : rgba(238,203,18,0.88);
+$fadedWhite : rgba(255,255,255,0.7);
 
 
 %full-height{
@@ -38,4 +39,8 @@ $batmanYellow : rgba(238,203,18,0.88);
   height : 0;
   padding-top: 100%; /* 1:1 Aspect Ratio */
   position: relative;
+}
+
+%text-glow{
+  text-shadow: 0px 0px 3px $borderGlowColor;
 }

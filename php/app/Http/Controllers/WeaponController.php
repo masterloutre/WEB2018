@@ -25,11 +25,11 @@ class WeaponController {
 	 * @return [Name] instance correspond to $id
 	 * @throws Exception if this id does not exist in the table
 	 */
-	public static function createFromId($id){
+	public static function issetId($id){
 		$user = app('db')->select('SELECT * FROM weapon WHERE id = ?', [$id]);
-		
-		return $user;
-
+		if(count($user)>0)
+			return $user;
+        return 0;
 	}
 
 	/********************CREATE*****************************/
@@ -59,12 +59,11 @@ class WeaponController {
 	 * Get a parameter of an instance of Weapon
 	 * @param int $name, a parameter of Weapon
 	 */	
-	public function __get($name)
+	public static function getAllWeapons()
 	{
-		if(isset($this->$name))
-		{
-			return $this->$name;
-		}
+		$query = "SELECT DISTINCT * FROM weapon";
+		$weapons = app('db')->select($query,[]);
+		return $weapons;
 	}
 
 	/*******************SETTERS SIMPLE**********************/
@@ -74,13 +73,7 @@ class WeaponController {
 	 * Set a parameter of an instance of Weapon
 	 * @param int $name, a parameter of Weapon
 	 */
-	public function __set($name,$val)
-	{
-		if(isset($this->$name))
-		{
-			$this->$name = $val;
-		}
-	}
+	
 
 	/*******************GETTERS COMPLEXES*******************/
 }

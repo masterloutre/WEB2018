@@ -10,7 +10,6 @@ export default class BatMobile extends Component {
     this.state = {
         mode: null
     }
-    console.log(this.props)
   }
 
   componentWillMount(){ //doit récupérer le modeID

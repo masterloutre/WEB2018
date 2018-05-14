@@ -38,7 +38,6 @@ export default class Car extends Component {
   componentDidUpdate( prevState, prevProps){
       if(prevProps.sessionId !== this.props.sessionId)
       {
-          console.log("component did update")
           this.setState({sessionId: this.props.sessionId})
           axios.get("/car/"+ this.state.sessionId)
               .then((results) => {
@@ -62,6 +61,13 @@ export default class Car extends Component {
               })
               .catch((error) => console.log(error))
       }
+
+      if(prevState.temperature !== this.state.temperature){
+          this.updateTemperatureBDD(this.state.temperature)
+      }
+      if(prevState.speed !== this.state.speed){
+          this.updateSpeedBDD(this.state.speed)
+      }
   }
 
   changeTemperatureClick = (op) => {
@@ -71,17 +77,28 @@ export default class Car extends Component {
           this.setState((prevState, props) => ({temperature: prevState.temperature-1}));
   }
 
+  updateTemperatureBDD = (value) => {
+      axios.put("/car/"+ this.state.sessionId, {
+            temperature: value
+        })
+      .then((result) => console.log(result))
+      .catch(error => console.log(error))
+  }
+
+  updateSpeedBDD = (value) => {
+      axios.put("/car/"+ this.state.sessionId, {
+          speed: value
+      })
+          .then((result) => console.log(result))
+          .catch(error => console.log(error))
+  }
+
   changeSpeedClick(op) {
+
     if(op === "+" && this.state.speed+10 <= this.state.speedMax)
       this.setState((prevState, props) => ({speed: prevState.speed+10}));
     else if (op === "-" && this.state.speed-10 >= 0)
       this.setState((prevState, props) => ({speed: prevState.speed-10}));
-
-    axios.post('/car/speed', { speed: this.state.speed })
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-    })
   }
 
   renderSpeedButton = (op) => {
@@ -94,6 +111,7 @@ export default class Car extends Component {
   }
 
   render(){
+      console.log(this.state.temperature)
     return (
       <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">

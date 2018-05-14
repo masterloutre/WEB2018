@@ -28,7 +28,6 @@ class App extends Component {
     }
 
   render() {
-        console.log(this.state.sessionId)
     return (
       <div className="app container-fluid h-100">
         <BatMobile sessionId={this.state.sessionId}/>

@@ -81,4 +81,15 @@ class RadioController {
 
 	/*******************GETTERS COMPLEXES*******************/
 
+	/**
+	 * Factory to create an instance of Radio from parameters
+	 * @param int $id from radio (bdd)
+	 */
+
+	public static function getAllRadio()
+	{
+		$radios = app('db')->select('SELECT * FROM radio');
+		return $radios;
+	}
+
 }

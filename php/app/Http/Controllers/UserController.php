@@ -43,10 +43,11 @@ class UserController
     public static function addNewEntry(){
         /*session_start();
         $sessionId = session_id();*/
-
-        UserController::add(8,125458,50,88,74,1537,64,28,98,0,0,48,1,2,1,18,0);
+        
+        UserController::add(8,125.1,50,88,74.1,1537,64,28,98,0,0,48,1,2,1,18,0);
         $user = app('db')->select('SELECT * FROM user WHERE sessionId = (SELECT MAX(sessionId) FROM user)');
         $id = array('id' => $user["0"]->sessionId);
+        OwnController::setAllOwn($user["0"]->sessionId);
         return json_encode($id);
     }
 
@@ -135,8 +136,6 @@ class UserController
      */
     public function set(Request $request, $id)
     {
-        /*session_start();
-        $sessionId = session_id();*/
         $vals = $request->json()->all();
         $user =  UserController::issetId($id);
         if(count($vals) != 0){  
@@ -195,10 +194,12 @@ class UserController
         if($val < 50) // Si on va à moins de 50km/h on passe en électrique
         {
             $user["0"]->battery -= 0.01;
+        if($user["0"]->battery < 0){$user["0"]->battery = 0;}
         }
         else // Sinon on reste en thermique
         {
-            $user["0"]->oilLevel -= 0.01;
+            $user["0"]->essence -= 0.01;
+        if($user["0"]->essence < 0){$user["0"]->essence = 0;}
             if($user["0"]->battery < 100) // ET comme la Batmobile est trop cool elle se recharge quand c'est en thermique
             {
                 $user["0"]->battery += 0.01;
@@ -206,7 +207,27 @@ class UserController
         }
 
         $user["0"]->bpm = 42 + $val/5;
-        app('db')->update('UPDATE user SET mileage = ?, xPos = ?,battery = ?,oilLevel = ?,bpm = ? WHERE sessionId = ?',[$user["0"]->mileage,$user["0"]->xPos,$user["0"]->battery,$user["0"]->oilLevel,$user["0"]->bpm,$id]);
+        if($user["0"]->bpm > 300){$user["0"]->bpm = 300;}
+            app('db')->update('UPDATE user SET mileage = ?, xPos = ?,battery = ?,oilLevel = ?,bpm = ? WHERE sessionId = ?',[$user["0"]->mileage,$user["0"]->xPos,$user["0"]->battery,$user["0"]->oilLevel,$user["0"]->bpm,$id]);
+    }
+
+    public function setCarbodyState(Request $request, $id)
+    {
+        $vals = $request->json()->all();
+        $user =  UserController::issetId($id);
+        if(isset($vals['carbodyState']))
+        {
+            $damage = $vals['carbodyState'];
+            if($damage<0)
+                $damage = 0;
+            if($damage>100)
+                $damage = 100;
+            app('db')->update('UPDATE user SET carbodyState = ? WHERE sessionId = ?',[$damage,$id]);
+            $response = array("success" => "Well done");
+            return json_encode($response);
+        }
+        $response = array("error" => "Invalid parameter name");
+        return json_encode($response);
     }
 
     /*******************GETTERS COMPLEXES*******************/
@@ -215,12 +236,10 @@ class UserController
         return $tire;
     }
 
-    public function issetId($id){
+    public static function issetId($id){
         $user = app('db')->select('SELECT * FROM user WHERE sessionId = ?',[$id]);
         if(count($user)>0)
             return $user;
         return 0;
     }
-
-
 }

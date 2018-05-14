@@ -62,4 +62,11 @@ class OwnController {
 		$response = array('error' => "sessionId or weaponId not found");
 		return json_encode($response);
 	}
+
+	public static function setAllOwn($id){
+        $max = app('db')->select('SELECT MAX(id) AS max FROM weapon ',[]);
+        for ($i=0; $i < $max[0]->max; $i++) { 
+        	OwnController::addOwn(150, $id, $i);
+        }
+	}
 }

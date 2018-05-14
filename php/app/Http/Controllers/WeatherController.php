@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 /**
@@ -27,7 +28,6 @@ class WeatherController {
 	 */
 	public static function createFromId($id){
 		$user = app('db')->select('SELECT * FROM weather WHERE t = ?', [$id]);
-		
 		return $user;
 	}
 
@@ -82,4 +82,10 @@ class WeatherController {
 	}
 
 	/*******************GETTERS COMPLEXES*******************/
+
+	public static function getRandomWeather()
+	{
+		$user = app('db')->select('SELECT * FROM weather WHERE t = ?', [rand(1,10000)]);
+		return $user;
+	}
 }

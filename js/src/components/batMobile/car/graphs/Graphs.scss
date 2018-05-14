@@ -2,5 +2,11 @@
 
 .graphs{
   @extend %widget-border-glow;
-  @extend %full-height
+  @extend %full-height;
+
+  svg{
+    border: 1px solid $borderGlowColor;
+    opacity: 0.7;
+    background: $widgetBackgroundColor;
+  }
 }

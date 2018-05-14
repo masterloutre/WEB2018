@@ -1,0 +1,14 @@
+@import "../../../../customs.scss";
+
+.change-speed-button {
+  //padding: 10%;
+  //button{
+    @extend %widget-border-glow;
+  /*  padding: 3%;
+    padding-top: 20%;
+    border: 0px;
+    border-radius: 15%;*/
+    color: $fadedWhite;
+    cursor: pointer;
+  //}
+}

@@ -2,18 +2,58 @@ import React, {Component} from "react"
 import "./DynLineGraph.css"
 import { ResponsiveLine } from '@nivo/line'
 
-
+const mainColor= 'rgba(125, 174, 205, 1)'
+const secondaryColor='rgba(26, 94, 110, 0.85)'
 const theme = {
-  axis: {
-    textColor: "hsl(41, 100%, 40%)",
-    fontSize: '14px',
-    tickColor: "hsl(41, 100%, 40%)",
-  },
-  grid: {
-    stroke: '#888',
-    strokeWidth: 1
-  },
-
+    axis: {
+        filter: 'url(#glow)',
+        textColor: 'transparent',
+        fontSize: '11px',
+        tickColor: mainColor,
+        legendColor: secondaryColor,
+        legendFontSize: '9px',
+    },
+    grid: {
+        stroke: '#ddd',
+        strokeWidth: 1,
+        strokeDasharray: '',
+    },
+    markers: {
+        filter: 'url(#glow)',
+        lineColor: mainColor,
+        lineStrokeWidth: 0.5,
+        textColor: mainColor,
+        fontSize: '11px',
+    },
+    dots: {
+        textColor: mainColor,
+        fontSize: '11px',
+    },
+    tooltip: {
+        container: {
+            background: 'white',
+            color: 'inherit',
+            fontSize: 'inherit',
+            borderRadius: '2px',
+            boxShadow: '0 1px 2px rgba(0, 0, 0, 0.25)',
+            padding: '5px 9px',
+        },
+        basic: {
+            whiteSpace: 'pre',
+            display: 'flex',
+            alignItems: 'center',
+        },
+        table: {},
+        tableCell: {
+            padding: '3px 5px',
+        },
+    },
+    labels: {
+        textColor: mainColor,
+    },
+    sankey: {
+        label: {},
+    },
 };
 
 const dataSet = () => (Array(200).fill(1).map((item) => (
@@ -35,7 +75,7 @@ export class DynLineGraph extends Component {
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
-      100
+      1000
     )
   }
 
@@ -78,6 +118,7 @@ export class DynLineGraph extends Component {
   render () {
     return (
       <div className="dyn-line-graph">
+
         <ResponsiveLine className = "d-flex"
           keys={["key1"]}
           data= {[
@@ -89,12 +130,12 @@ export class DynLineGraph extends Component {
           curve="monotoneX"
           minY={0}
           mmaxY={250}
-          colors="hsl(41, 100%, 50%)"
+          colors= {mainColor}
           lineWidth={1}
           enableDots={false}
           enableGridX={false}
           enableGridY={false}
-          margin={{top:10, right:10, bottom:10, left:10}}
+          margin={{top:10, right:10, bottom:10, left:20}}
           offsetType="expand"
           padding={0.2}
           theme={theme}
@@ -114,7 +155,7 @@ export class DynLineGraph extends Component {
               "tickPadding": 5,
               "tickRotation": 0,
               "legend": this.props.unit,
-              "legendOffset": -40,
+              "legendOffset": -10,
               "legendPosition": "center"
           }}
         />

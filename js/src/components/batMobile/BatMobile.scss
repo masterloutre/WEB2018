@@ -5,4 +5,23 @@
   //background-color: $batMobileBackgroundColor;
   background-image: url("../../images/background_batmobile.jpg");
   background-size: cover;
+  padding: 1%;
+
+  #outer-border{
+    //position: relative;
+    @extend %full-space;
+    @extend %widget-border-glow;
+    padding: 0.5%;
+    opacity: 0.5;
+    //transform: translate(0%, -100%);
+    z-index: -2;
+
+  }
+  #inner-border{
+    @extend %full-space;
+    @extend %widget-border-glow;
+    border-radius: 5%;
+    opacity: 0.5;
+    z-index: -2;
+  }
 }

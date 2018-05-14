@@ -18,9 +18,6 @@ export default class AirConditioner extends Component {
         const data = this.props.temperature;
         const angle = (data * (maxAngle - minAngle) /50) + minAngle;
         const percent = (data * (maxPercent - minPercent)/ 50) +minPercent;
-        console.log((data * (maxAngle - minAngle) /50) + minAngle)
-        console.log((data * (maxPercent - minPercent)/ 100) +minPercent)
-
         return {
             background :
             "radial-gradient(circle at top, rgba(125, 174, 205, 0.5) , transparent 40%)," +

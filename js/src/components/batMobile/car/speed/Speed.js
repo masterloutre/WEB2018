@@ -32,7 +32,8 @@ export default class Speed extends Component {
         filledData.push({
           "id": "inferior"+i,
           "value" : 200,
-          "color": "hsl(195, 50%, 50%)"
+          //"color": "hsl(195, 50%, 50%)"
+            "color":"rgba(238,203,18,0.88)"
         });
       }
       for (i = seuil; i <  this.state.nbMaxDivisionFilled; i++) {
@@ -79,6 +80,10 @@ export default class Speed extends Component {
                 isInteractive={false}
                 animate={false}
             />
+        </div>
+        <div id="change-speed-buttons" className="row w-100 justify-content-center align-items-center">
+          {this.props.renderSpeedButton("+")}
+          {this.props.renderSpeedButton("-")}
         </div>
       </div>
     )}

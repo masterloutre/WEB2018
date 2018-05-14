@@ -7,7 +7,7 @@
     @extend %circle;
     background-color: black;
     overflow: hidden;
-  z-index: 5;
+    z-index: 5;
 
   ul {
     padding: 0;
@@ -68,6 +68,7 @@
     svg {
       transform: skew(-60deg) rotate(-150deg) scale(1) translate(40%, -40%);
     }
+    cursor: pointer;
   }
 
   #signal-right{
@@ -75,6 +76,7 @@
     svg {
       transform: skew(-60deg) rotate(-180deg) scale(1.8) translate(10%, 0%);
     }
+    cursor: pointer;
   }
 
   #air-conditioner-panel{
@@ -94,11 +96,23 @@
     */
   }
 
+  @keyframes flash {
+  0% {
+    background:none;
+  }
+  100% {
+    background:
+      radial-gradient(circle at bottom, rgba(238,203,18,0.5) , transparent 80%),
+      radial-gradient(circle at bottom, rgba(125, 174, 205, 0.46) 55%, rgba(238,203,18,0.88) 55%);
+  }
+}
+
   #signal-left{
     transform: rotate(330deg) skew(60deg);
     svg {
       transform: skew(-60deg) rotate(-330deg) scale(1.8) translate(0%, 20%);
     }
+    cursor: pointer;
   }
 
   #headlights{
@@ -106,6 +120,7 @@
     svg {
       transform: skew(-60deg) rotate(-360deg) scale(0.8) translate(-50%, 0%);
     }
+    cursor: pointer;
   }
 }
 

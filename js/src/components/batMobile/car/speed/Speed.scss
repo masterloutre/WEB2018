@@ -25,3 +25,12 @@
    color: $textColor;
    height:auto;
  }
+
+ #change-speed-buttons{
+   padding: 20%;
+   .change-speed-button {
+     width: 30%;
+     margin-right: 35%;
+     margin-left: 35%;
+   }
+ }

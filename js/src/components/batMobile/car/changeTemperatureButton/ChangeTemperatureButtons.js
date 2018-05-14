@@ -8,16 +8,15 @@ export default class ChangeTemperatureButtons extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        console.log(this.props)
     }
 
     render() {
         return (
-            <div className="change-temperature-buttons row justify-content-around">
+            <div className="change-temperature-buttons row justify-content-center">
                 <button id="increase-temperature" onClick={() => this.props.changeTemperature("+")} className="col-3">
                     +
                 </button>
-                <button id="decrease-temperature" onClick={() => this.props.changeTemperature("-")} className="col-3">
+                <button id="decrease-temperature" onClick={() => this.props.changeTemperature("-")} className="col-3 offset-1">
                     -
                 </button>
             </div>

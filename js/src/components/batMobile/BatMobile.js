@@ -5,11 +5,12 @@ import Car from './car/Car.js'
 import CurrentDate from '../currentDate/CurrentDate.js'
 
 export default class BatMobile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      mode: null
-    };
+        mode: null
+    }
+    console.log(this.props)
   }
 
   componentWillMount(){ //doit récupérer le modeID
@@ -22,10 +23,15 @@ export default class BatMobile extends Component {
   }
 
   render(){
-    console.log(this.state.mode);
     return (
       <div className="bat-mobile container-fluid h-100">
-          <Car/>
+
+        <div id="outer-border" className="">
+            <div id="inner-border" className="">
+
+            </div>
+        </div>
+          <Car sessionId={this.props.sessionId}/>
       </div>
     )
   }

@@ -12,9 +12,10 @@ import ChangeTemperatureButtons from "./changeTemperatureButton/ChangeTemperatur
 
 export default class Car extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+        sessionId: 0,
       weight: 0,
       speed: 0,
       speedMax: 350,
@@ -34,29 +35,33 @@ export default class Car extends Component {
     };
   }
 
-  componentDidMount(){
-     axios.get("/car")
-    .then((results) => {
-      this.setState({
-        weight: results.data[0].weight,
-        speed: results.data[0].speed,
-        mileage: results.data[0].mileage,
-        gas: results.data[0].essence,
-        battery: results.data[0].battery,
-        tpm: results.data[0].tpm,
-        oilLevel: results.data[0].oilLevel,
-        liquidLevel: results.data[0].liquidLevel,
-        carbodyState: results.data[0].carbodyState,
-        position: {xPos: results.data[0].xPos, yPos: results.data[0].yPos},
-        bpm: results.data[0].bpm,
-        tireId: results.data[0].tireId,
-        radioId: results.data[0].radioId,
-        temperature: results.data[0].temperature,
-        headlight: results.data[0].headlight
-      }, () => {
-      //  console.log(this.state);
-      })
-    });
+  componentDidUpdate( prevState, prevProps){
+      if(prevProps.sessionId !== this.props.sessionId)
+      {
+          console.log("component did update")
+          this.setState({sessionId: this.props.sessionId})
+          axios.get("/car/"+ this.state.sessionId)
+              .then((results) => {
+                  this.setState({
+                      weight: results.data[0].weight,
+                      speed: results.data[0].speed,
+                      mileage: results.data[0].mileage,
+                      gas: results.data[0].essence,
+                      battery: results.data[0].battery,
+                      tpm: results.data[0].tpm,
+                      oilLevel: results.data[0].oilLevel,
+                      liquidLevel: results.data[0].liquidLevel,
+                      carbodyState: results.data[0].carbodyState,
+                      position: {xPos: results.data[0].xPos, yPos: results.data[0].yPos},
+                      bpm: results.data[0].bpm,
+                      tireId: results.data[0].tireId,
+                      radioId: results.data[0].radioId,
+                      temperature: results.data[0].temperature,
+                      headlight: results.data[0].headlight
+                  })
+              })
+              .catch((error) => console.log(error))
+      }
   }
 
   changeTemperatureClick = (op) => {

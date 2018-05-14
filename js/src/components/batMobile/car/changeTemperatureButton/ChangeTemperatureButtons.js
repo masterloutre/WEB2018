@@ -8,7 +8,6 @@ export default class ChangeTemperatureButtons extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        console.log(this.props)
     }
 
     render() {

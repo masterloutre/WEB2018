@@ -21,9 +21,6 @@ export default class Gas extends Component {
         const gas = this.props.gas;
         const angle = (gas * (maxAngle - minAngle) /100) + minAngle;
         const percent = (gas * (maxPercent - minPercent)/ 100) +minPercent;
-        console.log((gas * (maxAngle - minAngle) /100) + minAngle)
-        console.log((gas * (maxPercent - minPercent)/ 100) +minPercent)
-
         return {
             background :
                 "radial-gradient(circle at bottom, rgba(238,203,18,0.5) , transparent 40%)," +

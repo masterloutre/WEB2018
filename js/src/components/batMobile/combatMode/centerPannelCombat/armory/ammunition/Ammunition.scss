@@ -1,0 +1,6 @@
+@import "../../../../../../customs.scss";
+
+.ammunition{
+  @extend %widget-border-glow;
+  @extend %full-space;
+}

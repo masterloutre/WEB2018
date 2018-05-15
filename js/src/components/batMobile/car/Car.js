@@ -15,6 +15,7 @@ export default class Car extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        sessionId: 0,
       weight: 0,
       speed: 0,
       speedMax: 350,

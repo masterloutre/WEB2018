@@ -26,7 +26,6 @@ export default class RevolutionPerMinute extends Component {
 
     buildData(){
       var seuil = this.props.speed / 60.0 / this.state.wheelsize;
-      console.log("seuil  " + seuil);
       var i;
       const filledData = Array(0);
         for (i = 0; i < seuil; i++) {

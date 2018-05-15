@@ -13,7 +13,8 @@ export default class CombatMode extends Component {
     render() {
         return (
             <div className="combat-mode">
-
+                <h2>THIS IS COMBAT MODE</h2>
+                <button onClick={()=>this.props.changeMode()}>Change Mode</button>
             </div>
         )
     }

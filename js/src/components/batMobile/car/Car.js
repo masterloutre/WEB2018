@@ -81,7 +81,6 @@ export default class Car extends Component {
       axios.put("/car/"+ this.state.sessionId, {
             temperature: value
         })
-      .then((result) => console.log(result))
       .catch(error => console.log(error))
   }
 
@@ -89,7 +88,6 @@ export default class Car extends Component {
       axios.put("/car/"+ this.state.sessionId, {
           speed: value
       })
-          .then((result) => console.log(result))
           .catch(error => console.log(error))
   }
 
@@ -132,7 +130,7 @@ export default class Car extends Component {
           </div>
           <div className="row justify-content-center">
           <div className="h-50 w-50 container" id="center-pannel">
-              <CenterPannel gas={this.state.gas} temperature={this.state.temperature}/>
+              <CenterPannel gas={this.state.gas} temperature={this.state.temperature} changeMode={this.props.changeMode}/>
               <ChangeTemperatureButtons changeTemperature={this.changeTemperatureClick}/>
           </div>
           </div>

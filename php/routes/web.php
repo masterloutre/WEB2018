@@ -26,13 +26,13 @@ $router->group(['prefix' => 'car'], function () use ($router) {
     Rooting for /weapons/... 
 *******/
 $router->group(['prefix' => 'weapons'], function () use ($router) {
-    $router->get('/','WeaponController@getAllWeapons');
+    $router->get('/{userId}','WeaponController@getAllWeapons');
     $router->get('{weaponId}/user/{userId}','OwnController@getAmmunition');
     $router->put('{weaponId}/user/{userId}','OwnController@setAmmunition');
 });
 
 /******* 
-	Rooting for /car/... 
+    Rooting for /car/... 
 *******/
 
 /*$router->group(['prefix' => 'car'], function () use ($router) {
@@ -42,7 +42,7 @@ $router->group(['prefix' => 'weapons'], function () use ($router) {
 });*/
 
 /******* 
-	Rooting for /weapons/... 
+    Rooting for /weapons/... 
 *******/
 /*$router->group(['prefix' => 'weapons'], function () use ($router) {
     $router->get('{id}','OwnController@getAmmunition');
@@ -50,34 +50,34 @@ $router->group(['prefix' => 'weapons'], function () use ($router) {
 });*/
 
 /******* 
-	Rooting for /law/... 
+    Rooting for /law/... 
 *******/
-/*$router->group(['prefix' => 'law'], function () use ($router) {
-    $router->get('scanner',);
-    $router->put('scanner',);
-
+$router->group(['prefix' => 'law'], function () use ($router) {
+    /*$router->get('scanner',);
+    $router->put('scanner',);*/
+    $router->get('/','VilainController@getAllVilains');
     $router->get('criminals/{id}','VilainController@createFromId');
-    $router->patch('criminals/{id}','VilainController@patchVilain');
+    /*$router->patch('criminals/{id}','VilainController@patchVilain');
     $router->delete('criminals/{id}','VilainController@delete');
-    $router->post('criminals/{id}','VilainController@add');
-});*/
+    $router->post('criminals/{id}','VilainController@add');*/
+});
 
 /******* 
-	Rooting for /damage 
+    Rooting for /damage 
 *******/
-/*
-$router->get('damage','UserController@getCarbodyState');*/
+
+$router->put('damage/{id}','UserController@setCarbodyState');
 
 /******* 
-	Rooting for /driver 
-*******//*
-$router->get('driver', 'UserController@getBpm');*/
+    Rooting for /weather 
+*******/
+
+$router->get('weather', 'WeatherController@getRandomWeather');
 
 /******* 
-	Rooting for /music/... 
-*******//*
+    Rooting for /music/... 
+*******/
 $router->group(['prefix' => 'music'], function () use ($router) {
     $router->get('radio/{id}','RadioController@createFromId');
-    $router->put('aux/{id}', function (){
-    });
-});*/
+    $router->get('/','RadioController@getAllRadio');
+});

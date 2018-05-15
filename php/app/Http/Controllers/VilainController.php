@@ -123,4 +123,9 @@ class VilainController {
        	$response = array("success" => "Well done");
        	return json_encode($response);
 	}
+	public function getAllVilains(){
+		$vilains = app('db')->select('SELECT * FROM vilain');
+		return $vilains;
+		
+	}
 }

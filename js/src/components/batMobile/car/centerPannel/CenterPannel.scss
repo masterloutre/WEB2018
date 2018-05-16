@@ -31,10 +31,10 @@
     bottom: 10%;
     right: 10%;
     text-align: center;
-    color: white;
+    //color: white;
   }
 
-  svg {
+  svg, img {
     width: 20%;
     height: 20%;
     font-size: 8pt;
@@ -65,7 +65,7 @@
 
   #windshield-wiper{
     transform: rotate(150deg) skew(60deg);
-    svg {
+    svg, img {
       transform: skew(-60deg) rotate(-150deg) scale(1) translate(40%, -40%);
     }
     cursor: pointer;
@@ -73,7 +73,7 @@
 
   #signal-right{
     transform: rotate(180deg) skew(60deg);
-    svg {
+    svg, img {
       transform: skew(-60deg) rotate(-180deg) scale(1.8) translate(10%, 0%);
     }
     cursor: pointer;
@@ -100,16 +100,16 @@
   0% {
     background:none;
   }
-  100% {
-    background:
-      radial-gradient(circle at bottom, rgba(238,203,18,0.5) , transparent 80%),
-      radial-gradient(circle at bottom, rgba(125, 174, 205, 0.46) 55%, rgba(238,203,18,0.88) 55%);
+  50% {
+    background: $batmanYellow
+  //    radial-gradient(circle at bottom, $batmanYellow , transparent 80%)
+    //  radial-gradient(circle at bottom, $batmanBlue 55%, $batmanYellow 55%);
   }
 }
 
   #signal-left{
     transform: rotate(330deg) skew(60deg);
-    svg {
+    svg, img {
       transform: skew(-60deg) rotate(-330deg) scale(1.8) translate(0%, 20%);
     }
     cursor: pointer;
@@ -117,7 +117,7 @@
 
   #headlights{
     transform: rotate(360deg) skew(60deg);
-    svg {
+    svg, img {
       transform: skew(-60deg) rotate(-360deg) scale(0.8) translate(-50%, 0%);
     }
     cursor: pointer;

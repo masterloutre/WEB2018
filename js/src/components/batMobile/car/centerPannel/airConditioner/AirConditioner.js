@@ -29,7 +29,7 @@ export default class AirConditioner extends Component {
     render(){
         return (
             <div className="air-conditioner">
-                <span>{this.props.temperature}°C</span>
+                <span className="hollowedNumbers">{this.props.temperature}°C</span>
                 <div id="gradient" style={this.setGradient()}></div>
             </div>
         )

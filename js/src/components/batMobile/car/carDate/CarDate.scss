@@ -3,13 +3,14 @@
 .car-date{
   @extend %widget-border-glow;
   @extend %full-height;
-  
+  padding:10px;
+  margin-bottom: 20px;
   *{
   	display:inline;
-	color:white;
+	//color:white;
 	@extend %text-glow;
-	padding:5px 20px;
 	font-size:12pt;
 	vertical-align: middle;
+  color: $textColor;
   }
 }

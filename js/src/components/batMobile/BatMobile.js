@@ -3,14 +3,14 @@ import "./BatMobile.css"
 import axios from 'axios'
 import Car from './car/Car.js'
 import CurrentDate from '../currentDate/CurrentDate.js'
+import CombatMode from "./combatMode/CombatMode";
 
 export default class BatMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        mode: null
+        combatMode: true
     }
-    console.log(this.props)
   }
 
   componentWillMount(){ //doit récupérer le modeID
@@ -22,18 +22,39 @@ export default class BatMobile extends Component {
     });*/
   }
 
+  changeMode = () => {
+      this.setState((prevState, props)=> ({combatMode: !prevState.combatMode}))
+      console.log("mode changed")
+  }
+
   render(){
-    return (
-      <div className="bat-mobile container-fluid h-100">
+      if(this.state.combatMode){
+          return(
+              <div className="bat-mobile container-fluid h-100">
 
-        <div id="outer-border" className="">
-            <div id="inner-border" className="">
+                  <div id="outer-border" className="">
+                      <div id="inner-border" className="">
 
-            </div>
-        </div>
-          <Car sessionId={this.props.sessionId}/>
-      </div>
-    )
+                      </div>
+                  </div>
+                  <CombatMode sessionId={this.props.sessionId} changeMode={this.changeMode}/>
+              </div>
+          )
+      }
+      else {
+          return (
+              <div className="bat-mobile container-fluid h-100">
+
+                  <div id="outer-border" className="">
+                      <div id="inner-border" className="">
+
+                      </div>
+                  </div>
+                  <Car sessionId={this.props.sessionId} changeMode={this.changeMode}/>
+              </div>
+          )
+      }
+
   }
 
 }

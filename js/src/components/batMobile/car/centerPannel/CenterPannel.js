@@ -19,7 +19,7 @@ export default class CenterPannel extends Component {
 
     setFlashBackground(componentId, flashing){
         if(flashing)
-          document.getElementById(componentId).style.animation = "flash 1.2s forwards linear infinite  normal";
+          document.getElementById(componentId).style.animation = "flash 1.2s linear infinite  normal";
         else
           document.getElementById(componentId).style.animation = "none";
     }
@@ -32,11 +32,12 @@ export default class CenterPannel extends Component {
       });
     }
 
+
     render() {
         return (
             <div className="center-pannel container-fluid">
                 <div className="row w-100 h-100 justify-content-center align-items-center absolute-top">
-                    <div className="center-button col-5 absolute"><ChangeModeButton/></div>
+                    <div className="center-button col-5 absolute"><ChangeModeButton changeMode={this.props.changeMode} onClick={()=>console.log("click")}/></div>
                 </div>
                 <ul className="row absolute-top w-100 h-100">
                     <li id="gas-pannel">

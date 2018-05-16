@@ -25,7 +25,6 @@ export default class Speed extends Component {
   buildData(){
     var seuil = Math.round(this.props.speed * this.state.nbMaxDivisionFilled / this.props.speedMax);
     var i;
-    console.log("seuil  " + seuil);
     const filledData = Array(0);
     if(seuil < this.state.nbMaxDivision-1){
       for (i = 0; i < seuil; i++) {
@@ -62,9 +61,9 @@ export default class Speed extends Component {
     return (
       <div className="speed container-fluid">
         <div className="row w-100 justify-content-center align-items-center">
-            <h2>{this.props.speed} KM/H</h2>
+            <h2 className="hollowedNumbers">{this.props.speed} KM/H</h2>
         </div>
-        <div className="row w-100 justify-content-center align-items-center">
+        <div className="row w-100 justify-content-center align-items-center speedPie">
             <Pie
                  width={350}
                  height={350}

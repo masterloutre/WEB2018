@@ -1,5 +1,17 @@
 @import "./customs.scss";
 
+@font-face {
+    font-family: kiona;
+    src: url('./fonts/Kiona-Regular.ttf');
+}
+@font-face {
+    font-family: optimus;
+    src: url('./fonts/Optimus.otf');
+}
+@font-face {
+    font-family: optimus-hollow;
+    src: url('./fonts/Optimus Hollow.otf');
+}
 
 html {
   @extend %full-height;
@@ -7,6 +19,17 @@ html {
 
 body {
   @extend %stripped-full-space;
+  font-family: kiona;
+  color: $textColor;
+  cursor: url(./images/cursor.png), auto;
+}
+
+.filledNumbers {
+  font-family: optimus;
+}
+
+.hollowedNumbers {
+  font-family: optimus-hollow;
 }
 
 #root {

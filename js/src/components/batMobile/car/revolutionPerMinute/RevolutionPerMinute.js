@@ -25,10 +25,11 @@ export default class RevolutionPerMinute extends Component {
     }
 
     buildData(){
-      var seuil = this.props.speed / 60.0 / this.state.wheelsize;
-      console.log("seuil  " + seuil);
+      var seuil = Math.round(this.props.speed / 60.0 / this.state.wheelsize);
       var i;
       const filledData = Array(0);
+      console.log("seuil" + seuil);
+      if(seuil < this.state.nbMaxDivision-1){
         for (i = 0; i < seuil; i++) {
           filledData.push({
             "id": "inferior"+i,
@@ -54,6 +55,7 @@ export default class RevolutionPerMinute extends Component {
         this.setState({...this.state, data: filledData}, () => {
           //console.log("data : " + JSON.stringify(this.state.data));
         });
+      }
     }
 
 
@@ -62,9 +64,9 @@ export default class RevolutionPerMinute extends Component {
       return (
         <div className="speed container-fluid">
           <div className="row w-100 justify-content-center align-items-center">
-              <h2>1/min x 1000</h2>
+              <h2 className="hollowedNumbers">1/min x 1000</h2>
           </div>
-          <div className="row w-100 justify-content-center align-items-center">
+          <div className="row w-100 justify-content-center align-items-center revolutionPerMinutePie">
               <Pie
                    width={350}
                    height={350}

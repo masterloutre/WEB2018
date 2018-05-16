@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import "./Gas.css"
 import axios from 'axios'
+import styles from "./Gas.css"
 
 
 const grd = {background : "radial-gradient(circle at bottom, transparent 22%, rgba(238,203,18,0.88) 22%, transparent 40%)"};
@@ -23,9 +24,9 @@ export default class Gas extends Component {
         const percent = (gas * (maxPercent - minPercent)/ 100) +minPercent;
         return {
             background :
-                "radial-gradient(circle at bottom, rgba(238,203,18,0.5) , transparent 40%)," +
+                "radial-gradient(circle at bottom,  rgba(238,203,18,0.88) , transparent 10%)," +
                 "linear-gradient("+ angle + "deg, transparent "+ (percent-1) +"%, black "+ percent +"%)," +
-                "radial-gradient(circle at bottom, rgba(125, 174, 205, 0.46) 25%, rgba(238,203,18,0.88) 55%)"
+                "radial-gradient(circle at bottom, rgba(125, 174, 205, 0.46) 25%,  rgba(238,203,18,0.88) 55%)"
         }
     }
 

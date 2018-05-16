@@ -36,7 +36,8 @@ export default class CarDate extends Component {
 
     render() {
         return (
-            <div className="car-date">
+            <div className="car-date text-center">
+                <p className="text-center">Hello Batman !<br/></p>
                 <h2>{this.state.time}</h2>
                 <h3>{this.state.date}</h3>
             </div>

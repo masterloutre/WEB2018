@@ -1,0 +1,18 @@
+@import "../../../../../customs.scss";
+
+.armory{
+  @extend %full-space;
+  color: $textColor;
+}
+
+#weapons-overview{
+  @extend %circle;
+  @extend %widget-border-glow;
+
+  h3{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+}

@@ -172,21 +172,21 @@ class UserController
         if($val < 50) // Si on va à moins de 50km/h on passe en électrique
         {
             $user["0"]->battery -= 0.01;
-        if($user["0"]->battery < 0){$user["0"]->battery = 0;}
+            if($user["0"]->battery < 0){$user["0"]->battery = 0;}
         }
         else // Sinon on reste en thermique
         {
             $user["0"]->essence -= 0.01;
-        if($user["0"]->essence < 0){$user["0"]->essence = 0;}
+            if($user["0"]->essence < 0){$user["0"]->essence = 0;}
             if($user["0"]->battery < 100) // ET comme la Batmobile est trop cool elle se recharge quand c'est en thermique
-            {
-                $user["0"]->battery += 0.01;
+                {
+                    $user["0"]->battery += 0.01;
             }
         }
 
         $user["0"]->bpm = 42 + $val/5;
         if($user["0"]->bpm > 300){$user["0"]->bpm = 300;}
-            app('db')->update('UPDATE user SET mileage = ?, xPos = ?,battery = ?,oilLevel = ?,bpm = ? WHERE sessionId = ?',[$user["0"]->mileage,$user["0"]->xPos,$user["0"]->battery,$user["0"]->oilLevel,$user["0"]->bpm,$id]);
+            app('db')->update('UPDATE user SET mileage = ?, xPos = ?,battery = ?,essence = ?,bpm = ? WHERE sessionId = ?',[$user["0"]->mileage,$user["0"]->xPos,$user["0"]->battery,$user["0"]->essence,$user["0"]->bpm,$id]);
     }
 
     public function setCarbodyState(Request $request, $id)

@@ -21,8 +21,7 @@ class OwnController {
 	public static function addOwn($ammunition, $sessionId, $weaponId)
     {
         $stmt = app('db')->insert('INSERT INTO own(ammunition,sessionId,weaponId) VALUES (?,?,?)',[$ammunition,$sessionId,$weaponId]);
-        $response = array('success' => 'Well-done');
-        return json_encode($response);
+        return response('Success',200)->header('Content-Type', 'text/plain');
     }
 
 	/*******************GETTERS COMPLEXES*******************/
@@ -30,9 +29,12 @@ class OwnController {
 	public function getAmmunition($weaponId,$userId){
 		$ammunition = app('db')->select('SELECT ammunition FROM own WHERE sessionId = ? AND weaponId = ?',[$userId, $weaponId]);
         if(count($ammunition) > 0)
-			return json_encode($ammunition["0"]);
-        $response = array('error' => "Weapon not found");
-        return json_encode($response);
+			return response()->json([
+                    'ammunition' => $ammunition["0"]->ammunition
+            ],200);
+		return response()->json([
+                    'error' => "No ammunition for this weapon"
+            ],400);
 	}
 
 	public function setAmmunition(Request $request, $weaponId, $userId){
@@ -43,24 +45,25 @@ class OwnController {
 		if($user && $weapon){
 	        $val = $request->json()->all();
 	        if(isset($val["ammunition"])){
-		        //Checking if an entry with the current data (weapon and user id) is already in the database
-				$test = OwnController::getAmmunition($weaponId,$userId);
-				$test = json_decode($test);
-				if(isset($test->error)){
-					OwnController::addOwn($val["ammunition"],$userId,$weaponId);
-					$response = array('success' => "Well-done. A new entry have been put in the database.");
-					return json_encode($response);
+
+	        	if($val["ammunition"]>0){
+			        //Checking if an entry with the current data (weapon and user id) is already in the database
+					$test = OwnController::getAmmunition($weaponId,$userId);
+					$test = json_decode($test);
+					if(isset($test->error)){
+						OwnController::addOwn($val["ammunition"],$userId,$weaponId);
+						
+	        			return response('Success',200)->header('Content-Type', 'text/plain');
+					}
+					$query = "UPDATE own SET ammunition = ? WHERE weaponId = ? AND sessionId = ?";
+			        $stmt = app('db')->update($query,[$val["ammunition"],$weaponId,$userId]);
+					return response('Success',200)->header('Content-Type', 'text/plain');
 				}
-				$query = "UPDATE own SET ammunition = ? WHERE weaponId = ? AND sessionId = ?";
-		        $stmt = app('db')->update($query,[$val["ammunition"],$weaponId,$userId]);
-				$response = array('success' => "Well-defined");
-				return json_encode($response);
+				return response('Invalid data (>0)',400)->header('Content-Type', 'text/plain');
 			}
-			$response = array('error' => "Invalid data-name (need 'ammunition')");
-			return json_encode($response);
+			return response('Invalid data-name (need "ammunition")',400)->header('Content-Type', 'text/plain');
 		}
-		$response = array('error' => "sessionId or weaponId not found");
-		return json_encode($response);
+		return response('sessionId or weaponId not found',400)->header('Content-Type', 'text/plain');
 	}
 
 	public static function setAllOwn($id){

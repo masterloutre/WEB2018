@@ -33,6 +33,7 @@ export default class Armory extends Component {
 
     componentDidUpdate( prevState, prevProps){
         if(prevProps.sessionId !== this.props.sessionId) {
+            console.log(this.props.sessionId)
             this.setState({sessionId: this.props.sessionId})
             this.fetchWeaponryData()
             this.fetchCurrentWeaponData()
@@ -59,26 +60,26 @@ export default class Armory extends Component {
     fetchCurrentWeaponData = () => {
         axios.get("/weapons/"+ this.state.currentWeapon.id + "/user/" + this.props.sessionId)
             .then((results) => {
-                if(results.data.ammunition !== undefined) { //à enlever quand les imac1 auront implémenté les bons codes
                     this.setState((prevState, props) => ({
                         currentWeapon: {
                             id: prevState.currentWeapon.id,
                             ammunition: results.data.ammunition
                         }
                     }))
-                }})
-
-            .catch((error) => console.log(error))
+                })
+            .catch((error) => console.log("this error is probably due to invalid index and is expected to happen a few times at the beginning of the app, this is normal behaviour"))
     }
 
     updateCurrentWeaponBDD = () => {
         axios.put("/weapons/"+ this.state.currentWeapon.id + "/user/" + this.props.sessionId, {
             ammunition : this.state.currentWeapon.ammunition
         })
+            .then()
             .catch((error) => console.log(error))
     }
 
     fireCurrentWeapon = () => {
+        console.log("weapon fire")
         if(this.state.currentWeapon.ammunition > 0){
             this.setState((prevState, props) => ({
                 currentWeapon : {

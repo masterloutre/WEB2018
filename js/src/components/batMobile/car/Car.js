@@ -69,21 +69,21 @@ export default class Car extends Component {
       axios.get("/car/"+ this.props.sessionId)
           .then((results) => {
               this.setState({
-                  weight: results.data[0].weight,
-                  speed: results.data[0].speed,
-                  mileage: results.data[0].mileage,
-                  gas: results.data[0].essence,
-                  battery: results.data[0].battery,
-                  tpm: results.data[0].tpm,
-                  oilLevel: results.data[0].oilLevel,
-                  liquidLevel: results.data[0].liquidLevel,
-                  carbodyState: results.data[0].carbodyState,
-                  position: {xPos: results.data[0].xPos, yPos: results.data[0].yPos},
-                  bpm: results.data[0].bpm,
-                  tireId: results.data[0].tireId,
-                  radioId: results.data[0].radioId,
-                  temperature: results.data[0].temperature,
-                  headlight: results.data[0].headlight
+                  weight: results.data.weight,
+                  speed: results.data.speed,
+                  mileage: results.data.mileage,
+                  gas: results.data.essence,
+                  battery: results.data.battery,
+                  tpm: results.data.tpm,
+                  oilLevel: results.data.oilLevel,
+                  liquidLevel: results.data.liquidLevel,
+                  carbodyState: results.data.carbodyState,
+                  position: {xPos: results.data.xPos, yPos: results.data.yPos},
+                  bpm: results.data.bpm,
+                  tireId: results.data.tireId,
+                  radioId: results.data.radioId,
+                  temperature: results.data.temperature,
+                  headlight: results.data.headlight
               })
           })
           .catch((error) => console.log(error))

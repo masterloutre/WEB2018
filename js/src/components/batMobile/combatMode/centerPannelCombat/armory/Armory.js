@@ -32,7 +32,6 @@ export default class Armory extends Component {
     }
 
     componentDidUpdate( prevState, prevProps){
-        console.log(this.props.sessionId)
         if(prevProps.sessionId !== this.props.sessionId) {
             this.setState({sessionId: this.props.sessionId})
             this.fetchWeaponryData()
@@ -58,12 +57,9 @@ export default class Armory extends Component {
     }
 
     fetchCurrentWeaponData = () => {
-        console.log(this.props.sessionId)
         axios.get("/weapons/"+ this.state.currentWeapon.id + "/user/" + this.props.sessionId)
             .then((results) => {
-                console.log(results.data.ammunition)
                 if(results.data.ammunition !== undefined) { //à enlever quand les imac1 auront implémenté les bons codes
-                    console.log(results)
                     this.setState((prevState, props) => ({
                         currentWeapon: {
                             id: prevState.currentWeapon.id,
@@ -75,41 +71,65 @@ export default class Armory extends Component {
             .catch((error) => console.log(error))
     }
 
-    updateWeaponBDD = (weaponId) => {
-        axios.put("/weapons/"+ weaponId + "/user/" + this.props.sessionId, {
+    updateCurrentWeaponBDD = () => {
+        axios.put("/weapons/"+ this.state.currentWeapon.id + "/user/" + this.props.sessionId, {
             ammunition : this.state.currentWeapon.ammunition
         })
-            .then((results) => console.log(results))
             .catch((error) => console.log(error))
     }
 
-    fireWeapon = (weaponId) => () => {
-        if(this.state.weapons[weaponId].rate > 0){
+    fireCurrentWeapon = () => {
+        if(this.state.currentWeapon.ammunition > 0){
             this.setState((prevState, props) => ({
                 currentWeapon : {
                     id: prevState.currentWeapon.id,
                     ammunition: prevState.currentWeapon.ammunition - 1
                 }
-            }), () => this.updateWeaponBDD(this.state.currentWeapon.id))
+            }), () => this.updateCurrentWeaponBDD())
         }
+    }
 
+    rechargeCurrentWeapon = () => {
+        this.setState((prevState, props) => ({
+            currentWeapon : {
+                id: prevState.currentWeapon.id,
+                ammunition: prevState.weapons[prevState.currentWeapon.id].maxAmmunition
+            }
+        }), () => this.updateCurrentWeaponBDD())
+    }
 
+    changeCurrentWeapon = (newId) => {
+        this.setState({
+            currentWeapon : {
+                id : newId,
+                ammunition : 0
+            }
+        }, () => this.fetchCurrentWeaponData())
+    }
+
+    changeCurrentWeaponNext = () => {
+        const newId = this.state.currentWeapon.id + 1
+        if(newId < this.state.weapons.length-1){
+            this.changeCurrentWeapon(newId)
+        } else {
+            this.changeCurrentWeapon(0)
+        }
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className="armory row align-content-center">
                 <div className="col-6 h-50">
                     <div id="weapons-overview">
                         <h3 className={"absolute-top"}>{this.state.weapons[this.state.currentWeapon.id].name}</h3>
+                        <button onClick={() => this.changeCurrentWeaponNext()}>Next Weapon</button>
                     </div>
                 </div>
                 <div className="col-6 h-50">
                     <Ammunitions
                         maxAmmunition={this.state.weapons[this.state.currentWeapon.id].maxAmmunition}
                         quantity={this.state.currentWeapon.ammunition}
-                        fire={this.fireWeapon(this.state.currentWeapon.id)}
+                        fire={this.fireCurrentWeapon}
                     />
                 </div>
 

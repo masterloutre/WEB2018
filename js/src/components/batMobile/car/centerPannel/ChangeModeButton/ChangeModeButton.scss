@@ -3,13 +3,14 @@
 
 
 .change-mode-button {
+  cursor: pointer;
   position: absolute;
   z-index: 10;
   width: 100%;
   @extend %circle;
   box-shadow: 0px 0px 15px $batmanYellow;
   background-color: black;
-  color: $alertRed;
+  color: $batmanYellow;
   //padding: 0px;
 
   h3 {
@@ -17,10 +18,15 @@
     margin-top: -100%;
     vertical-align: middle;
     text-align: center;
-    color: $batmanYellow;
+  //  color: $batmanYellow;
     opacity: 0.7;
     height:auto;
     font-size : 2vw;
   }
 
+}
+
+.change-mode-button:hover{
+  color: $alertRed;
+  box-shadow: 0px 0px 15px $alertRed;
 }

@@ -8,8 +8,13 @@
     padding-top: 20%;
     border: 0px;
     border-radius: 15%;
-    color: $fadedWhite;
+    color: $textColor;
     transform: translate(0%, -100%);
     cursor: pointer;
+  }
+
+  button:hover{
+    @extend %widget-border-glow-yellow;
+    color:$batmanYellow;
   }
 }

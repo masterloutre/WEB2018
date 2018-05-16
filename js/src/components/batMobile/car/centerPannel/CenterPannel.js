@@ -19,7 +19,7 @@ export default class CenterPannel extends Component {
 
     setFlashBackground(componentId, flashing){
         if(flashing)
-          document.getElementById(componentId).style.animation = "flash 1.2s forwards linear infinite  normal";
+          document.getElementById(componentId).style.animation = "flash 1.2s linear infinite  normal";
         else
           document.getElementById(componentId).style.animation = "none";
     }
@@ -31,6 +31,7 @@ export default class CenterPannel extends Component {
         this.setFlashBackground(componentId, this.state[componentId]);
       });
     }
+
 
     render() {
         return (

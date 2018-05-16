@@ -3,7 +3,7 @@ import "./Car.css"
 import axios from 'axios'
 import Speed from "./speed/Speed.js"
 import CurrentDate from "../../currentDate/CurrentDate";
-import Graphs from "./graphs/Graphs";
+import GraphsRight from "./graphsRight/GraphsRight.js";
 import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
 import CenterPannel from "./centerPannel/CenterPannel";
@@ -132,10 +132,11 @@ export default class Car extends Component {
       <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">
               <div className="col p-5">
-                  <CarDate/>
+                <div className="car-date">
+                </div>
               </div>
               <div className="col p-5">
-                  <Graphs speed={this.state.speed} gas={this.state.gas}/>
+                  <GraphsRight speed={this.state.speed} gas={this.state.gas}/>
               </div>
           </div>
           <div className="row align-items-end p-5 justify-content-center" id="circles">
@@ -145,6 +146,9 @@ export default class Car extends Component {
               <div className="col-md-5 col-lg-5 col-12 offset-2">
                   <RevolutionPerMinute speed={this.state.speed}/>
               </div>
+          </div>
+          <div className="row justify-content-center fixed-bottom">
+            <CarDate/>
           </div>
           <div className="row justify-content-center">
           <div className="h-50 w-50 container" id="center-pannel">

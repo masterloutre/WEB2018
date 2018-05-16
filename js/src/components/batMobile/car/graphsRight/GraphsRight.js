@@ -1,10 +1,10 @@
 import React, {Component} from "react"
-import "./Graphs.css"
+import "./GraphsRight.css"
 import axios from 'axios'
 import {DynLineGraph} from "../../../dynLineGraph/DynLineGraph";
 
 
-export default class Graphs extends Component {
+export default class GraphsRight extends Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export default class Graphs extends Component {
 
     render() {
         return (
-            <div className="graphs row justify-content-center">
+            <div className="graphsRight row justify-content-center">
                 <div className="col-7 p-2 offset-3">
                     <DynLineGraph  data={this.props.speed} unit={"km/h"}/>
                 </div>

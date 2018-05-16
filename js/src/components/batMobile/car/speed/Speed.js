@@ -61,9 +61,9 @@ export default class Speed extends Component {
     return (
       <div className="speed container-fluid">
         <div className="row w-100 justify-content-center align-items-center">
-            <h2>{this.props.speed} KM/H</h2>
+            <h2 className="hollowedNumbers">{this.props.speed} KM/H</h2>
         </div>
-        <div className="row w-100 justify-content-center align-items-center">
+        <div className="row w-100 justify-content-center align-items-center speedPie">
             <Pie
                  width={350}
                  height={350}

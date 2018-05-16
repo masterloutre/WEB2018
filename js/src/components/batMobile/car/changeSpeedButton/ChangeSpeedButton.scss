@@ -8,7 +8,11 @@
     padding-top: 20%;
     border: 0px;
     border-radius: 15%;*/
-    color: $fadedWhite;
+    color: $textColor;
     cursor: pointer;
   //}
+}
+.change-speed-button:hover{
+    @extend %widget-border-glow-yellow;
+    color:$batmanYellow;
 }

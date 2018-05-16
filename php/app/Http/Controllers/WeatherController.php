@@ -28,7 +28,13 @@ class WeatherController {
 	 */
 	public static function createFromId($id){
 		$user = app('db')->select('SELECT * FROM weather WHERE t = ?', [$id]);
-		return $user;
+		
+		if(count($user)>0){
+			return response()->json([
+                    $user
+            ],200); 
+		}
+		return response('Id not found',400)->header('Content-Type', 'text/plain');
 	}
 
 	/********************CREATE*****************************/
@@ -86,6 +92,11 @@ class WeatherController {
 	public static function getRandomWeather()
 	{
 		$user = app('db')->select('SELECT * FROM weather WHERE t = ?', [rand(1,10000)]);
-		return $user;
+		if(count($user)>0){
+			return response()->json([
+                    $user
+            ],200); 
+		}
+		return response('Id not found',400)->header('Content-Type', 'text/plain');
 	}
 }

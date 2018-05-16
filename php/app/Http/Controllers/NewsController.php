@@ -27,6 +27,13 @@ class NewsController {
 	 */
 	public static function createFromId($id){
 		$user = app('db')->select('SELECT * FROM news WHERE id = ?', [$id]);
+
+		if(count($user)>0){
+			return response()->json([
+                    $user
+            ],200); 
+		}
+		return response('Id not found',400)->header('Content-Type', 'text/plain');
 	}
 
 	/********************CREATE*****************************/
@@ -82,4 +89,13 @@ class NewsController {
 
 	/*******************GETTERS COMPLEXES*******************/
 
+	public static function getRandomNews(){
+		$user = app('db')->select('SELECT * FROM news WHERE id = ?', [rand(1,10)]);
+		if(count($user)>0){
+			return response()->json([
+                    $user
+            ],200); 
+		}
+		return response('Id not found',400)->header('Content-Type', 'text/plain');
+	}
 }

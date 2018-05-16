@@ -5,3 +5,7 @@
   @extend %widget-border-glow;
   @extend %circle;
 }
+
+.revolutionPerMinutePie {
+  transform: rotate(16deg);
+}

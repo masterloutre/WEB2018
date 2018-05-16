@@ -37,10 +37,11 @@ class VilainController {
 	public static function createFromId($id){
 		$user = app('db')->select('SELECT * FROM vilain WHERE id = ?', [$id]);
 		if(count($user)>0){
-			return $user;
+			return response()->json([
+                    $user
+            ],200); 
 		}
-		$response = array('error' => "Id not found");
-        return json_encode($response);
+		return response('Id not found',400)->header('Content-Type', 'text/plain');
 	}
 
 	/********************CREATE*****************************/
@@ -120,12 +121,13 @@ class VilainController {
         }
         array_push($bindValue, $id);
         $stmt = app('db')->update($query,$bindValue);
-       	$response = array("success" => "Well done");
-       	return json_encode($response);
+       	 return response('Success',200)->header('Content-Type', 'text/plain');
 	}
 	public function getAllVilains(){
 		$vilains = app('db')->select('SELECT * FROM vilain');
-		return $vilains;
+			return response()->json([
+                    $vilains
+            ],200); 
 		
 	}
 }

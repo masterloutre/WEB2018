@@ -59,11 +59,13 @@ class WeaponController {
 	 * Get a parameter of an instance of Weapon
 	 * @param int $name, a parameter of Weapon
 	 */	
-	public static function getAllWeapons()
+	public static function getAllWeapons($userId)
 	{
-		$query = "SELECT DISTINCT * FROM weapon";
-		$weapons = app('db')->select($query,[]);
-		return $weapons;
+		$query = "SELECT * FROM weapon INNER JOIN own ON weapon.id = own.weaponId WHERE own.sessionId = ?";
+		$weapons = app('db')->select($query,[$userId]);
+		return response()->json([
+                    $weapons
+            ],200);
 	}
 
 	/*******************SETTERS SIMPLE**********************/

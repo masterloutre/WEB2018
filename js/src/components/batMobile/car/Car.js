@@ -56,12 +56,6 @@ export default class Car extends Component {
           this.setState({sessionId: this.props.sessionId})
           this.fetchCarData()
       }
-      if(prevState.temperature !== this.state.temperature){
-          this.updateTemperatureBDD(this.state.temperature)
-      }
-      if(prevState.speed !== this.state.speed){
-          this.updateSpeedBDD(this.state.speed)
-      }
   }
 
   fetchCarData = () => {
@@ -91,21 +85,21 @@ export default class Car extends Component {
 
   changeTemperatureClick = (op) => {
       if(op === "+" && this.state.temperature+1 <= 50) // 50 : temperature max
-          this.setState((prevState, props) => ({temperature: prevState.temperature+1}));
+          this.setState((prevState, props) => ({temperature: prevState.temperature+1}), () => this.updateTemperatureBDD());
       else if (op === "-" && this.state.temperature-1 >= 0)
-          this.setState((prevState, props) => ({temperature: prevState.temperature-1}));
+          this.setState((prevState, props) => ({temperature: prevState.temperature-1}), () => this.updateTemperatureBDD());
   }
 
-  updateTemperatureBDD = (value) => {
+  updateTemperatureBDD = () => {
       axios.put("/car/"+ this.state.sessionId, {
-            temperature: value
+            temperature: this.state.temperature
         })
       .catch(error => console.log(error))
   }
 
-  updateSpeedBDD = (value) => {
+  updateSpeedBDD = () => {
       axios.put("/car/"+ this.state.sessionId, {
-          speed: value
+          speed: this.state.speed
       })
           .catch(error => console.log(error))
   }
@@ -113,9 +107,9 @@ export default class Car extends Component {
   changeSpeedClick(op) {
 
     if(op === "+" && this.state.speed+10 <= this.state.speedMax)
-      this.setState((prevState, props) => ({speed: prevState.speed+10}));
+      this.setState((prevState, props) => ({speed: prevState.speed+10}), () => this.updateSpeedBDD());
     else if (op === "-" && this.state.speed-10 >= 0)
-      this.setState((prevState, props) => ({speed: prevState.speed-10}));
+      this.setState((prevState, props) => ({speed: prevState.speed-10}), () => this.updateSpeedBDD());
   }
 
   renderSpeedButton = (op) => {

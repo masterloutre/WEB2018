@@ -58,6 +58,30 @@ export default class CombatMode extends Component {
             .catch((error) => console.log(error))
     }
 
+    updateWeaponBDD = (weaponId) => {
+        axios.put("/weapons/"+ weaponId + "/user/" + this.props.sessionId, {
+            rate : this.state.weapons[weaponId].rate
+        })
+            .then((results) => console.log(results))
+            .catch((error) => console.log(error))
+    }
+
+    fireWeapon = (weaponId) => () => {
+        if(this.state.weapons[weaponId].rate > 0){
+            this.setState((prevState, props) => {
+                let weaponsCopy = prevState.weapons.slice()
+                weaponsCopy[weaponId] = {
+                    ...prevState.weapons[weaponId],
+                    rate : prevState.weapons[weaponId].rate - 1
+                }
+                return ({
+                        weapons: weaponsCopy
+                    })
+            })
+        }
+
+    }
+
     fetchLawData = () => {
         axios.get("/Law/")
             .then((results) => {
@@ -74,7 +98,7 @@ export default class CombatMode extends Component {
             <div className="combat-mode container-fluid h-100">
                 <div className="row" id={"top-panels"}>
                     <div className={"col-3"}></div>
-                    <div className={"col-6"}><CenterPannelCombat weapons={this.state.weapons}/></div>
+                    <div className={"col-6"}><CenterPannelCombat weapons={this.state.weapons} fireWeapon={this.fireWeapon} sessionId={this.props.sessionId}/></div>
                     <div className={"col-3"}></div>
                 </div>
                 <div className="row" id={"bottom-panels"}>

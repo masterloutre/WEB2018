@@ -15,6 +15,7 @@ export default class Ammunition extends Component {
             <div className="ammunition">
                 <p>quantity : {this.props.quantity} %</p>
                 <p>maxAmmunition : {this.props.maxAmmunition}</p>
+                <button onClick={()=>this.props.fire()}>fire </button>
             </div>
         )
     }

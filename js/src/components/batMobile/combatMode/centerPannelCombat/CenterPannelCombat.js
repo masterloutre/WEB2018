@@ -13,7 +13,7 @@ export default class CenterPannelCombat extends Component {
 
     render() {
         return (
-            <div className="center-pannel-combat">
+            <div className="center-pannel-combat container-fluid ">
                 <Armory sessionId={this.props.sessionId} weapons={this.props.weapons} fireWeapon={this.props.fireCurrentWeapon}/>
             </div>
         );

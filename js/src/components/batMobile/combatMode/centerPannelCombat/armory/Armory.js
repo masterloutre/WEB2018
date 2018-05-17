@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import "./Armory.css"
 import axios from 'axios'
 import Ammunitions from "./ammunition/Ammunition";
+import Weapons from "./weapons/Weapons";
 
 
 export default class Armory extends Component {
@@ -122,8 +123,11 @@ export default class Armory extends Component {
             <div className="armory row align-content-center">
                 <div className="col-6 h-50">
                     <div id="weapons-overview">
+                        <Weapons currentWeaponId={this.state.currentWeapon.id} weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name}))}/>
+                        {/*
                         <h3 className={"absolute-top"}>{this.state.weapons[this.state.currentWeapon.id].name}</h3>
                         <button onClick={() => this.changeCurrentWeaponNext()}>Next Weapon</button>
+                        */}
                     </div>
                 </div>
                 <div className="col-6 h-50">

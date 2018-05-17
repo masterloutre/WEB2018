@@ -9,7 +9,7 @@ export default class BatMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        combatMode: false
+        combatMode: true
     }
   }
 

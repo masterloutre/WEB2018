@@ -66,7 +66,7 @@ export default class CenterPannel extends Component {
         return (
             <div className="center-pannel container-fluid">
                 <div className="row w-100 h-100 justify-content-center align-items-center absolute-top">
-                    <div className="center-button col-5 absolute"><ChangeModeButton changeMode={this.props.changeMode} onClick={()=>console.log("click")}/></div>
+                    <div className="center-button col-5 absolute"><ChangeModeButton changeMode={this.props.changeMode}/></div>
                 </div>
                 <ul className="row absolute-top w-100 h-100">
                     <li id="gas-pannel">

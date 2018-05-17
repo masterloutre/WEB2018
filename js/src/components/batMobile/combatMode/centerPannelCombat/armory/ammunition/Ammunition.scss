@@ -3,4 +3,12 @@
 .ammunition{
   @extend %widget-border-glow;
   @extend %full-space;
+
+  padding-left: 30%;
+
+  button {
+    padding: 3%;
+    @extend %widget-border-glow-yellow;
+    margin: auto;
+  }
 }

@@ -68,7 +68,7 @@
     svg, img {
       transform: skew(-60deg) rotate(-150deg) scale(1) translate(40%, -40%);
     }
-    cursor: pointer;
+    cursor: url('../../../../images/cursor_red.png'), pointer;
   }
 
   #signal-right{
@@ -76,7 +76,7 @@
     svg, img {
       transform: skew(-60deg) rotate(-180deg) scale(1.8) translate(10%, 0%);
     }
-    cursor: pointer;
+    cursor: url('../../../../images/cursor_red.png'), pointer;
   }
 
   #air-conditioner-panel{
@@ -112,7 +112,7 @@
     svg, img {
       transform: skew(-60deg) rotate(-330deg) scale(1.8) translate(0%, 20%);
     }
-    cursor: pointer;
+    cursor: url('../../../../images/cursor_red.png'), pointer;
   }
 
   #headlights{
@@ -120,7 +120,7 @@
     svg, img {
       transform: skew(-60deg) rotate(-360deg) scale(0.8) translate(-50%, 0%);
     }
-    cursor: pointer;
+    cursor: url('../../../../images/cursor_red.png'), pointer;
   }
 }
 

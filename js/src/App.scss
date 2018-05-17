@@ -21,7 +21,7 @@ body {
   @extend %stripped-full-space;
   font-family: kiona;
   color: $textColor;
-  cursor: url('./images/cursor.png'), pointer;
+  cursor: url('./images/cursor.png'), auto;
 }
 
 .filledNumbers {

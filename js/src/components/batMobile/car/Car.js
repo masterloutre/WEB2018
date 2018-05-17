@@ -4,6 +4,7 @@ import axios from 'axios'
 import Speed from "./speed/Speed.js"
 import CurrentDate from "../../currentDate/CurrentDate";
 import GraphsRight from "./graphsRight/GraphsRight.js";
+import GraphsLeft from "./graphsLeft/GraphsLeft.js";
 import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
 import CenterPannel from "./centerPannel/CenterPannel";
@@ -126,8 +127,7 @@ export default class Car extends Component {
       <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">
               <div className="col p-5">
-                <div className="car-date">
-                </div>
+                <GraphsLeft speed={this.state.speed} mileage={this.state.mileage}/>
               </div>
               <div className="col p-5">
                   <GraphsRight speed={this.state.speed} gas={this.state.gas}/>

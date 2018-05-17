@@ -3,13 +3,15 @@
 
 .car {
   transform: translate(0%, -100%);
+  -moz-transform: translate(0%, -100%);
+	-ms-transform: translate(0%, -100%);
   opacity: 1;
 }
 
 #top-pannels {
   opacity: 1;
   height: 33%;
-  position: relative;
+  // position: relative;
   z-index: 3;
   margin-bottom: 3%;
   #top-pannels:first-child{
@@ -37,6 +39,3 @@
   padding-top: 0%;
 
 }
-
-
-

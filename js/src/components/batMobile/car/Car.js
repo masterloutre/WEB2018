@@ -56,12 +56,6 @@ export default class Car extends Component {
           this.setState({sessionId: this.props.sessionId})
           this.fetchCarData()
       }
-      if(prevState.temperature !== this.state.temperature){
-          this.updateTemperatureBDD(this.state.temperature)
-      }
-      if(prevState.speed !== this.state.speed){
-          this.updateSpeedBDD(this.state.speed)
-      }
   }
 
   fetchCarData = () => {
@@ -69,21 +63,21 @@ export default class Car extends Component {
       axios.get("/car/"+ this.props.sessionId)
           .then((results) => {
               this.setState({
-                  weight: results.data[0].weight,
-                  speed: results.data[0].speed,
-                  mileage: results.data[0].mileage,
-                  gas: results.data[0].essence,
-                  battery: results.data[0].battery,
-                  tpm: results.data[0].tpm,
-                  oilLevel: results.data[0].oilLevel,
-                  liquidLevel: results.data[0].liquidLevel,
-                  carbodyState: results.data[0].carbodyState,
-                  position: {xPos: results.data[0].xPos, yPos: results.data[0].yPos},
-                  bpm: results.data[0].bpm,
-                  tireId: results.data[0].tireId,
-                  radioId: results.data[0].radioId,
-                  temperature: results.data[0].temperature,
-                  headlight: results.data[0].headlight
+                  weight: results.data.weight,
+                  speed: results.data.speed,
+                  mileage: results.data.mileage,
+                  gas: results.data.essence,
+                  battery: results.data.battery,
+                  tpm: results.data.tpm,
+                  oilLevel: results.data.oilLevel,
+                  liquidLevel: results.data.liquidLevel,
+                  carbodyState: results.data.carbodyState,
+                  position: {xPos: results.data.xPos, yPos: results.data.yPos},
+                  bpm: results.data.bpm,
+                  tireId: results.data.tireId,
+                  radioId: results.data.radioId,
+                  temperature: results.data.temperature,
+                  headlight: results.data.headlight
               })
           })
           .catch((error) => console.log(error))
@@ -91,21 +85,21 @@ export default class Car extends Component {
 
   changeTemperatureClick = (op) => {
       if(op === "+" && this.state.temperature+1 <= 50) // 50 : temperature max
-          this.setState((prevState, props) => ({temperature: prevState.temperature+1}));
+          this.setState((prevState, props) => ({temperature: prevState.temperature+1}), () => this.updateTemperatureBDD());
       else if (op === "-" && this.state.temperature-1 >= 0)
-          this.setState((prevState, props) => ({temperature: prevState.temperature-1}));
+          this.setState((prevState, props) => ({temperature: prevState.temperature-1}), () => this.updateTemperatureBDD());
   }
 
-  updateTemperatureBDD = (value) => {
+  updateTemperatureBDD = () => {
       axios.put("/car/"+ this.state.sessionId, {
-            temperature: value
+            temperature: this.state.temperature
         })
       .catch(error => console.log(error))
   }
 
-  updateSpeedBDD = (value) => {
+  updateSpeedBDD = () => {
       axios.put("/car/"+ this.state.sessionId, {
-          speed: value
+          speed: this.state.speed
       })
           .catch(error => console.log(error))
   }
@@ -113,9 +107,9 @@ export default class Car extends Component {
   changeSpeedClick(op) {
 
     if(op === "+" && this.state.speed+10 <= this.state.speedMax)
-      this.setState((prevState, props) => ({speed: prevState.speed+10}));
+      this.setState((prevState, props) => ({speed: prevState.speed+10}), () => this.updateSpeedBDD());
     else if (op === "-" && this.state.speed-10 >= 0)
-      this.setState((prevState, props) => ({speed: prevState.speed-10}));
+      this.setState((prevState, props) => ({speed: prevState.speed-10}), () => this.updateSpeedBDD());
   }
 
   renderSpeedButton = (op) => {

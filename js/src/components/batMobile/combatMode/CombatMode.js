@@ -3,6 +3,9 @@ import "./CombatMode.css"
 import axios from 'axios'
 import CenterPannel from "../car/centerPannel/CenterPannel";
 import CenterPannelCombat from "./centerPannelCombat/CenterPannelCombat";
+import Criminals from "./criminals/Criminals";
+import ChangeModeButton from "../car/centerPannel/changeModeButton/ChangeModeButton";
+import CarArmorState from "./carArmorState/CarArmorState";
 
 
 export default class CombatMode extends Component {
@@ -11,12 +14,6 @@ export default class CombatMode extends Component {
         super();
         this.state = {
             sessionId: 0,
-            weapons: [{
-                id: 0,
-                name: "",
-                maxAmmunition: 0,
-                rate: 0
-            }],
             criminals: [
                 {
                     id: 0,
@@ -36,27 +33,13 @@ export default class CombatMode extends Component {
         };
     }
 
-    componentDidMount(){
-        this.fetchWeaponryData()
-    }
 
     componentDidUpdate( prevState, prevProps){
         if(prevProps.sessionId !== this.props.sessionId) {
             this.setState({sessionId: this.props.sessionId})
-            //this.fetchWeaponryData()
         }
     }
 
-    fetchWeaponryData = () => {
-        axios.get("/weapons/"+ this.props.sessionId)
-            .then((results) => {
-                console.log(results.data[3].name)
-                this.setState({
-                    weapons: results.data
-                })
-            })
-            .catch((error) => console.log(error))
-    }
 
     fetchLawData = () => {
         axios.get("/Law/")
@@ -73,13 +56,16 @@ export default class CombatMode extends Component {
         return (
             <div className="combat-mode container-fluid h-100">
                 <div className="row" id={"top-panels"}>
-                    <div className={"col-3"}></div>
-                    <div className={"col-6"}><CenterPannelCombat weapons={this.state.weapons}/></div>
-                    <div className={"col-3"}></div>
+                    <div className={"col-4"}>
+                        <Criminals/>
+                    </div>
+                    <div className={"col-8"}>
+                        <CenterPannelCombat sessionId={this.props.sessionId}/>
+                    </div>
                 </div>
-                <div className="row" id={"bottom-panels"}>
-                <h2>THIS IS COMBAT MODE</h2>
-                <button onClick={()=>this.props.changeMode()}>Change Mode</button>
+                <div className="row justify-content-center" id={"bottom-panels"}>
+                    <div className={"col-1 absolute"} ><ChangeModeButton changeMode={this.props.changeMode}/></div>
+                    <CarArmorState/>
                 </div>
             </div>
         )

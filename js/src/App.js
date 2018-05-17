@@ -13,7 +13,7 @@ class App extends Component {
     constructor(){
         super()
         this.state = {
-            sessionId : 0
+            sessionId : -1
         }
     }
 
@@ -21,7 +21,7 @@ class App extends Component {
         axios.get("/car")
             .then((result) =>
             {
-                this.setState({sessionId : result.data.id})
+                this.setState({sessionId : result.data.sessionId})
             })
             .catch(error => console.log(error))
 

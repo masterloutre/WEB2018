@@ -45,14 +45,18 @@ export default class Armory extends Component {
     fetchWeaponryData = () => {
         axios.get("/weapons/"+ this.props.sessionId)
             .then((results) => {
-                    this.setState({
-                        weapons: results.data.map( weapon => ({
-                            id: weapon.id,
-                            name: weapon.name,
-                            maxAmmunition: weapon.maxAmmuniton,
-                            rate: weapon.rate,
-                        }))
-                    })
+                    console.log(results)
+                    if(results.data[0].length !== 0){
+                        this.setState({
+                            weapons: results.data[0].map( weapon => ({
+                                id: weapon.id,
+                                name: weapon.name,
+                                maxAmmunition: weapon.maxAmmuniton,
+                                rate: weapon.rate,
+                            }))
+                        })
+                    }
+
 
             })
             .catch((error) => console.log(error))
@@ -120,17 +124,17 @@ export default class Armory extends Component {
 
     render() {
         return (
-            <div className="armory row align-content-center">
-                <div className="col-6 h-50">
+            <div className="armory row align-items-center ">
+                <div className="col-lg-6 h-0 absolute col-md-6">
                     <div id="weapons-overview">
-                        <Weapons currentWeaponId={this.state.currentWeapon.id} weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name}))}/>
-                        {/*
-                        <h3 className={"absolute-top"}>{this.state.weapons[this.state.currentWeapon.id].name}</h3>
-                        <button onClick={() => this.changeCurrentWeaponNext()}>Next Weapon</button>
-                        */}
+                        <Weapons
+                            currentWeaponId={this.state.currentWeapon.id}
+                            weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name}))}
+                            changeWeapon={this.changeCurrentWeaponNext}
+                        />
                     </div>
                 </div>
-                <div className="col-6 h-50">
+                <div className="col-8 h-50 offset-4">
                     <Ammunitions
                         maxAmmunition={this.state.weapons[this.state.currentWeapon.id].maxAmmunition}
                         quantity={this.state.currentWeapon.ammunition}

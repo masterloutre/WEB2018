@@ -8,6 +8,10 @@
 #weapons-overview{
   @extend %circle;
   @extend %widget-border-glow;
+  z-index: 4;
+  background-color: black;
+  transform: translate(-5%, 0%);
+
 
   h3{
     left: 50%;

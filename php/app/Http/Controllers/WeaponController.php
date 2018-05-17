@@ -63,9 +63,13 @@ class WeaponController {
 	{
 		$query = "SELECT * FROM weapon INNER JOIN own ON weapon.id = own.weaponId WHERE own.sessionId = ?";
 		$weapons = app('db')->select($query,[$userId]);
-		return response()->json([
-                    $weapons
-            ],200);
+		if(count($weapons)>0){
+			return response()->json([
+	                    $weapons
+	            ],200);
+		}
+
+        return response('Id not found',400)->header('Content-Type', 'text/plain');
 	}
 
 	/*******************SETTERS SIMPLE**********************/

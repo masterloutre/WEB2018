@@ -1,12 +1,25 @@
 @import "../../../../../../customs.scss";
 
-.center-pannel {
-  width : 100%;
-  @extend %widget-border-glow;
-  @extend %circle;
-  background-color: black;
+
+.weapons{
+  .center-button {
+    padding: 0;
+    height: 8px / 12px * 100%;
+    button{
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      @extend %circle;
+      @extend %widget-border-glow-yellow;
+
+      h3{
+        position: absolute;
+        color: $batmanYellow;
+      }
+    }
+  }
+
   overflow: hidden;
-  z-index: 5;
 
   ul {
     padding: 0;
@@ -123,18 +136,5 @@
   }
 }
 
-.center-button {
-  padding: 0;
-  height: 8px / 12px * 100%;
-    button{
-      width: 100%;
-      @extend %circle;
-      @extend %widget-border-glow-yellow;
 
-      h3{
-        position: absolute;
-        color: $batmanYellow;
-      }
-    }
-  }
 

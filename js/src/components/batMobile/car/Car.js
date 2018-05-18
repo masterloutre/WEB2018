@@ -127,7 +127,7 @@ export default class Car extends Component {
       <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">
               <div className="col p-5">
-                <GraphsLeft speed={this.state.speed} mileage={this.state.mileage}/>
+                <GraphsLeft oilLevel={this.state.oilLevel} mileage={this.state.mileage} battery={this.state.battery} liquidLevel={this.state.liquidLevel}/>
               </div>
               <div className="col p-5">
                   <GraphsRight speed={this.state.speed} gas={this.state.gas}/>

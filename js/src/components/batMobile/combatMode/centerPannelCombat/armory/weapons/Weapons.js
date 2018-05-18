@@ -15,6 +15,7 @@ export default class Weapons extends Component {
         const skewAngle = 90 - (360 / this.props.weaponList.length);
         return (
             <li
+                key={weapon.id.toString()}
                 style={{transform: "rotate(" + rotationAngle + "deg) skew(" + skewAngle + "deg)"}}
                 onClick={() => this.props.changeWeapon(weapon.id)}
             >

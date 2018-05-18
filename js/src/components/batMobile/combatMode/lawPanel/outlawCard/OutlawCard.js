@@ -21,7 +21,7 @@ export default class OutlawCard extends Component {
     render() {
         return (
             <div className="outlaw-card" style={this.setBorderColor()}>
-                <h2>{this.props.firstname} <span>{this.props.nickname}</span> {this.props.name}</h2>
+                <h2><span>{this.props.nickname}</span> {this.props.firstname} {this.props.name}</h2>
                 <p>genre : {(this.props.sex === 0)?"male":"female"}</p>
                 <p>age : {this.props.age}</p>
                 <p>number of crimes commited : {this.props.crimeNb}</p>

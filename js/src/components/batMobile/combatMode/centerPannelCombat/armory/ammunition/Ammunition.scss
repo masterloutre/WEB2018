@@ -8,8 +8,14 @@
 
   button {
     padding: 3%;
-    @extend %widget-border-glow-yellow;
+    @extend %widget-border-glow;
     margin: auto;
+    color: $textColor;
     cursor: url('../../../../../../images/cursor_red.png'), pointer;
+  }
+
+  button:hover{
+    @extend %widget-border-glow-yellow;
+    color:$batmanYellow;
   }
 }

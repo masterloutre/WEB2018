@@ -1,0 +1,7 @@
+@import "../../../../../customs.scss";
+
+.villain-sheet{
+	margin:15px;
+	@extend %widget-border-glow;
+	background-color:$batmanBlue;
+}

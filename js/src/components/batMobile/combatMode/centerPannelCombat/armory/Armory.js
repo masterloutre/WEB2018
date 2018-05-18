@@ -43,6 +43,7 @@ export default class Armory extends Component {
     }
 
     fetchWeaponryData = () => {
+        console.log("he c est l armurerie")
         axios.get("/weapons/"+ this.props.sessionId)
             .then((results) => {
                     console.log(results)

@@ -4,6 +4,23 @@ import axios from 'axios'
 import { Bar } from '@nivo/bar'
 import {DynLineGraph} from "../../../dynLineGraph/DynLineGraph";
 
+const theme = {
+    axis: {
+        filter: 'url(#glow)',
+        textColor: "rgba(238,203,18,0.88)",
+        fontSize: '11px',
+        tickColor: 'rgba(125, 174, 205, 1)',
+        legendColor: "rgba(238,203,18,0.88)",
+        legendFontSize: '9px',
+    },
+    markers: {
+        filter: 'url(#glow)',
+        lineColor: 'rgba(125, 174, 205, 1)',
+        lineStrokeWidth: 0.5,
+        textColor: 'rgba(125, 174, 205, 1)',
+        fontSize: '11px',
+    }
+};
 
 export default class GraphsLeft extends Component {
 
@@ -54,29 +71,41 @@ export default class GraphsLeft extends Component {
 
     render() {
         return (
-            <div className="graphsLeft row justify-content-center">
-                <div className="col-7 p-2 offset-1">
-                    <span> Mileage : {this.props.mileage} Km </span>
-                    <Bar
-                    width={100}
-                    height={80}
-                    data={this.state.data}
-                    keys={[
-                        "filled",
-                        "empty"
-                    ]}
-                    indexBy="type"
-                    minValue={0}
-                    maxValue={1}
-                    padding={0.3}
-                    colors="nivo"
-                    colorBy={function(e){var t=e.id;return e.data[t+"Color"]}}
-                    borderColor="inherit:darker(1.6)"
-                    enableLabel={false}
-                    animate={false}
-                    enableGridY={false}
-                    isInteractive={false}
-                  />
+            <div className="graphsLeft row ">
+                <div className="col-9 p-2">
+                    <div className="row justify-content-center">
+                      <span> Mileage : {this.props.mileage} Km </span>
+                    </div>
+                    <div className="row">
+                        <Bar
+                        width={300}
+                        height={150}
+                        data={this.state.data}
+                        keys={[
+                            "filled",
+                            "empty"
+                        ]}
+                        indexBy="type"
+                        minValue={0}
+                        maxValue={1}
+                        padding={0.3}
+                        theme={theme}
+                        layout="horizontal"
+                        colors="nivo"
+                        colorBy={function(e){var t=e.id;return e.data[t+"Color"]}}
+                        margin={{
+                          "top": 10,
+                          "right": 10,
+                          "bottom": 10,
+                          "left": 70
+                        }}
+                        borderColor="inherit:darker(1.6)"
+                        enableGridY={false}
+                        enableLabel={false}
+                        animate={false}
+                        isInteractive={false}
+                      />
+                    </div>
                 </div>
             </div>
         )

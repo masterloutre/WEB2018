@@ -112,6 +112,8 @@ export default class Car extends Component {
       this.setState((prevState, props) => ({speed: prevState.speed+10}), () => this.updateSpeedBDD());
     else if (op === "-" && this.state.speed-10 >= 0)
       this.setState((prevState, props) => ({speed: prevState.speed-10}), () => this.updateSpeedBDD());
+    else if (op === "-" && this.state.speed-10 < 0)
+      this.setState((prevState, props) => ({speed: 0}), () => this.updateSpeedBDD());
   }
 
   renderSpeedButton = (op) => {

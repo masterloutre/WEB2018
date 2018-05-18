@@ -6,7 +6,7 @@ import Weapons from "./weapons/Weapons";
 
 
 export default class Armory extends Component {
-	
+
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +20,8 @@ export default class Armory extends Component {
                 name: "Dummy Weapon",
                 maxAmmunition: 100,
                 rate: 75,
-                currentAmmunition: 75
+                currentAmmunition: 75,
+								url: ''
             }]
         }
         //this.updateWeaponFlag = [];
@@ -54,6 +55,7 @@ export default class Armory extends Component {
                                 name: weapon.name,
                                 maxAmmunition: weapon.maxAmmuniton,
                                 rate: weapon.rate,
+																url: '../../../../images/armory/'+weapon.id+'.jpg'
                             }))
                         })
                     }
@@ -130,7 +132,7 @@ export default class Armory extends Component {
                     <div id="weapons-overview">
                         <Weapons
                             currentWeaponId={this.state.currentWeapon.id}
-                            weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name}))}
+                            weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name, url: weapon.url}))}
                             changeWeapon={this.changeCurrentWeapon}
                         />
                     </div>

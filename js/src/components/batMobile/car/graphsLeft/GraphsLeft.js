@@ -76,9 +76,9 @@ export default class GraphsLeft extends Component {
                     <div className="row justify-content-center">
                       <span> Mileage : {this.props.mileage} Km </span>
                     </div>
-                    <div className="row">
+                    <div className="row justify-content-center">
                         <Bar
-                        width={300}
+                        width={400}
                         height={150}
                         data={this.state.data}
                         keys={[

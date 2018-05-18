@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import "./Weapons.css"
 import axios from 'axios'
+import batalang from '../../../../../../images/armory/1.jpg';
 
 
 export default class Weapons extends Component {
@@ -20,7 +21,8 @@ export default class Weapons extends Component {
                 onClick={() => this.props.changeWeapon(weapon.id)}
             >
                 <span
-                    style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}>{weapon.name}</span>
+                    style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}>{weapon.name}
+                </span>
             </li>
         )
     }
@@ -30,7 +32,9 @@ export default class Weapons extends Component {
             <div className="weapons container-fluid">
                 <div className="row w-100 h-100 justify-content-center align-items-center absolute-top">
                     <div className="center-button col-7 absolute">
-                        <button><h3>{this.props.weaponList[this.props.currentWeaponId].name}</h3></button>
+                        <button><h3>{this.props.weaponList[this.props.currentWeaponId].name}</h3>
+                        </button>
+                        <img src={batalang} />
                     </div>
                 </div>
                 <ul className="row absolute-top w-100 h-100">

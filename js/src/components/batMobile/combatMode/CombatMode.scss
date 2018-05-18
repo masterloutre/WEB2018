@@ -1,7 +1,12 @@
 .combat-mode{
   transform: translate(0%, -100%);
-  div{
-   // border: 1px solid orange;
+  padding: 2%;
+
+  .change-mode-button {
+     h3{
+       font-size: 1.5vw;
+     }
+
   }
 }
 
@@ -10,4 +15,8 @@
 }
 #bottom-panels {
   height: 40%;
+}
+
+#change-mode-button-container{
+  top: 70%;
 }

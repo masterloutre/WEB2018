@@ -1,0 +1,16 @@
+@import "../../../../../customs.scss";
+
+.outlaw-card{
+  width: 96%;
+  @extend %widget-border-glow;
+  margin: 2%;
+  padding: 2%;
+
+
+  h2 {
+    font-size: 2vw;
+    span {
+      color: $batmanYellow
+    }
+  }
+}

@@ -10,7 +10,7 @@
     border-radius: 15%;
     color: $textColor;
     transform: translate(0%, -100%);
-    cursor: pointer;
+    cursor: url('../../../../images/cursor_red.png'), pointer;
   }
 
   button:hover{

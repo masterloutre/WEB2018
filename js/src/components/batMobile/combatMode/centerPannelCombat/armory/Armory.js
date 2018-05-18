@@ -43,6 +43,7 @@ export default class Armory extends Component {
     }
 
     fetchWeaponryData = () => {
+        console.log("he c est l armurerie")
         axios.get("/weapons/"+ this.props.sessionId)
             .then((results) => {
                     console.log(results)
@@ -130,7 +131,7 @@ export default class Armory extends Component {
                         <Weapons
                             currentWeaponId={this.state.currentWeapon.id}
                             weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name}))}
-                            changeWeapon={this.changeCurrentWeaponNext}
+                            changeWeapon={this.changeCurrentWeapon}
                         />
                     </div>
                 </div>

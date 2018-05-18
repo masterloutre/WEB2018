@@ -9,6 +9,7 @@ export default class LawPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            searchValue: "",
             outlaws : [
                 {
                     id: 0,
@@ -51,16 +52,35 @@ export default class LawPanel extends Component {
             .catch((error) => console.log(error))
     }
 
+    searchFilter = (outlaw) => {
+        const names = (outlaw.name + outlaw.firstname + outlaw.nickname).toUpperCase()
+        const match = this.state.searchValue.toUpperCase()
+        return names.includes(match) ||
+            this.state.searchValue === ""
+    }
+
+    handleSearchChange = (e) => {
+        this.setState({searchValue: e.target.value})
+    }
+
+
     render() {
         return (
             <div className="law-panel container-fluid p-2">
 
                 <div id={"search-tab"} className={"row"}>
-                    <div className={"col-12"}></div>
+                    <div className={"col-12"}>
+                        <form>
+                            <label>
+                                Search:
+                                <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} />
+                            </label>
+                        </form>
+                    </div>
                 </div>
                 <div id={"outlaws-display"} className={"row"}>
                     <div className={"col-12 container-fluid "}>
-                    {this.state.outlaws.map(outlaw => (
+                    {this.state.outlaws.filter(this.searchFilter).map(outlaw => (
                         <OutlawCard key={outlaw.id.toString()}
                                     firstname={outlaw.firstname}
                                     name={outlaw.name}

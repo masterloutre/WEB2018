@@ -16,15 +16,11 @@ export default class CombatMode extends Component {
         };
     }
 
-
     componentDidUpdate( prevState, prevProps){
         if(prevProps.sessionId !== this.props.sessionId) {
             this.setState({sessionId: this.props.sessionId})
         }
     }
-
-
-
 
     render() {
         return (

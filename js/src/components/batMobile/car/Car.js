@@ -59,9 +59,10 @@ export default class Car extends Component {
   }
 
   fetchCarData = () => {
-
+      console.log("EHOHEOHOEHOEHOEH");
       axios.get("/car/"+ this.props.sessionId)
           .then((results) => {
+            console.log("car results : ", results);
               this.setState({
                   weight: results.data.weight,
                   speed: results.data.speed,

@@ -4,6 +4,7 @@ import axios from 'axios'
 import Speed from "./speed/Speed.js"
 import CurrentDate from "../../currentDate/CurrentDate";
 import GraphsRight from "./graphsRight/GraphsRight.js";
+import GraphsLeft from "./graphsLeft/GraphsLeft.js";
 import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
 import CarDate from "./carDate/CarDate";
 import CenterPannel from "./centerPannel/CenterPannel";
@@ -59,9 +60,10 @@ export default class Car extends Component {
   }
 
   fetchCarData = () => {
-
+      console.log("EHOHEOHOEHOEHOEH");
       axios.get("/car/"+ this.props.sessionId)
           .then((results) => {
+            console.log("car results : ", results);
               this.setState({
                   weight: results.data.weight,
                   speed: results.data.speed,
@@ -110,6 +112,8 @@ export default class Car extends Component {
       this.setState((prevState, props) => ({speed: prevState.speed+10}), () => this.updateSpeedBDD());
     else if (op === "-" && this.state.speed-10 >= 0)
       this.setState((prevState, props) => ({speed: prevState.speed-10}), () => this.updateSpeedBDD());
+    else if (op === "-" && this.state.speed-10 < 0)
+      this.setState((prevState, props) => ({speed: 0}), () => this.updateSpeedBDD());
   }
 
   renderSpeedButton = (op) => {
@@ -126,8 +130,7 @@ export default class Car extends Component {
       <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">
               <div className="col p-5">
-                <div className="car-date">
-                </div>
+                <GraphsLeft oilLevel={this.state.oilLevel} mileage={this.state.mileage} battery={this.state.battery} liquidLevel={this.state.liquidLevel}/>
               </div>
               <div className="col p-5">
                   <GraphsRight speed={this.state.speed} gas={this.state.gas}/>

@@ -20,7 +20,9 @@ class App extends Component {
     componentDidMount() {
         axios.get("/car")
             .then((result) =>
+
             {
+                console.log(result)
                 this.setState({sessionId : result.data.sessionId})
             })
             .catch(error => console.log(error))

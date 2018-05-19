@@ -5,10 +5,10 @@
   @extend %full-height;
 
   *{
-  	display:inline;
+  //	display:inline;
 	//color:white;
 	@extend %text-glow;
-	padding:15px;
+	padding-left:15px;
 	font-size:12pt;
 	vertical-align: middle;
   }

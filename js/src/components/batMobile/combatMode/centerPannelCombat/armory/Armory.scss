@@ -3,6 +3,7 @@
 .armory{
   @extend %full-space;
   color: $textColor;
+      background: '../../../../images/armory/4.jpg'
 }
 
 #weapons-overview{
@@ -11,6 +12,7 @@
   z-index: 4;
   background-color: black;
   transform: translate(-5%, 0%);
+  overflow: hidden;
 
 
   h3{

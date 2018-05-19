@@ -6,7 +6,7 @@ import Weapons from "./weapons/Weapons";
 
 
 export default class Armory extends Component {
-	
+
     constructor(props) {
         super(props);
         this.state = {
@@ -20,11 +20,10 @@ export default class Armory extends Component {
                 name: "Dummy Weapon",
                 maxAmmunition: 100,
                 rate: 75,
-                currentAmmunition: 75
+                currentAmmunition: 75,
+                imageUrl: '/armory/1.jpg'
             }]
         }
-        //this.updateWeaponFlag = [];
-
     };
 
     componentDidMount(){
@@ -51,8 +50,9 @@ export default class Armory extends Component {
                             weapons: results.data[0].map( weapon => ({
                                 id: weapon.id,
                                 name: weapon.name,
-                                maxAmmunition: weapon.maxAmmuniton,
+                                maxAmmunition: ((weapon.maxAmmuniton !== null)?weapon.maxAmmuniton:10),
                                 rate: weapon.rate,
+                                imageUrl: '../../../../images/armory/'+weapon.id+'.jpg'
                             }))
                         })
                     }
@@ -84,12 +84,13 @@ export default class Armory extends Component {
     }
 
     fireCurrentWeapon = () => {
-        console.log("weapon fire")
+        //const munitionMax = (this.state.weapons[this.state.currentWeapon.id].maxAmmunition !== null)? this.state.weapons[this.state.currentWeapon.id].maxAmmunition : 10;
+        const munitionMax = this.state.weapons[this.state.currentWeapon.id].maxAmmunition
         if(this.state.currentWeapon.ammunition > 0){
             this.setState((prevState, props) => ({
                 currentWeapon : {
                     id: prevState.currentWeapon.id,
-                    ammunition: prevState.currentWeapon.ammunition - 1
+                    ammunition: prevState.currentWeapon.ammunition - (100/munitionMax)
                 }
             }), () => this.updateCurrentWeaponBDD())
         }
@@ -99,7 +100,7 @@ export default class Armory extends Component {
         this.setState((prevState, props) => ({
             currentWeapon : {
                 id: prevState.currentWeapon.id,
-                ammunition: prevState.weapons[prevState.currentWeapon.id].maxAmmunition
+                ammunition: 100
             }
         }), () => this.updateCurrentWeaponBDD())
     }
@@ -129,8 +130,8 @@ export default class Armory extends Component {
                     <div id="weapons-overview">
                         <Weapons
                             currentWeaponId={this.state.currentWeapon.id}
-                            weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name}))}
-                            changeWeapon={this.changeCurrentWeaponNext}
+                            weaponList={this.state.weapons.map(weapon => ({id: weapon.id, name: weapon.name, imageUrl: weapon.imageUrl}))}
+                            changeWeapon={this.changeCurrentWeapon}
                         />
                     </div>
                 </div>

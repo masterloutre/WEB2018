@@ -33,10 +33,6 @@ export default class CombatMode extends Component {
         };
     }
 
-    componentDidMount(){
-        this.fetchLawData()
-    }
-
 
     componentDidUpdate( prevState, prevProps){
         if(prevProps.sessionId !== this.props.sessionId) {
@@ -48,7 +44,7 @@ export default class CombatMode extends Component {
     fetchLawData = () => {
         axios.get("/Law/")
             .then((results) => {
-                console.log("law", results.data[3].name)
+                console.log(results.data[3].name)
                 this.setState({
                     criminals: results.data
                 })
@@ -61,7 +57,7 @@ export default class CombatMode extends Component {
             <div className="combat-mode container-fluid h-100">
                 <div className="row" id={"top-panels"}>
                     <div className={"col-4"}>
-                        <Criminals sessionId={this.props.sessionId}/>
+                        <Criminals/>
                     </div>
                     <div className={"col-8"}>
                         <CenterPannelCombat sessionId={this.props.sessionId}/>

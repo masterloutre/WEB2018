@@ -17,7 +17,6 @@ export default class Criminals extends Component {
     }
 
     fetchCriminalsData = () => {
-        console.log("HELLO");
        axios.get("/criminals/" + this.props.sessionId)
             .then((results) => {
                 console.log(results)

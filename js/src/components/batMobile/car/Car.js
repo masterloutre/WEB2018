@@ -52,7 +52,7 @@ export default class Car extends Component {
         this.fetchCarData()
     }
 
-  componentDidUpdate( prevState, prevProps){
+  componentDidUpdate( prevProps, prevState){
       if(prevProps.sessionId !== this.props.sessionId) {
           this.setState({sessionId: this.props.sessionId})
           this.fetchCarData()

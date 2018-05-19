@@ -54,7 +54,7 @@ export default class Armory extends Component {
                                 rate: weapon.rate,
                                 imageUrl: '/armory/'+weapon.id+'.jpg'
                             }))
-                        })
+                        }, console.log(this.state))
                     }
 
 
@@ -124,6 +124,10 @@ export default class Armory extends Component {
     }
 
     render() {
+        const currentWeapon = this.state.currentWeapon.id
+        console.log(this.state.weapons)
+        const ammo = this.state.weapons[this.state.currentWeapon.id].maxAmmunition;
+        console.log(ammo)
         return (
             <div className="armory row align-items-center ">
                 <div className="col-lg-6 h-0 absolute col-md-6">

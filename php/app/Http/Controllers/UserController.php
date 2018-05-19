@@ -44,7 +44,7 @@ class UserController
      */
     public static function addNewEntry(){
 
-        UserController::add(1050,rand(150,1000),rand(50,150),rand(60,100),rand(60,100),rand(1000,3000),64,28,98,0,0,48,1,2,1,18,0);
+        UserController::add(1050,rand(150,1000),rand(50,150),rand(60,100),rand(60,100),rand(1000,3000),64,28,rand(1,100),0,0,48,1,2,1,18,0);
         $user = app('db')->select('SELECT * FROM user WHERE sessionId = (SELECT MAX(sessionId) FROM user)');
         OwnController::setAllOwn($user["0"]->sessionId);
         return response()->json(['sessionId' => $user["0"]->sessionId],200);

@@ -35,7 +35,7 @@ export default class RadioPolice extends Component {
 
     render() {
         return (
-					<div className="radioPolice row">
+					<div className="radioPolice row justify-content-center">
 							<div className="col-12">
 									<span className="justify-text-center"> GCPD Scanner </span>
 									<DynLineGraph  data={this.state.freq} unit={"hz/s"} refresh={false}/>

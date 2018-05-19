@@ -1,7 +1,6 @@
 import React, {Component} from "react"
 import "./Weapons.css"
-import axios from 'axios'
-import batalang from '../../../../../../images/armory/1.jpg';
+
 
 
 
@@ -22,14 +21,21 @@ export default class Weapons extends Component {
                 style={{transform: "rotate(" + rotationAngle + "deg) skew(" + skewAngle + "deg)"}}
                 onClick={() => this.props.changeWeapon(weapon.id)}
             >
+                {/*
                 <span
                     style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}>{weapon.name}
                 </span>
+                */}
+                <img src={require("../../../../../../images/armory/batarang-icon.svg")}
+                     //style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}
+                     style={{transform: "skew(" + (-skewAngle) + "deg) rotate(-65deg)"}}
+                />
             </li>
         )
     }
 
     render() {
+        console.log()
         const image = require("../../../../../../images" + this.props.weaponList[this.props.currentWeaponId].imageUrl);
 
         return (
@@ -38,7 +44,7 @@ export default class Weapons extends Component {
                     <div className="center-button col-7 absolute">
                         <button
                             style={{
-                                backgroundImage: "url("+image+")"
+                               backgroundImage: "url("+image+")"
                             }}
                         >
                             <h3>{this.props.weaponList[this.props.currentWeaponId].name}</h3>

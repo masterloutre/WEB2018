@@ -5,7 +5,7 @@ import OutlawCard from "./outlawCard/OutlawCard";
 
 
 export default class LawPanel extends Component {
-	
+
     constructor(props) {
         super(props);
         this.state = {
@@ -68,14 +68,9 @@ export default class LawPanel extends Component {
         return (
             <div className="law-panel container-fluid p-2">
 
-                <div id={"search-tab"} className={"row"}>
-                    <div className={"col-12"}>
-                        <form>
-                            <label>
-                                Search:
-                                <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} />
-                            </label>
-                        </form>
+                <div id={"search-tab"} className={"row justify-content-center"}>
+                    <div className={"col-12 justify-content-center"}>
+                        <input type="text" className="form-control" value={this.state.searchValue} onChange={this.handleSearchChange} placeholder="Search.." />
                     </div>
                 </div>
                 <div id={"outlaws-display"} className={"row"}>

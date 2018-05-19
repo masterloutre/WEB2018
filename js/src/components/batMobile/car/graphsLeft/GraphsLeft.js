@@ -1,8 +1,7 @@
 import React, {Component} from "react"
 import "./GraphsLeft.css"
 import axios from 'axios'
-import { Bar } from '@nivo/bar'
-import {DynLineGraph} from "../../../dynLineGraph/DynLineGraph";
+import { ResponsiveBar } from '@nivo/bar'
 
 const theme = {
     axis: {
@@ -76,10 +75,8 @@ export default class GraphsLeft extends Component {
                     <div className="row justify-content-center">
                       <span> Mileage : {this.props.mileage} Km </span>
                     </div>
-                    <div className="row justify-content-center">
-                        <Bar
-                        width={400}
-                        height={150}
+                    <div className="row justify-content-center bar-graph">
+                        <ResponsiveBar className = "d-flex"
                         data={this.state.data}
                         keys={[
                             "filled",

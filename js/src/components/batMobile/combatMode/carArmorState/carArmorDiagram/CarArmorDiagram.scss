@@ -1,0 +1,10 @@
+@import "../../../../../customs.scss";
+
+.car-armor-diagram{
+	@extend %widget-border-glow;
+
+	img{
+		max-width:100%;
+		max-hieght:100%;
+	}
+}

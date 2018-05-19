@@ -1,5 +1,22 @@
-@import "../../../../../customs.scss";
+@import "../../../../customs.scss";
 
-.radio-police{
-	
+.radioPolice
+{
+  color: $textColor;
+  @extend %widget-border-glow;
+	@extend %full-space;
+
+	div{
+		height: 50%;
+	}
+
+  svg{
+    border: 1px solid $borderGlowColor;
+    opacity: 0.7;
+    background: $widgetBackgroundColor;
+  }
+
+	.dyn-line-graph{
+		height: 50% !important;
+	}
 }

@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import "./Ammunition.css"
-import { Bar } from '@nivo/bar'
+import { ResponsiveBar } from '@nivo/bar'
 import axios from 'axios'
 
 
@@ -40,10 +40,10 @@ export default class Ammunition extends Component {
     render() {
         return (
             <div className="ammunition">
-              <div className= "row justify-content-center">
-                  <Bar
-                      width={300}
-                      height={80}
+              <div className= "row justify-content-center bar-graph">
+                  <ResponsiveBar className = "d-flex"
+                      //width={300}
+                      //height={80}
                       data={this.state.data}
                       keys={[
                           "filled",
@@ -69,8 +69,11 @@ export default class Ammunition extends Component {
                       isInteractive={false}
                     />
                     <span className="col-12 text-center" id={"ammunition-graph"}>quantity : {this.props.quantity} %</span>
-                  </div>
+                </div>
+                <div className="row">
                 <button onClick={()=>this.props.fire()}>fire </button>
+                <button onClick={()=>this.props.recharge()}>reload </button>
+                </div>
             </div>
         )
     }

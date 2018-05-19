@@ -8,9 +8,21 @@
 
 
   h2 {
-    font-size: 2vw;
+    font-size: 1.5vw;
     span {
-      color: $batmanYellow
+      color: $batmanYellow;
+      font-size: 2vw;
     }
+  }
+
+  hr {
+    //border: 0.4px solid $textColor;
+    box-shadow: 0px 0px 5px $borderGlowColor;
+    background-color: $textColor;
+  }
+
+  p {
+    font-size: 1vw;
+    color: $textColor;
   }
 }

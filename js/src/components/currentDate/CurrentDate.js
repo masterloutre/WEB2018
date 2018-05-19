@@ -26,7 +26,7 @@ export default class CurrentDate extends React.Component {
   }
 
   render() {
-    //console.log(this.state.carDate);
+    console.log(this.state.carDate);
     return (
         <div>
             <h2>It is {this.state.date}.</h2>

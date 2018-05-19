@@ -84,8 +84,10 @@ export class DynLineGraph extends Component {
   }
 
   tick(){
-    this.setState(this.refreshData)
-      //this.setState(this.addData)
+    if(this.props.refresh)
+      this.setState(this.refreshData)
+    else
+      this.setState(this.addData)
   }
 
   refreshData (prevState, props) //efface au fur et à mesure

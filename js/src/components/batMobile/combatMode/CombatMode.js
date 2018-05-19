@@ -16,41 +16,18 @@ export default class CombatMode extends Component {
         };
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> cf91a9d29fc8640882d0dda52a895582de451699
     componentDidUpdate( prevState, prevProps){
         if(prevProps.sessionId !== this.props.sessionId) {
             this.setState({sessionId: this.props.sessionId})
         }
     }
 
-<<<<<<< HEAD
-
-    fetchLawData = () => {
-        axios.get("/Law/")
-            .then((results) => {
-                console.log(results.data[3].name)
-                this.setState({
-                    criminals: results.data
-                })
-            })
-            .catch((error) => console.log(error))
-    }
-
-=======
->>>>>>> cf91a9d29fc8640882d0dda52a895582de451699
     render() {
         return (
             <div className="combat-mode container-fluid h-100">
                 <div className="row" id={"top-panels"}>
                     <div className={"col-4"}>
-<<<<<<< HEAD
-                        <Criminals/>
-=======
                         <LawPanel/>
->>>>>>> cf91a9d29fc8640882d0dda52a895582de451699
                     </div>
                     <div className={"col-8"}>
                         <CenterPannelCombat sessionId={this.props.sessionId}/>

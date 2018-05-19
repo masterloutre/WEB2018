@@ -21,6 +21,10 @@
       h3{
         position: absolute;
         color: $batmanYellow;
+        background-color: $widgetBackgroundColor;
+        border-radius: 5px;
+        padding: 2%;
+          @extend %widget-border-glow-yellow;
       }
     }
   }

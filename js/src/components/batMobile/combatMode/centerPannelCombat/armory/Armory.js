@@ -144,6 +144,7 @@ export default class Armory extends Component {
                         maxAmmunition={this.state.weapons[this.state.currentWeapon.id].maxAmmunition}
                         quantity={this.state.currentWeapon.ammunition}
                         fire={this.fireCurrentWeapon}
+                        recharge={this.rechargeCurrentWeapon}
                     />
                 </div>
 

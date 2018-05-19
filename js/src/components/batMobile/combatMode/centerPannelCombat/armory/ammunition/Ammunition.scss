@@ -10,6 +10,7 @@
     padding: 3%;
     @extend %widget-border-glow;
     margin: auto;
+    margin-top: 10%;
     color: $textColor;
     cursor: url('../../../../../../images/cursor_red.png'), pointer;
   }
@@ -18,4 +19,12 @@
     @extend %widget-border-glow-yellow;
     color:$batmanYellow;
   }
+
+
+  .bar-graph{
+    height : 50%;
+    width: 100%;
+    position: relative;
+  }
+
 }

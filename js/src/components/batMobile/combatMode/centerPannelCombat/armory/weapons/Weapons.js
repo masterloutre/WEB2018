@@ -34,6 +34,7 @@ export default class Weapons extends Component {
         )
     }
 
+
     render() {
         console.log()
         const image = require("../../../../../../images" + this.props.weaponList[this.props.currentWeaponId].imageUrl);

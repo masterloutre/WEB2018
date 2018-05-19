@@ -40,7 +40,7 @@ export default class Ammunition extends Component {
     render() {
         return (
             <div className="ammunition">
-              <div class= "row justify-content-center">
+              <div className= "row justify-content-center">
                   <Bar
                       width={300}
                       height={80}

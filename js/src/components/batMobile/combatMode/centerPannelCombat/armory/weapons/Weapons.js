@@ -1,7 +1,6 @@
 import React, {Component} from "react"
 import "./Weapons.css"
-import axios from 'axios'
-import batalang from '../../../../../../images/armory/1.jpg';
+
 
 
 
@@ -30,6 +29,7 @@ export default class Weapons extends Component {
     }
 
     render() {
+        console.log()
         const image = require("../../../../../../images" + this.props.weaponList[this.props.currentWeaponId].imageUrl);
 
         return (
@@ -38,7 +38,7 @@ export default class Weapons extends Component {
                     <div className="center-button col-7 absolute">
                         <button
                             style={{
-                                backgroundImage: "url("+image+")"
+                               backgroundImage: "url("+image+")"
                             }}
                         >
                             <h3>{this.props.weaponList[this.props.currentWeaponId].name}</h3>

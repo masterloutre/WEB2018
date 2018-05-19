@@ -52,7 +52,7 @@ export default class Armory extends Component {
                                 name: weapon.name,
                                 maxAmmunition: ((weapon.maxAmmuniton !== null)?weapon.maxAmmuniton:10),
                                 rate: weapon.rate,
-                                imageUrl: '../../../../images/armory/'+weapon.id+'.jpg'
+                                imageUrl: '/armory/'+weapon.id+'.jpg'
                             }))
                         })
                     }

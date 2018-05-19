@@ -3,3 +3,11 @@
 .car-armor-state{
 	
 }
+
+#side-view{
+  @extend %widget-border-glow;
+}
+
+#top-view{
+  @extend %widget-border-glow;
+}

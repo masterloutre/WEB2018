@@ -13,7 +13,9 @@
       width: 100%;
       @extend %circle;
       @extend %widget-border-glow-yellow;
-      background-color: black;
+      background-size: cover;
+      background-position: center;
+
 
       h3{
         position: absolute;

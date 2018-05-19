@@ -4,6 +4,8 @@ import axios from 'axios'
 import batalang from '../../../../../../images/armory/1.jpg';
 
 
+
+
 export default class Weapons extends Component {
 
     constructor(props) {
@@ -28,13 +30,19 @@ export default class Weapons extends Component {
     }
 
     render() {
+        const image = require("../../../../../../images" + this.props.weaponList[this.props.currentWeaponId].imageUrl);
+
         return (
             <div className="weapons container-fluid">
                 <div className="row w-100 h-100 justify-content-center align-items-center absolute-top">
                     <div className="center-button col-7 absolute">
-                        <button><h3>{this.props.weaponList[this.props.currentWeaponId].name}</h3>
+                        <button
+                            style={{
+                                backgroundImage: "url("+image+")"
+                            }}
+                        >
+                            <h3>{this.props.weaponList[this.props.currentWeaponId].name}</h3>
                         </button>
-                        <img src={batalang} />
                     </div>
                 </div>
                 <ul className="row absolute-top w-100 h-100">

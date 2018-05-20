@@ -7,14 +7,15 @@ export default class CarArmorDiagram extends Component {
 	
     constructor(props) {
         super(props);
-        console.log("props car armor diagram", props);
+        
         this.state = {};
     }
 
     render() {
+        console.log("props car armor diagram render", this.props);
         return (
-            <div className="col-6 car-armor-diagram">
-                <img src={this.props.imagesUrl.damaged0pct} />
+            <div className="col-xs-12 col-sm-6 car-armor-diagram">
+                <img src={this.props.imagesUrl} />
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import styles from "./Speed.css"
+import "./Speed.css"
 import { Pie } from '@nivo/pie'
 
 export default class Speed extends Component {

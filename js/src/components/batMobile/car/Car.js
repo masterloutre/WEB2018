@@ -2,7 +2,6 @@ import React, {Component} from "react"
 import "./Car.css"
 import axios from 'axios'
 import Speed from "./speed/Speed.js"
-import CurrentDate from "../../currentDate/CurrentDate";
 import GraphsRight from "./graphsRight/GraphsRight.js";
 import GraphsLeft from "./graphsLeft/GraphsLeft.js";
 import RevolutionPerMinute from "./revolutionPerMinute/RevolutionPerMinute";
@@ -16,7 +15,6 @@ export default class Car extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        sessionId: 0,
       weight: 0,
       speed: 0,
       speedMax: 350,
@@ -34,35 +32,35 @@ export default class Car extends Component {
       temperature: 0,
       headlight: 0
     };
+    if(this.props.sessionId !== -1){
+        this.fetchCarDataInit()
+    }
   }
 
     componentDidMount() {
         this.timerID = setInterval(
             () => this.tick(),
-            1000
+            3000
         )
     }
 
     componentWillUnmount() {
         clearInterval(this.timerID)
-        console.log("component will unmount")
     }
 
     tick(){
-        this.fetchCarData()
+        this.fetchCarDataAuto()
     }
 
-  componentDidUpdate( prevState, prevProps){
+  componentDidUpdate( prevProps, prevState){
       if(prevProps.sessionId !== this.props.sessionId) {
-          this.setState({sessionId: this.props.sessionId})
-          this.fetchCarData()
+          this.fetchCarDataInit()
       }
   }
 
-  fetchCarData = () => {
+  fetchCarDataInit = () => { //fetch all the data form the server
       axios.get("/car/"+ this.props.sessionId)
           .then((results) => {
-            console.log("car results : ", results);
               this.setState({
                   weight: results.data.weight,
                   speed: results.data.speed,
@@ -84,6 +82,26 @@ export default class Car extends Component {
           .catch((error) => console.log(error))
   }
 
+    fetchCarDataAuto = () => { //fetch only the data updated automatically server side
+        axios.get("/car/"+ this.props.sessionId)
+            .then((results) => {
+                this.setState({
+                    mileage: results.data.mileage,
+                    gas: results.data.essence,
+                    battery: results.data.battery,
+                    oilLevel: results.data.oilLevel,
+                    liquidLevel: results.data.liquidLevel,
+                    carbodyState: results.data.carbodyState,
+                    position: {xPos: results.data.xPos, yPos: results.data.yPos},
+                    bpm: results.data.bpm,
+                    tireId: results.data.tireId,
+                    radioId: results.data.radioId,
+                })
+            })
+            .catch((error) => console.log(error))
+    }
+
+
   changeTemperatureClick = (op) => {
       if(op === "+" && this.state.temperature+1 <= 50) // 50 : temperature max
           this.setState((prevState, props) => ({temperature: prevState.temperature+1}), () => this.updateTemperatureBDD());
@@ -92,14 +110,14 @@ export default class Car extends Component {
   }
 
   updateTemperatureBDD = () => {
-      axios.put("/car/"+ this.state.sessionId, {
+      axios.put("/car/"+ this.props.sessionId, {
             temperature: this.state.temperature
         })
       .catch(error => console.log(error))
   }
 
   updateSpeedBDD = () => {
-      axios.put("/car/"+ this.state.sessionId, {
+      axios.put("/car/"+ this.props.sessionId, {
           speed: this.state.speed
       })
           .catch(error => console.log(error))
@@ -112,7 +130,7 @@ export default class Car extends Component {
     else if (op === "-" && this.state.speed-10 >= 0)
       this.setState((prevState, props) => ({speed: prevState.speed-10}), () => this.updateSpeedBDD());
     else if (op === "-" && this.state.speed-10 < 0)
-      this.setState((prevState, props) => ({speed: 0}), () => this.updateSpeedBDD());
+      this.setState({speed: 0}, () => this.updateSpeedBDD());
   }
 
   renderSpeedButton = (op) => {

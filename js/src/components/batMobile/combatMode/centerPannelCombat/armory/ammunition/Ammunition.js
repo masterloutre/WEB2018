@@ -41,7 +41,7 @@ export default class Ammunition extends Component {
         return (
             <div className="ammunition">
               <div className= "row justify-content-center bar-graph">
-                  <span className="col-12 text-center" id={"ammunition-graph"}>quantity : {this.props.quantity} %</span>
+                  <span className="col-12 text-center" id={"ammunition-graph"}>quantity : {Math.round(this.props.quantity)} %</span>
                   <ResponsiveBar className = "d-flex"
                       //width={300}
                       //height={80}

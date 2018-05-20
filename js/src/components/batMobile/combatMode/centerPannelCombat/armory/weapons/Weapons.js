@@ -19,7 +19,9 @@ export default class Weapons extends Component {
             <li
                 key={weapon.id.toString()}
                 style={{transform: "rotate(" + rotationAngle + "deg) skew(" + skewAngle + "deg)"}}
-                onClick={() => this.props.changeWeapon(weapon.id)}
+                onClick={() => {
+                    this.props.changeWeapon(weapon.id)
+                }}
             >
                 {/*
                 <span
@@ -52,7 +54,7 @@ export default class Weapons extends Component {
                         </button>
                     </div>
                 </div>
-                <ul className="row absolute-top w-100 h-100">
+                <ul className="row absolute-top w-100 h-100" id="weaponPannel">
                     {this.props.weaponList.map(weapon => this.renderWeaponButton(weapon))}
                 </ul>
             </div>

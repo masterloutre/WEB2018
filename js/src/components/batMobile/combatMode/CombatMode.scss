@@ -12,6 +12,9 @@
 
 #top-panels {
   height: 60%;
+  .col-4{
+  max-height:100%;
+  }
 }
 #bottom-panels {
   height: 40%;

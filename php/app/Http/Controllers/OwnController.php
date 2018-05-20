@@ -46,7 +46,7 @@ class OwnController {
 	        $val = $request->json()->all();
 	        if(isset($val["ammunition"])){
 
-	        	if($val["ammunition"])>=0){
+	        	if($val["ammunition"]>=0){
 			        //Checking if an entry with the current data (weapon and user id) is already in the database
 					$test = OwnController::getAmmunition($weaponId,$userId);
 					$test = json_decode($test);

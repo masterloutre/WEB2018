@@ -27,6 +27,7 @@
           @extend %widget-border-glow-yellow;
       }
     }
+    button:focus {outline:0;}
   }
 
   ul {

@@ -6,11 +6,3 @@
 	max-width:100%;
 	text-align:center;
 }
-
-#side-view{
-  @extend %widget-border-glow;
-}
-
-#top-view{
-  @extend %widget-border-glow;
-}

@@ -72,7 +72,6 @@ export default class Armory extends Component {
     }
 
     updateCurrentWeaponBDD = () => {
-        console.log(this.state.currentWeapon.ammunition)
         axios.put("/weapons/"+ this.state.currentWeapon.id + "/user/" + this.props.sessionId, {
             ammunition : this.state.currentWeapon.ammunition
         })

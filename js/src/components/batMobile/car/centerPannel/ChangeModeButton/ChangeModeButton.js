@@ -12,7 +12,7 @@ export default class ChangeModeButton extends Component {
 
     render() {
         return (
-            <div className="change-mode-button row justify-content-center align-items-center"
+            <div className="change-mode-button row justify-content-center align-items-center align-self-center "
                  onClick={()=>this.props.changeMode()}>
                 <h3 >Change Mode</h3>
             </div>

@@ -146,10 +146,10 @@ export default class Car extends Component {
     return (
       <div className="car container-fluid w-100 h-100">
           <div className="row" id="top-pannels">
-              <div className="col p-5">
+              <div className="col p-3">
                 <GraphsLeft oilLevel={this.state.oilLevel} mileage={this.state.mileage} battery={this.state.battery} liquidLevel={this.state.liquidLevel}/>
               </div>
-              <div className="col p-5">
+              <div className="col p-3">
                   <GraphsRight speed={this.state.speed} gas={this.state.gas}/>
               </div>
           </div>
@@ -161,9 +161,10 @@ export default class Car extends Component {
                   <RevolutionPerMinute speed={this.state.speed}/>
               </div>
           </div>
-          <div className="row justify-content-center fixed-bottom">
-            <CarDate/>
+          <div className="row justify-content-center fixed-bottom" id={"date"}>
+              <CarDate/>
           </div>
+
           <div className="row justify-content-center">
           <div className="h-50 w-50 container" id="center-pannel">
               <CenterPannel gas={this.state.gas} temperature={this.state.temperature} changeMode={this.props.changeMode}/>

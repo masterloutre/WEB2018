@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import BatMobile from './components/batMobile/BatMobile.js'
 import axios from 'axios';
@@ -20,7 +19,6 @@ class App extends Component {
     componentDidMount() {
         axios.get("/car")
             .then((result) =>
-
             {
                 this.setState({sessionId : result.data.sessionId})
             })

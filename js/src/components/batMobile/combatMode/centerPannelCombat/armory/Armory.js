@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import "./Armory.css"
 import axios from 'axios'
-import Ammunitions from "./ammunition/Ammunition";
+import Ammunition from "./ammunition/Ammunition";
 import Weapons from "./weapons/Weapons";
 
 
@@ -10,7 +10,6 @@ export default class Armory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sessionId: 0,
             currentWeapon: {
                 id: 0,
                 ammunition : 100
@@ -27,14 +26,14 @@ export default class Armory extends Component {
     };
 
     componentDidMount(){
-        this.fetchWeaponryData()
-        this.fetchCurrentWeaponData()
+        if(this.props.sessionId !== -1) {
+            this.fetchWeaponryData()
+            this.fetchCurrentWeaponData()
+        }
     }
 
-    componentDidUpdate( prevState, prevProps){
+    componentDidUpdate( prevProps, prevState){
         if(prevProps.sessionId !== this.props.sessionId) {
-            console.log(this.props.sessionId)
-            this.setState({sessionId: this.props.sessionId})
             this.fetchWeaponryData()
             this.fetchCurrentWeaponData()
         }
@@ -44,7 +43,6 @@ export default class Armory extends Component {
     fetchWeaponryData = () => {
         axios.get("/weapons/"+ this.props.sessionId)
             .then((results) => {
-                    console.log(results)
                     if(results.data[0].length !== 0){
                         this.setState({
                             weapons: results.data[0].map( weapon => ({
@@ -54,10 +52,8 @@ export default class Armory extends Component {
                                 rate: weapon.rate,
                                 imageUrl: '/armory/'+weapon.id+'.jpg'
                             }))
-                        }, console.log(this.state))
+                        })
                     }
-
-
             })
             .catch((error) => console.log(error))
     }
@@ -76,6 +72,7 @@ export default class Armory extends Component {
     }
 
     updateCurrentWeaponBDD = () => {
+        console.log(this.state.currentWeapon.ammunition)
         axios.put("/weapons/"+ this.state.currentWeapon.id + "/user/" + this.props.sessionId, {
             ammunition : this.state.currentWeapon.ammunition
         })
@@ -84,13 +81,12 @@ export default class Armory extends Component {
     }
 
     fireCurrentWeapon = () => {
-        //const munitionMax = (this.state.weapons[this.state.currentWeapon.id].maxAmmunition !== null)? this.state.weapons[this.state.currentWeapon.id].maxAmmunition : 10;
         const munitionMax = this.state.weapons[this.state.currentWeapon.id].maxAmmunition
         if(this.state.currentWeapon.ammunition > 0){
             this.setState((prevState, props) => ({
                 currentWeapon : {
                     id: prevState.currentWeapon.id,
-                    ammunition: prevState.currentWeapon.ammunition - (100/munitionMax)
+                    ammunition: ((prevState.currentWeapon.ammunition - (100/munitionMax) >= 0)?prevState.currentWeapon.ammunition - (100/munitionMax): 0)
                 }
             }), () => this.updateCurrentWeaponBDD())
         }
@@ -124,10 +120,6 @@ export default class Armory extends Component {
     }
 
     render() {
-        const currentWeapon = this.state.currentWeapon.id
-        console.log(this.state.weapons)
-        const ammo = this.state.weapons[this.state.currentWeapon.id].maxAmmunition;
-        console.log(ammo)
         return (
             <div className="armory row align-items-center ">
                 <div className="col-lg-6 h-0 absolute col-md-6">
@@ -140,14 +132,13 @@ export default class Armory extends Component {
                     </div>
                 </div>
                 <div className="col-8 h-50 offset-4">
-                    <Ammunitions
+                    <Ammunition
                         maxAmmunition={this.state.weapons[this.state.currentWeapon.id].maxAmmunition}
                         quantity={this.state.currentWeapon.ammunition}
                         fire={this.fireCurrentWeapon}
                         recharge={this.rechargeCurrentWeapon}
                     />
                 </div>
-
             </div>
         );
     }

@@ -1,13 +1,11 @@
 import React, {Component} from "react"
 import "./RadioPolice.css"
-import axios from 'axios'
 import {DynLineGraph} from "../../../../dynLineGraph/DynLineGraph";
 
 export default class RadioPolice extends Component {
 
     constructor(props) {
         super(props);
-				const currentDate = new Date()
 				this.state = {
 						time: 0,
 						freq: 120

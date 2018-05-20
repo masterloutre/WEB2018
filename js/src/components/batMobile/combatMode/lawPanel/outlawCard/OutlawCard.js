@@ -1,6 +1,5 @@
 import React, {Component} from "react"
 import "./OutlawCard.css"
-import axios from 'axios'
 
 
 export default class OutlawCard extends Component {

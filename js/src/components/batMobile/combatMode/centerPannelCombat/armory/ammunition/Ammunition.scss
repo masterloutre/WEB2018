@@ -10,7 +10,8 @@
     padding: 3%;
     @extend %widget-border-glow;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     color: $textColor;
     cursor: url('../../../../../../images/cursor_red.png'), pointer;
   }

@@ -1,13 +1,8 @@
 @import "../../../../customs.scss";
 
-.car-armor-state{
-	
-}
-
-#side-view{
-  @extend %widget-border-glow;
-}
-
-#top-view{
-  @extend %widget-border-glow;
+.car-armor-state,
+.car-armor-state *{
+	max-height:100%;
+	max-width:100%;
+	text-align:center;
 }

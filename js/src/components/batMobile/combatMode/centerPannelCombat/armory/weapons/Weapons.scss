@@ -27,6 +27,7 @@
           @extend %widget-border-glow-yellow;
       }
     }
+    button:focus {outline:0;}
   }
 
   ul {
@@ -68,7 +69,7 @@
     height: 25%;
     font-size: 8pt;
     position: absolute;
-    bottom: 10%;
+    bottom: 8%;
     right: 20%;
     text-align: center;
     //transform: skew(-30deg) rotate(-60deg) scale(1);

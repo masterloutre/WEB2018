@@ -41,6 +41,7 @@ export default class Ammunition extends Component {
         return (
             <div className="ammunition">
               <div className= "row justify-content-center bar-graph">
+                  <span className="col-12 text-center" id={"ammunition-graph"}>quantity : {this.props.quantity} %</span>
                   <ResponsiveBar className = "d-flex"
                       //width={300}
                       //height={80}
@@ -68,7 +69,6 @@ export default class Ammunition extends Component {
                       animate={false}
                       isInteractive={false}
                     />
-                    <span className="col-12 text-center" id={"ammunition-graph"}>quantity : {this.props.quantity} %</span>
                 </div>
                 <div className="row">
                 <button onClick={()=>this.props.fire()}>fire </button>

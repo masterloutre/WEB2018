@@ -35,7 +35,7 @@ export default class CombatMode extends Component {
                 </div>
                 <div className="row justify-content-center" id={"bottom-panels"}>
                     <div id="change-mode-button-container" className={"col-1 absolute self-align-center"}><ChangeModeButton changeMode={this.props.changeMode}/></div>
-                    <CarArmorState/>
+                    <CarArmorState sessionId={this.props.sessionId}/>
                 </div>
             </div>
         )

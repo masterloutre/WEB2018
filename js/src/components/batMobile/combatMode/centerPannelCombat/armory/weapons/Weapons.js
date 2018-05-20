@@ -26,13 +26,14 @@ export default class Weapons extends Component {
                     style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}>{weapon.name}
                 </span>
                 */}
-                <img src={require("../../../../../../images/armory/batarang-icon.svg")}
+                <img src={require("../../../../../../images/armory/icon-"+ weapon.id + ".svg")}
                      //style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}
-                     style={{transform: "skew(" + (-skewAngle) + "deg) rotate(-65deg)"}}
+                     style={{transform: "skew(" + (-skewAngle) + "deg) rotate(-65deg) scale(0.7)"}}
                 />
             </li>
         )
     }
+
 
     render() {
         console.log()

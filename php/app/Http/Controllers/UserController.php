@@ -58,7 +58,7 @@ class UserController
      */
     public static function add($weight,$mileage,$speed,$essence,$battery,$tpm,$oilLevel,$liquidLevel,$carbodyState,$xPos,$yPos,$bpm,$modeId,$tireId,$radioId,$temperature,$headlight)
     {
-        $stmt = app('db')->insert('INSERT INTO User(weight,mileage,speed,essence,battery,tpm,oilLevel,liquidLevel,carbodyState,xPos,yPos,bpm,modeId,tireId,radioId,temperature,headlight) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[$weight,$mileage,$speed,$essence,$battery,$tpm,$oilLevel,$liquidLevel,$carbodyState,$xPos,$yPos,$bpm,$modeId,$tireId,$radioId,$temperature,$headlight]);
+        $stmt = app('db')->insert('INSERT INTO user(weight,mileage,speed,essence,battery,tpm,oilLevel,liquidLevel,carbodyState,xPos,yPos,bpm,modeId,tireId,radioId,temperature,headlight) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[$weight,$mileage,$speed,$essence,$battery,$tpm,$oilLevel,$liquidLevel,$carbodyState,$xPos,$yPos,$bpm,$modeId,$tireId,$radioId,$temperature,$headlight]);
     }
 
     /********************DELETE*****************************/

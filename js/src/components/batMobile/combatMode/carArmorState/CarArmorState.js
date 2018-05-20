@@ -47,7 +47,7 @@ export default class CarArmorState extends Component {
     //On passe les url des images correspondant au taux de dégats issu de la BDD aux enfants
     render() {
         return (
-            <div className="car-armor-state container-fluid row p-2">
+            <div className="car-armor-state container-fluid row p-3">
                 <CarArmorDiagram imagesUrl={this.state.imagesDamagedSideView} />
                 <CarArmorDiagram imagesUrl={this.state.imagesDamagedTopView} />
             </div>

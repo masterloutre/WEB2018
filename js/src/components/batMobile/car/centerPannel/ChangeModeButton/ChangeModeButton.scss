@@ -3,15 +3,17 @@
 
 
 .change-mode-button {
-  cursor: pointer;
-  position: absolute;
+
+  //transform: translate(25%, 25%) scale(1.5);
   z-index: 10;
   width: 100%;
   @extend %circle;
+  position: absolute;
   box-shadow: 0px 0px 15px $batmanYellow;
   background-color: black;
   color: $batmanYellow;
   //padding: 0px;
+  cursor: pointer;
   cursor: url('../../../../../images/cursor_red.png'), pointer;
 
   h3 {

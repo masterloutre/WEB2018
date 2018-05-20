@@ -29,7 +29,9 @@ export default class BatMobile extends Component {
                       </div>
                   </div>
                   <CombatMode sessionId={this.props.sessionId} changeMode={this.changeMode}/>
+                  <div class="general-overlay"></div>
               </div>
+              
           )
       }
       else {
@@ -42,7 +44,9 @@ export default class BatMobile extends Component {
                       </div>
                   </div>
                   <Car sessionId={this.props.sessionId} changeMode={this.changeMode}/>
+                  <div class="general-overlay"></div>
               </div>
+              
           )
       }
 

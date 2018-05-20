@@ -1,7 +1,5 @@
 import React, {Component} from "react"
 import "./CarDate.css"
-import axios from 'axios'
-import CurrentDate from "../../../currentDate/CurrentDate";
 
 
 export default class CarDate extends Component {

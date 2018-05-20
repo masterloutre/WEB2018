@@ -1,6 +1,5 @@
 import React, {Component} from "react"
 import "./CombatMode.css"
-import axios from 'axios'
 import CenterPannelCombat from "./centerPannelCombat/CenterPannelCombat";
 import LawPanel from "./lawPanel/LawPanel";
 import ChangeModeButton from "../car/centerPannel/changeModeButton/ChangeModeButton";
@@ -12,14 +11,7 @@ export default class CombatMode extends Component {
     constructor(props) {
         super();
         this.state = {
-            sessionId: 0,
         };
-    }
-
-    componentDidUpdate( prevState, prevProps){
-        if(prevProps.sessionId !== this.props.sessionId) {
-            this.setState({sessionId: this.props.sessionId})
-        }
     }
 
     render() {

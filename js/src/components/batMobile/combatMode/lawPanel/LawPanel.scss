@@ -13,8 +13,13 @@
 }
 
 #search-tab{
-  width: 100%;
+  //width: 100%;
   height: 15%;
+
+  input {
+    color: $textColor;
+    @extend %widget-border-glow;
+  }
 }
 
 #outlaws-display{
@@ -24,4 +29,3 @@
     overflow-y: scroll;
   }
 }
-

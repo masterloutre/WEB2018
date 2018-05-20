@@ -21,12 +21,19 @@ export default class Weapons extends Component {
                 style={{transform: "rotate(" + rotationAngle + "deg) skew(" + skewAngle + "deg)"}}
                 onClick={() => this.props.changeWeapon(weapon.id)}
             >
+                {/*
                 <span
                     style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}>{weapon.name}
                 </span>
+                */}
+                <img src={require("../../../../../../images/armory/icon-"+ weapon.id + ".svg")}
+                     //style={{transform: "skew(" + (-skewAngle) + "deg) rotate(" + (-rotationAngle) + "deg)"}}
+                     style={{transform: "skew(" + (-skewAngle) + "deg) rotate(-65deg) scale(0.7)"}}
+                />
             </li>
         )
     }
+
 
     render() {
         console.log()

@@ -1,9 +1,9 @@
 @import "../../../../../customs.scss";
 
 .armory{
-  @extend %full-space;
+    @extend %full-space;
+  //padding-top: 15%;
   color: $textColor;
-      background: '../../../../images/armory/4.jpg'
 }
 
 #weapons-overview{
@@ -13,7 +13,6 @@
   background-color: black;
   transform: translate(-5%, 0%);
   overflow: hidden;
-
 
   h3{
     left: 50%;

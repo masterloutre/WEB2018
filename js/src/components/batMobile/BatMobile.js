@@ -24,14 +24,15 @@ export default class BatMobile extends Component {
 
   changeMode = () => {
       this.setState((prevState, props)=> ({combatMode: !prevState.combatMode}))
-      console.log("mode changed")
+      var audio = new Audio('../../sounds/because.mp3');
+      audio.play();
+      console.log("mode changed" + JSON.stringify(audio))
   }
 
   render(){
       if(this.state.combatMode){
           return(
               <div className="bat-mobile container-fluid h-100">
-
                   <div id="outer-border" className="">
                       <div id="inner-border" className="">
 

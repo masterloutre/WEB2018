@@ -22,7 +22,6 @@ class App extends Component {
             .then((result) =>
 
             {
-                console.log(result)
                 this.setState({sessionId : result.data.sessionId})
             })
             .catch(error => console.log(error))

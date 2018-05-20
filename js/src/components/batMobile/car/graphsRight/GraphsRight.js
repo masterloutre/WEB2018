@@ -15,7 +15,7 @@ export default class GraphsRight extends Component {
         return (
             <div className="graphsRight row justify-content-center">
                 <div className="col-7 p-2 offset-3">
-                    <DynLineGraph  data={this.props.speed} unit={"km/h"}/>
+                    <DynLineGraph  data={this.props.speed} unit={"km/h"} refresh={true}/>
                 </div>
             </div>
         )

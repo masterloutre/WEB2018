@@ -13,15 +13,15 @@ export default class Weapons extends Component {
     }
 
     renderWeaponButton = (weapon) => {
+        const classActive = (this.props.currentWeaponId === weapon.id) ? "active" : "";
         const rotationAngle = weapon.id * 360 / this.props.weaponList.length;
         const skewAngle = 90 - (360 / this.props.weaponList.length);
         return (
             <li
                 key={weapon.id.toString()}
+                className={classActive}
                 style={{transform: "rotate(" + rotationAngle + "deg) skew(" + skewAngle + "deg)"}}
-                onClick={() => {
-                    this.props.changeWeapon(weapon.id)
-                }}
+                onClick={() => this.props.changeWeapon(weapon.id)}
             >
                 {/*
                 <span
